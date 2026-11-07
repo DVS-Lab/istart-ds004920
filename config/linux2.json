@@ -1,0 +1,12 @@
+{
+  "reference": "/ZPOOL/data/projects/rf1-sra-sharedreward/resources/rf1_MNI152NLin6Asym_reference_grid.nii.gz",
+  "container": "/ZPOOL/data/tools/fmriprep-25.2.5.simg",
+  "istart_root": "/ZPOOL/data/projects/istart-ds004920",
+  "rf1_root": "/ZPOOL/data/projects/rf1-sra-linux2",
+  "rf1_analysis": "/ZPOOL/data/projects/rf1-sra-socdoors",
+  "source_exclusions": "/ZPOOL/data/sourcedata/sourcedata/rf1-sra-exclusions",
+  "rf1_sessions": ["01", "02"],
+  "rf1_dispositions": "/ZPOOL/data/projects/rf1-sra-linux2/qc/run_disposition.tsv",
+  "istart_dispositions": "/ZPOOL/data/projects/istart-ds004920/config/run_disposition.tsv",
+  "evaluation": "/ZPOOL/data/projects/rf1-sra-linux2/derivatives/smoothness-evaluation-6mm-v1"
+}

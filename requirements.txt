@@ -1,0 +1,6 @@
+numpy>=1.24,<3
+pandas>=2.0,<3
+nibabel>=5.2,<6
+scipy>=1.10,<2
+nitransforms>=24.0,<26
+pytest>=8,<9

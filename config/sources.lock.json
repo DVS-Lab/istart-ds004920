@@ -1,0 +1,57 @@
+{
+  "openneuro": {
+    "dataset": "ds004920",
+    "version": "1.1.1",
+    "commit": "2913a29de224f5364629cc39ac26045c06817b4f"
+  },
+  "sources": [
+    {
+      "repository": "DVS-Lab/rf1-sra-sharedreward",
+      "commit": "d5331d38c298023eeaf094e6e83ee0df65434ac2",
+      "path": "code/smooth_to_target.sh",
+      "destination": "vendor/afni/smooth_to_target.sh",
+      "blob": "959bab4af9397e2ebb6b476d6983291af59f7896"
+    },
+    {
+      "repository": "DVS-Lab/rf1-sra-sharedreward",
+      "commit": "d5331d38c298023eeaf094e6e83ee0df65434ac2",
+      "path": "code/measure_smoothness.sh",
+      "destination": "vendor/afni/measure_smoothness.sh",
+      "blob": "290a7f8d57ababdeb10e176f5345fa0bdc07be83"
+    },
+    {
+      "repository": "DVS-Lab/sharedreward-aging",
+      "commit": "edda83a3597e8d1f168abf11ba000fe55318939c",
+      "path": "code/resample_to_rf1_grid.sh",
+      "destination": "vendor/grid/resample_to_rf1_grid.sh",
+      "blob": "5f2bdd203366b2d231021093f86b07d4e86b1b07"
+    },
+    {
+      "repository": "DVS-Lab/rf1-sra-socdoors",
+      "commit": "b5520ee5e7d0659b80c2d4bb31334caaaa9cddbc",
+      "path": "templates/L1_task-doors_model-1_type-act.fsf",
+      "blob": "6d947a228542fe5ed7e43be346ea9dc4ec711d03",
+      "changes": [
+        "FEAT smoothing 0",
+        "TR placeholder",
+        "FSL standard path placeholder"
+      ]
+    },
+    {
+      "repository": "DVS-Lab/rf1-sra-socdoors",
+      "commit": "b5520ee5e7d0659b80c2d4bb31334caaaa9cddbc",
+      "path": "templates/L1_task-socialdoors_model-1_type-act.fsf",
+      "blob": "00b8df4da65e730efa072b3e8f90841298d37fa8",
+      "changes": [
+        "FEAT smoothing 0",
+        "TR placeholder",
+        "FSL standard path placeholder"
+      ]
+    }
+  ],
+  "motion_fix": {
+    "repository": "nipreps/fmriprep",
+    "commit": "3e5b08b163fd9cf25bb62df9fc1b427bdec6c15b",
+    "url": "https://github.com/nipreps/fmriprep/pull/3697"
+  }
+}
