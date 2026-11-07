@@ -1,16 +1,16 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-07T15:32:36.482100+00:00",
+  "collected_utc": "2026-11-07T15:37:38.127570+00:00",
   "code_commit": "73b32e4db5927dab977d4f9466a9b589bd77cea7",
   "cpus": 128,
   "load_average": [
-    45.84228515625,
-    42.78466796875,
-    36.5107421875
+    45.77197265625,
+    44.67529296875,
+    39.07568359375
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 134263.1,
+    "MemAvailable_mb": 130894.2,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.5
   },
