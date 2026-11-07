@@ -1,10 +1,8 @@
 Linux2 processing handoff
 
-Status and sanitized log tails are committed directly to main in this directory.
-status.json records resource, preprocessing and L1 state. log-tails.txt contains
-tails of the explicit preprocessing log allowlist. Source code, cached work and
-imaging derivatives are not modified by status publication.
+status.json: structured CPU, RAM, disk, fMRIPrep and L1 state.
+log-tails.txt: sanitized tails of explicit preprocessing log locations only.
 
-The initial snapshot here was preserved from linux2-status before deleting that
-branch. Its commit history is retained as a parent of the migration commit.
-Status timestamps are UTC. Visual QC is separate and does not block preprocessing.
+Published automatically from Linux2 using an isolated Git object store.
+This handoff contains no imaging derivatives, raw behavioral data, license files or environment dumps.
+Status timestamps are UTC; absence of an active PID does not by itself establish success.
