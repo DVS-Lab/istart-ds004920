@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-07T16:12:50.021573+00:00",
+  "collected_utc": "2026-11-07T16:17:51.579057+00:00",
   "code_commit": "73b32e4db5927dab977d4f9466a9b589bd77cea7",
   "cpus": 128,
   "load_average": [
-    33.2900390625,
-    39.3544921875,
-    42.15576171875
+    25.94140625,
+    30.5556640625,
+    37.5322265625
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 125894.1,
+    "MemAvailable_mb": 130790.5,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.5
   },
   "filesystem_bytes": {
-    "total": 58154731044864,
-    "free": 16486476414976
+    "total": 58154730782720,
+    "free": 16483114680320
   },
   "preprocessing_batches": [
     {
@@ -96,6 +96,11 @@
           "subject": "sub-1013",
           "status": "verified",
           "reason": ""
+        },
+        {
+          "subject": "sub-1240",
+          "status": "failed",
+          "reason": "Expected one MNI BOLD, found 0: []"
         }
       ],
       "structural_checks": [
