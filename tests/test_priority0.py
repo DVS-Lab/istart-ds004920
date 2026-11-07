@@ -65,7 +65,10 @@ def test_pinned_preprocess_dry_run_has_required_flags(tmp_path, monkeypatch):
     (tmp_path / "bids/sub-1002").mkdir(parents=True)
     write_json(tmp_path / "bids/dataset_description.json", {})
     (tmp_path / "bids/participants.tsv").write_text("participant_id\nsub-1002\n")
-    c = {"istart_root": str(tmp_path), "container": str(container)}
+    licenses = tmp_path / "licenses"
+    licenses.mkdir()
+    (licenses / "fs_license.txt").write_text("synthetic test license fixture\n")
+    c = {"istart_root": str(tmp_path), "container": str(container), "licenses_dir": str(licenses)}
     monkeypatch.setattr(pre, "inventory", lambda c: [{"subject": "sub-1002", "status": "ready"}])
     monkeypatch.setattr(pre.shutil, "which", lambda name: "/fake/apptainer")
     monkeypatch.setattr(pre, "command", lambda *a, **k: "fMRIPrep v25.2.5")
@@ -73,6 +76,9 @@ def test_pinned_preprocess_dry_run_has_required_flags(tmp_path, monkeypatch):
     plans = json.loads((tmp_path / "work/preprocessing_plan_sub-1002.json").read_text())
     cmd = plans[0]["command"]
     assert "--fs-no-reconall" in cmd and "--cifti-output" not in cmd
+    assert cmd[cmd.index("--fs-license-file") + 1] == "/opts/fs_license.txt"
+    assert f"{licenses}:/opts" in cmd
+    assert plans[0]["license"]["path"] == str(licenses / "fs_license.txt")
     assert "--use-syn-sdc" not in cmd and "--ignore" not in cmd
     assert cmd[cmd.index("--output-spaces") + 1] == "MNI152NLin6Asym"
     assert cmd[-1].endswith("work/fmriprep/sub-1002")
@@ -88,6 +94,21 @@ def test_wrong_container_version_is_rejected(tmp_path, monkeypatch):
     monkeypatch.setattr(pre, "command", lambda *a, **k: "fMRIPrep v25.2.7")
     with pytest.raises(ValueError, match="Wrong fMRIPrep"):
         pre.preprocess({"istart_root": str(tmp_path), "container": str(container)}, ["1002"], 16, 2, 24000)
+
+
+def test_missing_production_license_fails_before_workflow_launch(tmp_path, monkeypatch):
+    container = tmp_path / "fmriprep-25.2.5.simg"
+    container.write_bytes(b"fake")
+    monkeypatch.setattr(pre.shutil, "which", lambda name: "/fake/apptainer")
+    calls = []
+    def command(argv, *args, **kwargs):
+        calls.append(argv)
+        return "fMRIPrep v25.2.5"
+    monkeypatch.setattr(pre, "command", command)
+    with pytest.raises(ValueError, match="FreeSurfer license"):
+        pre.preprocess({"istart_root": str(tmp_path), "container": str(container),
+                        "licenses_dir": str(tmp_path / "missing")}, ["1002"], 16, 2, 24000)
+    assert len(calls) == 1 and calls[0][-1] == "--version"
 
 
 def test_launch_is_detached_records_pid_and_deduplicates(tmp_path, monkeypatch):
@@ -116,3 +137,35 @@ def test_cohort_cannot_launch_without_pilot_review(tmp_path, monkeypatch):
     write_json(cfg, c)
     with pytest.raises(FileNotFoundError):
         p0.launch(c, cfg, "cohort", None, 2, 16, 2, 24000, True)
+
+
+def test_license_restart_preserves_failed_records_and_work_cache(tmp_path, monkeypatch):
+    spec = importlib.util.spec_from_file_location("license_restart", ROOT / "code/restart_pilot_after_license_fix.py")
+    restart = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(restart)
+    batch = tmp_path / "work/preprocessing-runs/pilot"
+    write_json(batch / "state.json", {"pid": 99999, "status": "finished_with_failures"})
+    receipt = tmp_path / "work/preprocessing/sub-1002.json"
+    write_json(receipt, {"status": "planned", "command": ["original-failed-command"]})
+    cached = tmp_path / "work/fmriprep/sub-1002/cached-node.txt"
+    cached.parent.mkdir(parents=True)
+    cached.write_text("preserve cached work")
+    before = stamp(cached)
+    monkeypatch.setattr(restart.os, "kill", lambda *args: (_ for _ in ()).throw(ProcessLookupError()))
+    archive = restart.archive_failed_metadata(tmp_path)
+    assert not batch.exists()
+    assert json.loads((archive / "batch/state.json").read_text())["pid"] == 99999
+    assert (archive / "sub-1002-before-license-fix.json").read_text() == receipt.read_text()
+    assert stamp(cached) == before
+
+
+def test_license_restart_refuses_live_pilot(tmp_path, monkeypatch):
+    spec = importlib.util.spec_from_file_location("license_restart_live", ROOT / "code/restart_pilot_after_license_fix.py")
+    restart = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(restart)
+    batch = tmp_path / "work/preprocessing-runs/pilot"
+    write_json(batch / "state.json", {"pid": 99999})
+    monkeypatch.setattr(restart.os, "kill", lambda *args: None)
+    with pytest.raises(RuntimeError, match="still alive"):
+        restart.archive_failed_metadata(tmp_path)
+    assert (batch / "state.json").exists()

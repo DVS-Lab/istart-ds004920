@@ -148,6 +148,12 @@ def preprocess(c, subjects, nprocs, omp, mem_mb, execute=False):
     version = command([runtime, "run", "--cleanenv", container, "--version"])
     if not re.search(r"(?<![0-9])25\.2\.5(?![0-9a-zA-Z.+-])", version):
         raise ValueError(f"Wrong fMRIPrep version: {version}")
+    # Reuse rf1-sra-linux2/code/fmriprep.sh and pipeline_common.sh verbatim:
+    # LICENSES_DIR=/ZPOOL/data/tools/licenses, bound at /opts in the container.
+    licenses = Path(c.get("licenses_dir", "/ZPOOL/data/tools/licenses"))
+    license_file = licenses / "fs_license.txt"
+    if not license_file.is_file() or not os.access(license_file, os.R_OK) or license_file.stat().st_size == 0:
+        raise ValueError(f"Existing Linux2 FreeSurfer license is missing, unreadable or empty: {license_file}")
     rows = inventory(c)
     ready = {r["subject"] for r in rows if r["status"] == "ready"}
     requested = ["sub-" + s.removeprefix("sub-") for s in subjects] if subjects else sorted(ready)
@@ -164,9 +170,11 @@ def preprocess(c, subjects, nprocs, omp, mem_mb, execute=False):
     plans = []
     for subject in requested:
         cmd = [runtime, "run", "--cleanenv", "--bind", f"{root}:{root}",
+               "--bind", f"{licenses}:/opts",
                "--env", f"TEMPLATEFLOW_HOME={cache}", container,
                root / "bids", deriv, "participant", "--participant-label", subject[4:],
-               "--bids-filter-file", filters, "--fs-no-reconall", "--output-spaces", "MNI152NLin6Asym",
+               "--bids-filter-file", filters, "--fs-no-reconall", "--fs-license-file", "/opts/fs_license.txt",
+               "--output-spaces", "MNI152NLin6Asym",
                "--nprocs", str(nprocs), "--omp-nthreads", str(omp), "--mem-mb", str(mem_mb),
                "--notrack", "--stop-on-first-crash", "-w", work / subject]
         # 25.2.5 accepts --mem, documented CLI; do not depend on deprecated spelling.
@@ -175,6 +183,7 @@ def preprocess(c, subjects, nprocs, omp, mem_mb, execute=False):
         subject_inputs += sorted(p for p in (root / "bids" / subject).rglob("*") if p.is_file())
         rec = {"subject": subject, "command": list(map(str, cmd)), "version": version,
                "container": stamp(container, full=True), "bids_inputs": [stamp(p) for p in subject_inputs],
+               "license": stamp(license_file),
                "filter": stamp(filters), "started": now(), "status": "planned"}
         plans.append(rec)
         if execute:
@@ -186,7 +195,7 @@ def preprocess(c, subjects, nprocs, omp, mem_mb, execute=False):
                         raise ValueError("Existing preprocessing belongs to different inputs; inspect")
                 write_json(receipt, rec)
                 command(cmd, root / f"logs/fmriprep/{subject}.log")
-                verify(rec["bids_inputs"] + [rec["container"]])
+                verify(rec["bids_inputs"] + [rec["container"], rec["license"]])
                 rec.update(status="command_succeeded", finished=now())
                 write_json(receipt, rec)
         else:

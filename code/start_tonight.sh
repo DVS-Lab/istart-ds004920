@@ -12,6 +12,8 @@ export PYTHONUNBUFFERED=1
 command -v git-annex
 command -v apptainer || command -v singularity
 test -f /ZPOOL/data/tools/fmriprep-25.2.5.simg
+test -r /ZPOOL/data/tools/licenses/fs_license.txt
+test -s /ZPOOL/data/tools/licenses/fs_license.txt
 .venv-preproc/bin/python -m pip freeze > work/preprocessing-environment.txt
 .venv-preproc/bin/python code/preprocess_istart.py fetch --subjects 1002 2>&1 | tee logs/download-sub-1002.log
 .venv-preproc/bin/python code/preprocess_istart.py validate --subjects 1002 \

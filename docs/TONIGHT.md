@@ -1,5 +1,19 @@
 # Priority 0: preprocessing tonight
 
+## Restart the pilot after the missing-license failure
+
+The original wrapper omitted the production FreeSurfer license argument. The corrected wrapper reuses `/ZPOOL/data/tools/licenses/fs_license.txt` through the existing RF1 `/opts` bind; `--fs-no-reconall` remains enabled. If sub-1002 failed with the license error, run:
+
+```bash
+cd /ZPOOL/data/projects/istart-ds004920
+git pull --ff-only
+export PATH="$PWD/.venv-preproc/bin:$PATH"
+.venv-preproc/bin/python code/restart_pilot_after_license_fix.py
+tail -n 50 logs/preprocessing-pilot.log logs/fmriprep/sub-1002.log
+```
+
+The helper first validates the corrected command and existing license. It refuses to proceed if the pilot PID or subject/worker locks are active. Otherwise, it archives the failed pilot's frozen batch metadata and a copy of its original command receipt, then relaunches detached with the same BIDS, derivative and per-subject work directories. It does not delete or redownload data, clear cached work, or change RF1. After the pilot finishes, use the `wait`, `check`, inspection and cohort commands below.
+
 The code is prepared locally; no Linux2 job has been launched by Codex. These commands create the production checkout, acquire only sub-1002's required data first, dry-run the exact pinned container command and launch its fMRIPrep process detached. They do not require FSL, AFNI, smoothing, L1, TEDANA or the motion diagnostic. Two concurrent cohort subjects each request 16 processes, 2 OpenMP threads and 24 GB, leaving CPU capacity within the 96-processor host. The launcher checks current available memory and refuses an oversubscribed budget.
 
 Paste this whole block into Bash on Linux2. The pilot remains alive if SSH closes. The block waits for its structural checks and asks for your actual HTML-report inspection before starting the detached cohort download/preprocessing. Press Ctrl-C at the prompt or wait to return to it later; that does not stop an already detached pilot. Do not answer yes without reviewing the report. All paths and participant labels below are concrete.
@@ -62,7 +76,7 @@ if [[ -f /ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/cohort/sta
 fi
 ```
 
-`git-annex` and either Apptainer or Singularity must already be available in the Linux2 shell. `start_tonight.sh` installs the three Python preprocessing dependencies in a dedicated environment. It does not install system packages or alter the container. If a prerequisite check fails, processing is not claimed to have started; fix that specific prerequisite and rerun the same block.
+`git-annex` and either Apptainer or Singularity must already be available in the Linux2 shell. The wrapper reuses the existing RF1 production license exactly: `/ZPOOL/data/tools/licenses` is bound to `/opts`, and fMRIPrep receives `--fs-license-file /opts/fs_license.txt`. The license must be readable and nonempty even though `--fs-no-reconall` remains enabled. No new license is generated, copied into the repository, or published. `start_tonight.sh` installs the three Python preprocessing dependencies in a dedicated environment. It does not install system packages or alter the container. If a prerequisite check fails, processing is not claimed to have started; fix that specific prerequisite and rerun the same block.
 
 Pilot supervisor state: `work/preprocessing-runs/pilot/state.json`; cohort supervisor state: `work/preprocessing-runs/cohort/state.json`. Each includes PID, actual launch command, start/end time and supervisor log. `logs/fmriprep/sub-1002.log` contains the actual container invocation and output. Other participants get the analogous log. Per-subject provenance, container hash, original staged input signatures and completion records are under `work/preprocessing/`. Separate per-subject fMRIPrep work directories make two simultaneous subjects safe to resume.
 
