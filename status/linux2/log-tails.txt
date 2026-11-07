@@ -1,55 +1,159 @@
 
+--- logs/preprocessing-cohort-expanded.log ---
+2026-11-07T19:01:28.934804+00:00 {"subject": "sub-3101", "status": "verified", "reason": ""}
+2026-11-07T19:01:42.072744+00:00 {"subject": "sub-3140", "status": "verified", "reason": ""}
+2026-11-07T19:02:02.480326+00:00 {"subject": "sub-3116", "status": "verified", "reason": ""}
+2026-11-07T19:02:12.639266+00:00 {"subject": "sub-3122", "status": "verified", "reason": ""}
+2026-11-07T19:02:14.934508+00:00 {"subject": "sub-3143", "status": "verified", "reason": ""}
+2026-11-07T19:02:42.904843+00:00 {"subject": "sub-3152", "status": "verified", "reason": ""}
+2026-11-07T20:18:43.219143+00:00 {"subject": "sub-3164", "status": "verified", "reason": ""}
+2026-11-07T20:18:47.730552+00:00 {"subject": "sub-3166", "status": "verified", "reason": ""}
+2026-11-07T20:21:29.194681+00:00 {"subject": "sub-3170", "status": "verified", "reason": ""}
+2026-11-07T20:21:49.093995+00:00 {"subject": "sub-3167", "status": "verified", "reason": ""}
+2026-11-07T20:22:14.625717+00:00 {"subject": "sub-3190", "status": "verified", "reason": ""}
+2026-11-07T20:22:29.835770+00:00 {"subject": "sub-3173", "status": "verified", "reason": ""}
+2026-11-07T20:22:56.079610+00:00 {"subject": "sub-3175", "status": "verified", "reason": ""}
+2026-11-07T20:23:02.430910+00:00 {"subject": "sub-3176", "status": "verified", "reason": ""}
+2026-11-07T20:23:05.771674+00:00 {"subject": "sub-3199", "status": "verified", "reason": ""}
+2026-11-07T20:23:52.454384+00:00 {"subject": "sub-3189", "status": "verified", "reason": ""}
+2026-11-07T21:35:34.297387+00:00 {"subject": "sub-3200", "status": "verified", "reason": ""}
+2026-11-07T21:36:28.791258+00:00 {"subject": "sub-3206", "status": "verified", "reason": ""}
+2026-11-07T21:39:13.266203+00:00 {"subject": "sub-3210", "status": "verified", "reason": ""}
+2026-11-07T21:39:31.655149+00:00 {"subject": "sub-3212", "status": "verified", "reason": ""}
+2026-11-07T21:39:36.718672+00:00 {"subject": "sub-3220", "status": "verified", "reason": ""}
+2026-11-07T21:40:40.583197+00:00 {"subject": "sub-3218", "status": "verified", "reason": ""}
+2026-11-07T21:41:01.075636+00:00 {"subject": "sub-3223", "status": "verified", "reason": ""}
+{
+  "launch_command": "/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python /ZPOOL/data/projects/istart-ds004920/code/preprocess_istart.py --config /ZPOOL/data/projects/istart-ds004920/config/linux2.json worker --batch /ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/cohort-expanded",
+  "launched": "2026-11-07T13:27:29.306429+00:00",
+  "log": "/ZPOOL/data/projects/istart-ds004920/logs/preprocessing-cohort-expanded.log",
+  "name": "cohort-expanded",
+  "pid": 1828055,
+  "resource_request": {
+    "jobs": 10,
+    "mem_mb": 0,
+    "nprocs": 4,
+    "omp": 2
+  },
+  "resources_at_launch": {
+    "available_memory_mb": 120307.046875,
+    "cpus": 128,
+    "load_average": [
+      4.38134765625,
+      4.20068359375,
+      4.119140625
+    ]
+  },
+  "spec": "/ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/cohort-expanded/spec.json",
+  "status": "finished_with_failures",
+  "finished": "2026-11-07T21:41:01.076362+00:00",
+  "subjects": 58,
+  "failed": 1
+}
+
+--- logs/fmriprep/sub-3223.log ---
+261107-16:40:22,356 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.bold_task_doors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/bold_task_doors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
+261107-16:40:22,357 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms1" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms1".
+261107-16:40:22,359 nipype.workflow INFO:
+	 [Node] Executing "_anat2std_tpms1" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
+261107-16:40:22,360 nipype.workflow INFO:
+	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
+261107-16:40:22,361 nipype.workflow INFO:
+	 [Node] Executing "resample" <fmriprep.interfaces.resampling.ResampleSeries>
+261107-16:40:29,712 nipype.workflow INFO:
+	 [Node] Finished "ds_bold", elapsed time 7.351125s.
+261107-16:40:29,898 nipype.workflow INFO:
+	 [Node] Finished "_anat2std_tpms1", elapsed time 7.538118s.
+261107-16:40:30,233 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
+261107-16:40:30,235 nipype.workflow INFO:
+	 [Node] Executing "_anat2std_tpms2" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
+261107-16:40:37,768 nipype.workflow INFO:
+	 [Node] Finished "_anat2std_tpms2", elapsed time 7.532644s.
+261107-16:40:38,247 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms0" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms0".
+261107-16:40:38,248 nipype.workflow INFO:
+	 [Node] Cached "_anat2std_tpms0" - collecting precomputed outputs
+261107-16:40:38,248 nipype.workflow INFO:
+	 [Node] "_anat2std_tpms0" found cached.
+261107-16:40:38,249 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms1" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms1".
+261107-16:40:38,249 nipype.workflow INFO:
+	 [Node] Cached "_anat2std_tpms1" - collecting precomputed outputs
+261107-16:40:38,249 nipype.workflow INFO:
+	 [Node] "_anat2std_tpms1" found cached.
+261107-16:40:38,250 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
+261107-16:40:38,250 nipype.workflow INFO:
+	 [Node] Cached "_anat2std_tpms2" - collecting precomputed outputs
+261107-16:40:38,250 nipype.workflow INFO:
+	 [Node] "_anat2std_tpms2" found cached.
+261107-16:40:41,805 nipype.workflow INFO:
+	 [Node] Finished "resample", elapsed time 19.443462s.
+261107-16:40:42,439 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.bold_task_socialdoors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/bold_task_socialdoors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
+261107-16:40:42,442 nipype.workflow INFO:
+	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
+261107-16:40:49,303 nipype.workflow INFO:
+	 [Node] Finished "ds_bold", elapsed time 6.860265s.
+261107-16:40:52,396 nipype.workflow IMPORTANT:
+	 fMRIPrep finished successfully!
+261107-16:40:52,396 nipype.workflow IMPORTANT:
+	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
+
 --- logs/fmriprep/sub-3218.log ---
-261107-16:38:58,403 nipype.workflow INFO:
-	 [Node] Executing "t1w_std" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-261107-16:39:16,209 nipype.workflow INFO:
-	 [Node] Finished "anat2std_t1w", elapsed time 17.805419s.
-261107-16:39:16,380 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.anat_fit_wf.anat_reports_wf.mask_std" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/mask_std".
-261107-16:39:16,382 nipype.workflow INFO:
-	 [Node] Executing "mask_std" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-261107-16:39:17,234 nipype.workflow INFO:
-	 [Node] Finished "t1w_std", elapsed time 18.83031s.
-261107-16:39:19,151 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_doors_run_1_wf.carpetplot_wf.mrg_xfms" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_doors_run_1_wf/carpetplot_wf/mrg_xfms".
-261107-16:39:19,153 nipype.workflow INFO:
-	 [Node] Executing "mrg_xfms" <nipype.interfaces.utility.base.Merge>
-261107-16:39:19,154 nipype.workflow INFO:
-	 [Node] Finished "mrg_xfms", elapsed time 0.00011s.
-261107-16:39:20,556 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_doors_run_1_wf.ds_bold_std_wf.sources" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_doors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/sources".
-261107-16:39:20,560 nipype.workflow INFO:
-	 [Node] Executing "sources" <fmriprep.interfaces.bids.BIDSURI>
-261107-16:39:20,561 nipype.workflow INFO:
-	 [Node] Finished "sources", elapsed time 0.000904s.
-261107-16:39:22,371 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_doors_run_1_wf.ds_bold_std_wf.boldref2target" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_doors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/boldref2target".
-261107-16:39:22,373 nipype.workflow INFO:
-	 [Node] Executing "boldref2target" <nipype.interfaces.utility.base.Merge>
-261107-16:39:22,374 nipype.workflow INFO:
-	 [Node] Finished "boldref2target", elapsed time 0.000111s.
-261107-16:39:24,397 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_socialdoors_run_1_wf.carpetplot_wf.mrg_xfms" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_socialdoors_run_1_wf/carpetplot_wf/mrg_xfms".
-261107-16:39:24,399 nipype.workflow INFO:
-	 [Node] Executing "mrg_xfms" <nipype.interfaces.utility.base.Merge>
-261107-16:39:24,400 nipype.workflow INFO:
-	 [Node] Finished "mrg_xfms", elapsed time 0.000107s.
-261107-16:39:26,571 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_socialdoors_run_1_wf.ds_bold_std_wf.boldref2target" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_socialdoors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/boldref2target".
-261107-16:39:26,574 nipype.workflow INFO:
-	 [Node] Executing "boldref2target" <nipype.interfaces.utility.base.Merge>
-261107-16:39:26,574 nipype.workflow INFO:
-	 [Node] Finished "boldref2target", elapsed time 9.5e-05s.
-261107-16:39:28,397 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_socialdoors_run_1_wf.ds_bold_std_wf.sources" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_socialdoors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/sources".
-261107-16:39:28,400 nipype.workflow INFO:
-	 [Node] Executing "sources" <fmriprep.interfaces.bids.BIDSURI>
-261107-16:39:28,402 nipype.workflow INFO:
-	 [Node] Finished "sources", elapsed time 0.000919s.
-261107-16:39:29,347 nipype.workflow INFO:
-	 [Node] Finished "anat2std_mask", elapsed time 30.950004s.
-261107-16:39:30,403 nipype.interface WARNING:
-	 Changing /ZPOOL/data/projects/istart-ds004920/derivatives/fmriprep/sub-3218/anat/sub-3218_space-MNI152NLin6Asym_desc-brain_mask.nii.gz dtype from float64 to float64
+261107-16:40:00,62 nipype.workflow INFO:
+	 [Node] Finished "_anat2std_tpms0", elapsed time 7.380602s.
+261107-16:40:00,374 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_socialdoors_run_1_wf.bold_std_wf.resample" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_socialdoors_run_1_wf/bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/resample".
+261107-16:40:00,374 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_doors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_doors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
+261107-16:40:00,379 nipype.workflow INFO:
+	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
+261107-16:40:00,388 nipype.workflow INFO:
+	 [Node] Executing "resample" <fmriprep.interfaces.resampling.ResampleSeries>
+261107-16:40:03,927 nipype.workflow INFO:
+	 [Node] Finished "_anat2std_tpms1", elapsed time 7.346082s.
+261107-16:40:04,391 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
+261107-16:40:04,393 nipype.workflow INFO:
+	 [Node] Executing "_anat2std_tpms2" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
+261107-16:40:07,869 nipype.workflow INFO:
+	 [Node] Finished "ds_bold", elapsed time 7.489423s.
+261107-16:40:11,683 nipype.workflow INFO:
+	 [Node] Finished "_anat2std_tpms2", elapsed time 7.289564s.
+261107-16:40:12,373 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms0" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms0".
+261107-16:40:12,374 nipype.workflow INFO:
+	 [Node] Cached "_anat2std_tpms0" - collecting precomputed outputs
+261107-16:40:12,374 nipype.workflow INFO:
+	 [Node] "_anat2std_tpms0" found cached.
+261107-16:40:12,374 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms1" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms1".
+261107-16:40:12,375 nipype.workflow INFO:
+	 [Node] Cached "_anat2std_tpms1" - collecting precomputed outputs
+261107-16:40:12,375 nipype.workflow INFO:
+	 [Node] "_anat2std_tpms1" found cached.
+261107-16:40:12,375 nipype.workflow INFO:
+	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
+261107-16:40:12,376 nipype.workflow INFO:
+	 [Node] Cached "_anat2std_tpms2" - collecting precomputed outputs
+261107-16:40:12,376 nipype.workflow INFO:
+	 [Node] "_anat2std_tpms2" found cached.
+261107-16:40:19,832 nipype.workflow INFO:
+	 [Node] Finished "resample", elapsed time 19.44392s.
+261107-16:40:20,747 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3218_wf.bold_task_socialdoors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3218/fmriprep_25_2_wf/sub_3218_wf/bold_task_socialdoors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
+261107-16:40:20,751 nipype.workflow INFO:
+	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
+261107-16:40:28,205 nipype.workflow INFO:
+	 [Node] Finished "ds_bold", elapsed time 7.453368s.
+261107-16:40:30,662 nipype.workflow IMPORTANT:
+	 fMRIPrep finished successfully!
+261107-16:40:30,662 nipype.workflow IMPORTANT:
+	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
 --- logs/fmriprep/sub-3220.log ---
 261107-16:38:56,770 nipype.workflow INFO:
@@ -154,110 +258,6 @@
 	 fMRIPrep finished successfully!
 261107-16:39:21,747 nipype.workflow IMPORTANT:
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
-
---- logs/fmriprep/sub-3223.log ---
-261107-16:34:42,177 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.bold_task_socialdoors_run_1_wf.bold_confounds_wf.spike_regressors" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/bold_task_socialdoors_run_1_wf/bold_confounds_wf/spike_regressors".
-261107-16:34:42,179 nipype.workflow INFO:
-	 [Node] Executing "spike_regressors" <niworkflows.interfaces.confounds.SpikeRegressors>
-261107-16:34:42,224 nipype.workflow INFO:
-	 [Node] Finished "spike_regressors", elapsed time 0.045141s.
-261107-16:34:42,395 nipype.workflow INFO:
-	 [Node] Finished "conf_corr_plot", elapsed time 0.468803s.
-261107-16:39:06,967 nipype.workflow INFO:
-	 [Node] Finished "registration", elapsed time 3007.56734s.
-261107-16:39:07,857 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.anat_fit_wf.register_template_wf.outputnode" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/anat_fit_wf/register_template_wf/outputnode".
-261107-16:39:07,860 nipype.workflow INFO:
-	 [Node] Executing "outputnode" <nipype.interfaces.utility.base.IdentityInterface>
-261107-16:39:07,860 nipype.workflow INFO:
-	 [Node] Finished "outputnode", elapsed time 0.000193s.
-261107-16:39:09,840 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.anat_fit_wf.template_buffer" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/anat_fit_wf/template_buffer".
-261107-16:39:09,842 nipype.workflow INFO:
-	 [Node] Executing "template_buffer" <nipype.interfaces.utility.base.Merge>
-261107-16:39:09,842 nipype.workflow INFO:
-	 [Node] Finished "template_buffer", elapsed time 0.000122s.
-261107-16:39:15,836 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.anat_fit_wf.anat2std_buffer" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/anat_fit_wf/anat2std_buffer".
-261107-16:39:15,837 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.anat_fit_wf.std2anat_buffer" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/anat_fit_wf/std2anat_buffer".
-261107-16:39:15,838 nipype.workflow INFO:
-	 [Node] Executing "anat2std_buffer" <nipype.interfaces.utility.base.Merge>
-261107-16:39:15,838 nipype.workflow INFO:
-	 [Node] Executing "std2anat_buffer" <nipype.interfaces.utility.base.Merge>
-261107-16:39:15,839 nipype.workflow INFO:
-	 [Node] Finished "std2anat_buffer", elapsed time 0.000115s.
-261107-16:39:15,839 nipype.workflow INFO:
-	 [Node] Finished "anat2std_buffer", elapsed time 0.000123s.
-261107-16:39:19,822 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.ds_std_volumes_wf.anat2std_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_mask".
-261107-16:39:19,822 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.ds_std_volumes_wf.anat2std_dseg" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_dseg".
-261107-16:39:19,824 nipype.workflow INFO:
-	 [Node] Executing "anat2std_mask" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-261107-16:39:19,824 nipype.workflow INFO:
-	 [Node] Executing "anat2std_dseg" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-261107-16:39:19,827 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.ds_std_volumes_wf.anat2std_t1w" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_t1w".
-261107-16:39:19,828 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3223_wf.anat_fit_wf.anat_reports_wf.t1w_std" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3223/fmriprep_25_2_wf/sub_3223_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/t1w_std".
-261107-16:39:19,830 nipype.workflow INFO:
-	 [Node] Executing "anat2std_t1w" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-261107-16:39:19,831 nipype.workflow INFO:
-	 [Node] Executing "t1w_std" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-
---- logs/preprocessing-cohort-expanded.log ---
-2026-11-07T14:58:20.872175+00:00 {"subject": "sub-1009", "status": "verified", "reason": ""}
-2026-11-07T14:58:29.460915+00:00 {"subject": "sub-1003", "status": "verified", "reason": ""}
-2026-11-07T14:58:45.876782+00:00 {"subject": "sub-1010", "status": "verified", "reason": ""}
-2026-11-07T14:58:48.091073+00:00 {"subject": "sub-1011", "status": "verified", "reason": ""}
-2026-11-07T14:58:53.576901+00:00 {"subject": "sub-1004", "status": "verified", "reason": ""}
-2026-11-07T14:59:02.040343+00:00 {"subject": "sub-1013", "status": "verified", "reason": ""}
-2026-11-07T14:59:09.721154+00:00 {"subject": "sub-1001", "status": "verified", "reason": ""}
-2026-11-07T16:17:18.789944+00:00 {"subject": "sub-1240", "status": "failed", "reason": "Expected one MNI BOLD, found 0: []"}
-2026-11-07T16:18:04.140274+00:00 {"subject": "sub-1243", "status": "verified", "reason": ""}
-2026-11-07T16:18:52.904074+00:00 {"subject": "sub-1247", "status": "verified", "reason": ""}
-2026-11-07T16:19:04.621612+00:00 {"subject": "sub-1244", "status": "verified", "reason": ""}
-2026-11-07T16:19:08.710387+00:00 {"subject": "sub-1019", "status": "verified", "reason": ""}
-2026-11-07T16:19:20.252151+00:00 {"subject": "sub-1015", "status": "verified", "reason": ""}
-2026-11-07T16:19:23.833955+00:00 {"subject": "sub-1021", "status": "verified", "reason": ""}
-2026-11-07T16:19:44.826773+00:00 {"subject": "sub-1016", "status": "verified", "reason": ""}
-2026-11-07T16:20:23.878559+00:00 {"subject": "sub-1245", "status": "verified", "reason": ""}
-2026-11-07T16:20:39.986914+00:00 {"subject": "sub-1242", "status": "verified", "reason": ""}
-2026-11-07T17:37:11.040404+00:00 {"subject": "sub-1248", "status": "verified", "reason": ""}
-2026-11-07T17:39:34.379861+00:00 {"subject": "sub-1249", "status": "verified", "reason": ""}
-2026-11-07T17:39:35.460384+00:00 {"subject": "sub-1255", "status": "verified", "reason": ""}
-2026-11-07T17:40:10.578471+00:00 {"subject": "sub-1294", "status": "verified", "reason": ""}
-2026-11-07T17:40:17.435372+00:00 {"subject": "sub-1251", "status": "verified", "reason": ""}
-2026-11-07T17:40:31.476574+00:00 {"subject": "sub-1253", "status": "verified", "reason": ""}
-2026-11-07T17:40:33.780557+00:00 {"subject": "sub-1286", "status": "verified", "reason": ""}
-2026-11-07T17:40:34.981418+00:00 {"subject": "sub-1282", "status": "verified", "reason": ""}
-2026-11-07T17:40:40.499399+00:00 {"subject": "sub-1276", "status": "verified", "reason": ""}
-2026-11-07T17:41:48.383732+00:00 {"subject": "sub-1300", "status": "verified", "reason": ""}
-2026-11-07T18:56:36.639703+00:00 {"subject": "sub-1301", "status": "verified", "reason": ""}
-2026-11-07T18:59:04.135860+00:00 {"subject": "sub-1303", "status": "verified", "reason": ""}
-2026-11-07T19:00:42.672767+00:00 {"subject": "sub-3125", "status": "verified", "reason": ""}
-2026-11-07T19:01:24.228418+00:00 {"subject": "sub-1302", "status": "verified", "reason": ""}
-2026-11-07T19:01:28.934804+00:00 {"subject": "sub-3101", "status": "verified", "reason": ""}
-2026-11-07T19:01:42.072744+00:00 {"subject": "sub-3140", "status": "verified", "reason": ""}
-2026-11-07T19:02:02.480326+00:00 {"subject": "sub-3116", "status": "verified", "reason": ""}
-2026-11-07T19:02:12.639266+00:00 {"subject": "sub-3122", "status": "verified", "reason": ""}
-2026-11-07T19:02:14.934508+00:00 {"subject": "sub-3143", "status": "verified", "reason": ""}
-2026-11-07T19:02:42.904843+00:00 {"subject": "sub-3152", "status": "verified", "reason": ""}
-2026-11-07T20:18:43.219143+00:00 {"subject": "sub-3164", "status": "verified", "reason": ""}
-2026-11-07T20:18:47.730552+00:00 {"subject": "sub-3166", "status": "verified", "reason": ""}
-2026-11-07T20:21:29.194681+00:00 {"subject": "sub-3170", "status": "verified", "reason": ""}
-2026-11-07T20:21:49.093995+00:00 {"subject": "sub-3167", "status": "verified", "reason": ""}
-2026-11-07T20:22:14.625717+00:00 {"subject": "sub-3190", "status": "verified", "reason": ""}
-2026-11-07T20:22:29.835770+00:00 {"subject": "sub-3173", "status": "verified", "reason": ""}
-2026-11-07T20:22:56.079610+00:00 {"subject": "sub-3175", "status": "verified", "reason": ""}
-2026-11-07T20:23:02.430910+00:00 {"subject": "sub-3176", "status": "verified", "reason": ""}
-2026-11-07T20:23:05.771674+00:00 {"subject": "sub-3199", "status": "verified", "reason": ""}
-2026-11-07T20:23:52.454384+00:00 {"subject": "sub-3189", "status": "verified", "reason": ""}
-2026-11-07T21:35:34.297387+00:00 {"subject": "sub-3200", "status": "verified", "reason": ""}
-2026-11-07T21:36:28.791258+00:00 {"subject": "sub-3206", "status": "verified", "reason": ""}
-2026-11-07T21:39:13.266203+00:00 {"subject": "sub-3210", "status": "verified", "reason": ""}
 
 --- logs/fmriprep/sub-3210.log ---
 261107-16:38:33,246 nipype.workflow INFO:

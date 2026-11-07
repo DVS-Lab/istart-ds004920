@@ -1,29 +1,32 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-07T21:39:30.560937+00:00",
+  "collected_utc": "2026-11-07T21:44:32.192317+00:00",
   "code_commit": "73b32e4db5927dab977d4f9466a9b589bd77cea7",
   "cpus": 128,
   "load_average": [
-    14.9912109375,
-    20.43994140625,
-    26.9365234375
+    4.373046875,
+    10.77880859375,
+    21.015625
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 143121.0,
+    "MemAvailable_mb": 148313.3,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.5
   },
   "filesystem_bytes": {
     "total": 58154717806592,
-    "free": 16318624956416
+    "free": 16316942909440
   },
   "preprocessing_batches": [
     {
       "name": "cohort-expanded",
       "pid": 1828055,
       "launched": "2026-11-07T13:27:29.306429+00:00",
-      "status": "started",
+      "finished": "2026-11-07T21:41:01.076362+00:00",
+      "status": "finished_with_failures",
+      "subjects": 58,
+      "failed": 1,
       "log": "/ZPOOL/data/projects/istart-ds004920/logs/preprocessing-cohort-expanded.log",
       "launch_command": "/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python /ZPOOL/data/projects/istart-ds004920/code/preprocess_istart.py --config /ZPOOL/data/projects/istart-ds004920/config/linux2.json worker --batch /ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/cohort-expanded",
       "resource_request": {
@@ -32,7 +35,7 @@
         "nprocs": 4,
         "omp": 2
       },
-      "process_alive": true,
+      "process_alive": false,
       "resources": {
         "jobs": 10,
         "nprocs": 4,
@@ -309,6 +312,26 @@
         },
         {
           "subject": "sub-3210",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-3212",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-3218",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-3220",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-3223",
           "status": "verified",
           "reason": ""
         }
@@ -1286,6 +1309,82 @@
         {
           "subject": "sub-3210",
           "checked": "2026-11-07T21:39:13.264017+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-3212",
+          "checked": "2026-11-07T21:39:31.650771+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-3218",
+          "checked": "2026-11-07T21:40:40.580545+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-3220",
+          "checked": "2026-11-07T21:39:36.715889+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-3223",
+          "checked": "2026-11-07T21:41:01.073556+00:00",
           "visual_qc": "pending",
           "tasks": [
             {
