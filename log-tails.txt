@@ -1,4 +1,7 @@
 
+--- logs/preprocessing-cohort-expanded.log ---
+2026-11-07T13:27:29.443929+00:00 Worker PID=1828055 starting cohort-expanded
+
 --- logs/preprocessing-pilot.log ---
 2026-11-07T04:04:21.110254+00:00 Worker PID=1465231 starting pilot
 {"ready": 2, "missing_or_invalid": 116}
