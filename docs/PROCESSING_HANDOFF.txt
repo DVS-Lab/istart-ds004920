@@ -25,25 +25,39 @@ Start after pulling the updated code
 ------------------------------------
 bash /ZPOOL/data/projects/istart-ds004920/code/continue_preprocessing.sh
 
-This checks the pilot, verifies the six seed assets, reports capacity and pushes
-an initial GitHub handoff. If the actual pilot inspection is not already recorded,
-it asks for technical findings before proceeding. Blank input or EOF pauses
-launch cleanly without closing the terminal. No strict-shell options are enabled
-by this helper; failures are handled explicitly. It then starts detached cohort
-acquisition/preprocessing and a detached status publisher. Both survive SSH exit.
-Do not pull changes into frozen processing code while a saved batch is active.
+This starts detached cohort acquisition/preprocessing immediately after the
+launcher's successful pilot structural checks. There is no interactive review
+prompt or approval-file requirement. Visual QC can be recorded after processing.
+The detached status publisher survives SSH exit along with preprocessing. The
+helper does not enable strict-shell options. Do not change frozen preprocessing
+code while a saved batch is active.
 
 GitHub handoff
 --------------
-https://github.com/DVS-Lab/istart-ds004920/tree/linux2-status
+https://github.com/DVS-Lab/istart-ds004920/tree/main/status/linux2
 
-The publisher uses ordinary Git authentication configured for the Linux2 account.
-It commits status.json, sanitized log-tails.txt and README.txt to a separate
-linux2-status branch using an isolated bare object store under work/github-status.
-It never stages production checkout files, changes main, force-pushes, or uploads
-images, HTML reports, raw behavior, license files or environment dumps. Git
-credential prompts are disabled. If authentication is absent, it fails with an
-error rather than requesting or printing a token. Publication failures are reported and do not block or stop preprocessing.
+The publisher commits and pushes directly to main under status/linux2/. Each
+update starts from the latest main tree and changes only the three allowlisted
+status files; source code and other tracked files are preserved. It uses an
+isolated local index and object store under work/github-status, leaving the
+production checkout's index untouched. Normal fast-forward pushes retry when
+another main commit arrives. No additional branch is created or force-pushed.
+
+Git authentication uses the Linux2 account's existing credentials. No images,
+HTML reports, raw behavior, license files or environment dumps are uploaded.
+Publishing failures are reported without blocking or stopping preprocessing.
+
+Switch an already-running legacy publisher without changing processing code:
+
+cd /ZPOOL/data/projects/istart-ds004920
+git fetch origin main &&
+git show FETCH_HEAD:code/migrate_status_to_main.py > work/github-status/migrate_status_to_main.py &&
+.venv-preproc/bin/python work/github-status/migrate_status_to_main.py
+
+This stops only the verified detached status watcher, runs the main-only publisher
+from an isolated work copy, pushes fresh status to main and deletes linux2-status.
+The production checkout and active preprocessing worker remain unchanged. Pull
+the main code normally after the current batch and any necessary cached retries.
 
 While the batch runs, the publisher commits and pushes every five minutes. It
 pushes the final snapshot and exits after the watched batch finishes or dies. A

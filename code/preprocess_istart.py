@@ -137,8 +137,6 @@ def launch(c, cfg_path, name, subjects, jobs, nprocs, omp, mem, acquire=False):
     batch = root / "work/preprocessing-runs" / name
     batch.mkdir(parents=True, exist_ok=True)
     if name != "pilot":
-        approval = json.loads((root / "work/preprocessing-runs/pilot/review.json").read_text())
-        verify(approval["pilot_products"])
         check_subject(c, "sub-1002")
     with lock(root / "work/preprocessing-runs/schedule.lock"), lock(batch / "launch.lock"):
         state_file = batch / "state.json"

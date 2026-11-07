@@ -35,9 +35,13 @@ def test_status_allowlist_and_redaction_preserve_valid_json(tmp_path):
     assert "fMRIPrep finished successfully!" in text
 
 
-def test_real_git_status_push_is_separate_and_fast_forward(tmp_path):
+def test_real_git_status_push_preserves_main_and_is_fast_forward(tmp_path):
     remote = tmp_path / "remote.git"
     subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)
+    blob = publisher.git(remote, ["hash-object", "-w", "--stdin"], "existing source must be preserved")
+    tree = publisher.git(remote, ["mktree"], f"100644 blob {blob}\tREADME.md\n")
+    initial = publisher.git(remote, ["commit-tree", tree], "Initial source\n")
+    publisher.git(remote, ["update-ref", "refs/heads/main", initial])
     root = tmp_path / "production"
     root.mkdir()
     sentinel = root / "production-index-sentinel"
@@ -48,10 +52,12 @@ def test_real_git_status_push_is_separate_and_fast_forward(tmp_path):
     second = publisher.publish(root, payload, remote=str(remote))
     def git(*args):
         return subprocess.run(["git", "--git-dir", str(remote), *args], check=True, capture_output=True, text=True).stdout.strip()
-    assert git("rev-parse", "refs/heads/linux2-status") == second
+    assert git("rev-parse", "refs/heads/main") == second
     assert git("rev-parse", second + "^") == first
-    assert json.loads(git("show", second + ":status.json"))["status"] == "complete"
-    assert set(git("ls-tree", "--name-only", second).splitlines()) == set(payload)
+    assert json.loads(git("show", second + ":status/linux2/status.json"))["status"] == "complete"
+    assert git("show", second + ":README.md") == "existing source must be preserved"
+    assert set(git("ls-tree", "--name-only", second + ":status/linux2").splitlines()) == set(payload)
+    assert git("for-each-ref", "--format=%(refname)", "refs/heads") == "refs/heads/main"
     assert sentinel.read_text() == "unchanged" and not (root / ".git").exists()
     with pytest.raises(ValueError, match="allowlist"):
         publisher.publish(root, {"license.txt": "never upload"}, remote=str(remote))

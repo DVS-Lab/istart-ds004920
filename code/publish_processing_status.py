@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish an explicit status/log allowlist to the separate linux2-status branch.
+"""Commit the explicit status/log allowlist directly to main under status/linux2.
 
 Uses an isolated bare Git repository, never the production checkout's index.
 No images, full HTML reports, licenses, environment dumps or credentials are sent.
@@ -21,7 +21,8 @@ import sys
 import time
 
 REMOTE = "https://github.com/DVS-Lab/istart-ds004920.git"
-BRANCH = "linux2-status"
+BRANCH = "main"
+PREFIX = "status/linux2/"
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -115,13 +116,15 @@ def collect(root):
             tail = "".join(deque(stream, maxlen=50))[-16000:]
         tails.append(f"\n--- {log.relative_to(root)} ---\n{clean(tail)}")
     return {"status.json": json.dumps(clean_values(report), indent=2) + "\n", "log-tails.txt": "".join(tails),
-            "README.txt": "Linux2 processing handoff\n\nstatus.json: structured CPU, RAM, disk, fMRIPrep and L1 state.\nlog-tails.txt: sanitized tails of explicit preprocessing log locations only.\n\nPublished automatically from Linux2 using an isolated Git object store.\nThis branch contains no imaging derivatives, raw behavioral data, license files or environment dumps.\nStatus timestamps are UTC; absence of an active PID does not by itself establish success.\n"}
+            "README.txt": "Linux2 processing handoff\n\nstatus.json: structured CPU, RAM, disk, fMRIPrep and L1 state.\nlog-tails.txt: sanitized tails of explicit preprocessing log locations only.\n\nPublished automatically from Linux2 using an isolated Git object store.\nThis handoff contains no imaging derivatives, raw behavioral data, license files or environment dumps.\nStatus timestamps are UTC; absence of an active PID does not by itself establish success.\n"}
 
 
-def git(repo, arguments, stdin=None):
+def git(repo, arguments, stdin=None, index_file=None):
     env = dict(os.environ, GIT_TERMINAL_PROMPT="0", GIT_AUTHOR_NAME="Linux2 processing status",
                GIT_AUTHOR_EMAIL="linux2-status@users.noreply.github.com", GIT_COMMITTER_NAME="Linux2 processing status",
                GIT_COMMITTER_EMAIL="linux2-status@users.noreply.github.com")
+    if index_file is not None:
+        env["GIT_INDEX_FILE"] = str(index_file)
     result = subprocess.run(["git", "--git-dir", str(repo), *arguments], input=stdin, capture_output=True, text=True, env=env)
     if result.returncode:
         raise RuntimeError(clean(result.stderr.strip()) or "Git command failed")
@@ -139,23 +142,31 @@ def publish(root, payload, remote=REMOTE):
             git(repo, ["remote", "add", "origin", remote])
         if git(repo, ["remote", "get-url", "origin"]) != remote:
             raise RuntimeError("Status repository remote differs; existing object store preserved")
-        advertised = git(repo, ["ls-remote", "--heads", "origin", "refs/heads/" + BRANCH])
-        parent = None
-        if advertised:
-            git(repo, ["fetch", "--depth=1", "origin", "refs/heads/" + BRANCH])
-            parent = git(repo, ["rev-parse", "FETCH_HEAD"])
-        entries = []
+        blobs = []
         for filename, content in sorted(payload.items()):
             if filename not in ("README.txt", "status.json", "log-tails.txt"):
                 raise ValueError("File outside the status publication allowlist")
             blob = git(repo, ["hash-object", "-w", "--stdin"], content)
-            entries.append(f"100644 blob {blob}\t{filename}\n")
-        tree = git(repo, ["mktree"], "".join(entries))
-        commit = git(repo, ["commit-tree", tree, *(["-p", parent] if parent else [])], "Update Linux2 processing status " + now() + "\n")
-        # A normal fast-forward push rejects concurrent writers; never force-push.
-        git(repo, ["push", "origin", commit + ":refs/heads/" + BRANCH])
-        print(f"{now()} Published {commit} to {BRANCH}", flush=True)
-        return commit
+            blobs.append((filename, blob))
+        index = folder / "status.index"
+        for attempt in range(3):
+            git(repo, ["fetch", "--depth=1", "origin", "refs/heads/main"])
+            parent = git(repo, ["rev-parse", "FETCH_HEAD"])
+            # Start with the complete current main tree, then replace only the
+            # allowlisted status paths in an index isolated from production.
+            git(repo, ["read-tree", parent], index_file=index)
+            for filename, blob in blobs:
+                git(repo, ["update-index", "--add", "--cacheinfo", "100644", blob, PREFIX + filename], index_file=index)
+            tree = git(repo, ["write-tree"], index_file=index)
+            commit = git(repo, ["commit-tree", tree, "-p", parent], "Update Linux2 processing status " + now() + "\n")
+            try:
+                git(repo, ["push", "origin", commit + ":refs/heads/main"])
+            except RuntimeError:
+                if attempt == 2:
+                    raise
+                continue
+            print(f"{now()} Published {commit} to main:{PREFIX}", flush=True)
+            return commit
 
 
 def save_state(root, state):
@@ -167,11 +178,14 @@ def save_state(root, state):
 
 
 def main():
+    global ROOT
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("collect", "publish", "start", "watch", "status"))
     parser.add_argument("--batch", default="cohort-expanded")
     parser.add_argument("--interval", type=int, default=300)
+    parser.add_argument("--root", type=Path, default=ROOT, help="Production checkout when running an isolated publisher copy")
     args = parser.parse_args()
+    ROOT = args.root.resolve()
     if not re.fullmatch(r"[A-Za-z0-9_-]+", args.batch) or args.interval < 30:
         parser.error("Use a valid batch name and interval of at least 30 seconds")
     statefile = ROOT / "work/github-status/state.json"
@@ -198,11 +212,11 @@ def main():
                     raise ValueError("Launch the named preprocessing batch before starting its publisher")
                 log = ROOT / "logs/github-status-publisher.log"
                 log.parent.mkdir(parents=True, exist_ok=True)
-                argv = [sys.executable, str(Path(__file__).resolve()), "watch", "--batch", args.batch, "--interval", str(args.interval)]
+                argv = [sys.executable, str(Path(__file__).resolve()), "watch", "--batch", args.batch, "--interval", str(args.interval), "--root", str(ROOT)]
                 with log.open("a") as output, open(os.devnull) as null:
                     child = subprocess.Popen(argv, stdin=null, stdout=output, stderr=subprocess.STDOUT, start_new_session=True,
                                              env=dict(os.environ, PYTHONUNBUFFERED="1"))
-                state = {"pid": child.pid, "batch": args.batch, "status": "started", "started": now(), "log": str(log), "launch_command": argv}
+                state = {"pid": child.pid, "batch": args.batch, "status": "started", "started": now(), "log": str(log), "launch_command": argv, "target_branch": "main"}
                 save_state(ROOT, state)
                 print(json.dumps(state, indent=2))
         else:

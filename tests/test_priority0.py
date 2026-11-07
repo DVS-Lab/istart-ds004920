@@ -134,7 +134,7 @@ def test_launch_is_detached_records_pid_and_deduplicates(tmp_path, monkeypatch):
     assert len(calls) == 1
 
 
-def test_cohort_cannot_launch_without_pilot_review(tmp_path, monkeypatch):
+def test_cohort_requires_successful_pilot_structural_checks(tmp_path, monkeypatch):
     monkeypatch.setattr(p0, "resources", lambda *args: None)
     c = {"istart_root": str(tmp_path)}
     cfg = tmp_path / "c.json"
@@ -214,3 +214,17 @@ def test_ten_subject_user_policy_does_not_gate_on_ram(tmp_path, monkeypatch):
     assert report["recommended_jobs"] == 10
     monkeypatch.setattr(p0, "resource_snapshot", lambda: {"cpus": 128, "available_memory_mb": 100, "load_average": [4, 4, 4]})
     assert p0.resources(10, 4, 2, 0)["available_memory_mb"] == 100
+
+
+def test_successful_pilot_can_launch_cohort_without_review_file(tmp_path, monkeypatch):
+    c = {"istart_root": str(tmp_path)}
+    cfg = tmp_path / "config.json"
+    write_json(cfg, c)
+    checked = []
+    monkeypatch.setattr(p0, "check_subject", lambda c, subject: checked.append(subject))
+    monkeypatch.setattr(p0, "resources", lambda *args: {})
+    monkeypatch.setattr(p0.subprocess, "Popen", lambda *args, **kwargs: SimpleNamespace(pid=12345))
+    p0.launch(c, cfg, "cohort-expanded", None, 10, 4, 2, 0, True)
+    assert checked == ["sub-1002"]
+    assert not (tmp_path / "work/preprocessing-runs/pilot/review.json").exists()
+    assert json.loads((tmp_path / "work/preprocessing-runs/cohort-expanded/state.json").read_text())["status"] == "started"

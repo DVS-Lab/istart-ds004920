@@ -1,6 +1,6 @@
 # Harmonized iSTART and RF1 Doors/Social Doors L1
 
-**Continue after the successful sub-1002 pilot:** [docs/PROCESSING_HANDOFF.txt](docs/PROCESSING_HANDOFF.txt) documents the current ten-subject batch (four processes per subject, no explicit RAM budget) and automatic GitHub status/log publication. Run `bash code/continue_preprocessing.sh` after pulling, with no active preprocessing batch. It retains the existing pilot inspection requirement and skips verified completed subjects.
+**Continue after the successful sub-1002 pilot:** [docs/PROCESSING_HANDOFF.txt](docs/PROCESSING_HANDOFF.txt) documents the current ten-subject batch (four processes per subject, no explicit RAM budget) and automatic GitHub status/log publication. Run `bash code/continue_preprocessing.sh` after pulling, with no active preprocessing batch. It requires the successful pilot structural checks, skips verified completed subjects and launches without an interactive review prompt. Status and logs are committed directly to main under status/linux2/.
 
 **Start preprocessing tonight:** follow [docs/TONIGHT.md](docs/TONIGHT.md). It contains one complete Linux2 Bash block: download sub-1002, validate the pinned fMRIPrep command, launch its detached pilot, inspect/check it, then launch the remaining cohort with two subjects at a time. Preprocessing has its own minimal Python environment and does not depend on downstream L1 work.
 
