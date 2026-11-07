@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "collected_utc": "2026-11-07T13:20:16.097952+00:00",
+  "code_commit": "9c3ec4a040a322aabab29f5842163bbf8d7ce5b0",
+  "cpus": 128,
+  "load_average": [
+    4.0927734375,
+    4.09375,
+    4.08251953125
+  ],
+  "memory": {
+    "MemTotal_mb": 257528.6,
+    "MemAvailable_mb": 120296.7,
+    "SwapTotal_mb": 139264.0,
+    "SwapFree_mb": 137016.5
+  },
+  "filesystem_bytes": {
+    "total": 58154732093440,
+    "free": 16595232096256
+  },
+  "preprocessing_batches": [
+    {
+      "name": "pilot",
+      "pid": 1476837,
+      "launched": "2026-11-07T04:21:29.289139+00:00",
+      "finished": "2026-11-07T05:31:36.183989+00:00",
+      "status": "complete",
+      "subjects": 1,
+      "failed": 0,
+      "log": "/ZPOOL/data/projects/istart-ds004920/logs/preprocessing-pilot.log",
+      "launch_command": "/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python /ZPOOL/data/projects/istart-ds004920/code/preprocess_istart.py --config /ZPOOL/data/projects/istart-ds004920/config/linux2.json worker --batch /ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/pilot",
+      "process_alive": false,
+      "resources": {
+        "jobs": 1,
+        "nprocs": 16,
+        "omp": 2,
+        "mem_mb": 24000,
+        "acquire": false
+      },
+      "pilot_review_recorded": false,
+      "subject_results": [
+        {
+          "subject": "sub-1002",
+          "status": "verified",
+          "reason": ""
+        }
+      ],
+      "structural_checks": [
+        {
+          "subject": "sub-1002",
+          "checked": "2026-11-07T13:20:15.721591+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "l1_plans": [
+    {
+      "path": "/ZPOOL/data/projects/rf1-sra-linux2/work/cohort-smoothness-v1/plan.json",
+      "variant": null,
+      "jobs": 0,
+      "pilot_runs": [],
+      "pilot_review_recorded": false,
+      "stages": []
+    },
+    {
+      "path": "/ZPOOL/data/projects/rf1-sra-linux2/work/no-tedana-age55-20261021-111205/plan.json",
+      "variant": "fsl-no-tedana-age55",
+      "jobs": 415,
+      "pilot_runs": [],
+      "pilot_review_recorded": false,
+      "stages": []
+    },
+    {
+      "path": "/ZPOOL/data/projects/rf1-sra-linux2/work/no-tedana-finish-20261021-151127/plan.json",
+      "variant": "fsl-no-tedana-age55",
+      "jobs": 557,
+      "pilot_runs": [],
+      "pilot_review_recorded": false,
+      "stages": []
+    },
+    {
+      "path": "/ZPOOL/data/projects/rf1-sra-linux2/work/randomise-katie-final-v1/plan.json",
+      "variant": null,
+      "jobs": 0,
+      "pilot_runs": [],
+      "pilot_review_recorded": false,
+      "stages": []
+    },
+    {
+      "path": "/ZPOOL/data/projects/rf1-sra-linux2/work/randomise-socialdoors-age55-pool-v1/plan.json",
+      "variant": null,
+      "jobs": 0,
+      "pilot_runs": [],
+      "pilot_review_recorded": false,
+      "stages": []
+    },
+    {
+      "path": "/ZPOOL/data/projects/rf1-sra-linux2/work/socialdoors-paired-diagnostic-v1/plan.json",
+      "variant": null,
+      "jobs": 0,
+      "pilot_runs": [],
+      "pilot_review_recorded": false,
+      "stages": []
+    }
+  ]
+}

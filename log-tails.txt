@@ -1,0 +1,88 @@
+
+--- logs/preprocessing-pilot.log ---
+2026-11-07T04:04:21.110254+00:00 Worker PID=1465231 starting pilot
+{"ready": 2, "missing_or_invalid": 116}
+2026-11-07T04:05:16.927722+00:00 {"subject": "sub-1002", "status": "failed", "reason": "Command '['/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python', '/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py', '--config', '/ZPOOL/data/projects/istart-ds004920/config/linux2.json', 'preprocess', '--subjects', 'sub-1002', '--nprocs', '16', '--omp', '2', '--mem-mb', '24000', '--execute']' returned non-zero exit status 1."}
+{
+  "launch_command": "/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python /ZPOOL/data/projects/istart-ds004920/code/preprocess_istart.py --config /ZPOOL/data/projects/istart-ds004920/config/linux2.json worker --batch /ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/pilot",
+  "launched": "2026-11-07T04:04:20.969077+00:00",
+  "log": "/ZPOOL/data/projects/istart-ds004920/logs/preprocessing-pilot.log",
+  "name": "pilot",
+  "pid": 1465231,
+  "spec": "/ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/pilot/spec.json",
+  "status": "finished_with_failures",
+  "finished": "2026-11-07T04:05:16.928082+00:00",
+  "subjects": 1,
+  "failed": 1
+}
+2026-11-07T04:21:29.429503+00:00 Worker PID=1476837 starting pilot
+{"missing_or_invalid": 116, "ready": 2}
+2026-11-07T05:31:36.183487+00:00 {"subject": "sub-1002", "status": "verified", "reason": ""}
+{
+  "launch_command": "/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python /ZPOOL/data/projects/istart-ds004920/code/preprocess_istart.py --config /ZPOOL/data/projects/istart-ds004920/config/linux2.json worker --batch /ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/pilot",
+  "launched": "2026-11-07T04:21:29.289139+00:00",
+  "log": "/ZPOOL/data/projects/istart-ds004920/logs/preprocessing-pilot.log",
+  "name": "pilot",
+  "pid": 1476837,
+  "spec": "/ZPOOL/data/projects/istart-ds004920/work/preprocessing-runs/pilot/spec.json",
+  "status": "complete",
+  "finished": "2026-11-07T05:31:36.183989+00:00",
+  "subjects": 1,
+  "failed": 0
+}
+
+--- logs/fmriprep/sub-1002.log ---
+261107-00:30:58,829 nipype.workflow INFO:
+	 [Node] Finished "conf_plot", elapsed time 5.214758s.
+261107-00:30:59,982 nipype.workflow INFO:
+	 [Node] Finished "conf_plot", elapsed time 5.364538s.
+261107-00:31:03,763 nipype.workflow INFO:
+	 [Node] Finished "anat2std_t1w", elapsed time 18.16589s.
+261107-00:31:04,914 nipype.workflow INFO:
+	 [Node] Finished "t1w_std", elapsed time 19.314905s.
+261107-00:31:16,59 nipype.workflow INFO:
+	 [Node] Finished "mask_std", elapsed time 30.459116s.
+261107-00:31:16,762 nipype.workflow INFO:
+	 [Node] Finished "resample", elapsed time 21.113148s.
+261107-00:31:16,791 nipype.workflow INFO:
+	 [Node] Finished "anat2std_mask", elapsed time 31.193212s.
+261107-00:31:16,937 nipype.workflow INFO:
+	 [Node] Finished "resample", elapsed time 21.289715s.
+261107-00:31:18,173 nipype.interface WARNING:
+	 Changing /ZPOOL/data/projects/istart-ds004920/derivatives/fmriprep/sub-1002/anat/sub-1002_space-MNI152NLin6Asym_desc-brain_mask.nii.gz dtype from float64 to float64
+261107-00:31:18,662 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_1002_wf.anat_fit_wf.anat_reports_wf.norm_msk" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1002/fmriprep_25_2_wf/sub_1002_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/norm_msk".
+261107-00:31:18,662 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_1002_wf.bold_task_doors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1002/fmriprep_25_2_wf/sub_1002_wf/bold_task_doors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
+261107-00:31:18,663 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_1002_wf.bold_task_socialdoors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1002/fmriprep_25_2_wf/sub_1002_wf/bold_task_socialdoors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
+261107-00:31:18,667 nipype.workflow INFO:
+	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
+261107-00:31:18,667 nipype.workflow INFO:
+	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
+261107-00:31:18,667 nipype.workflow INFO:
+	 [Node] Executing "norm_msk" <nipype.interfaces.utility.wrappers.Function>
+261107-00:31:19,317 nipype.workflow INFO:
+	 [Node] Finished "norm_msk", elapsed time 0.649497s.
+261107-00:31:19,686 nipype.workflow INFO:
+	 [Node] Finished "anat2std_dseg", elapsed time 34.087764s.
+261107-00:31:20,171 nipype.interface WARNING:
+	 Changing /ZPOOL/data/projects/istart-ds004920/derivatives/fmriprep/sub-1002/anat/sub-1002_space-MNI152NLin6Asym_dseg.nii.gz dtype from float64 to float64
+261107-00:31:21,297 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_1002_wf.anat_fit_wf.anat_reports_wf.norm_rpt" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1002/fmriprep_25_2_wf/sub_1002_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/norm_rpt".
+261107-00:31:21,300 nipype.workflow INFO:
+	 [Node] Executing "norm_rpt" <niworkflows.interfaces.reportlets.registration.SimpleBeforeAfterRPT>
+261107-00:31:25,993 nipype.workflow INFO:
+	 [Node] Finished "ds_bold", elapsed time 7.325323s.
+261107-00:31:26,34 nipype.workflow INFO:
+	 [Node] Finished "ds_bold", elapsed time 7.367082s.
+261107-00:31:27,535 nipype.workflow INFO:
+	 [Node] Finished "norm_rpt", elapsed time 6.235111s.
+261107-00:31:30,158 nipype.workflow IMPORTANT:
+	 fMRIPrep finished successfully!
+261107-00:31:30,158 nipype.workflow IMPORTANT:
+	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
+
+--- work/preprocessing-runs/pilot/sub-1002.launcher.log ---
+{"time": "2026-11-07T04:21:29.434329+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1002", "--nprocs", "16", "--omp", "2", "--mem-mb", "24000", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+{"ready": 2, "missing_or_invalid": 116}
