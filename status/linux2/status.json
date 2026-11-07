@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-07T17:38:16.333019+00:00",
+  "collected_utc": "2026-11-07T17:43:17.891400+00:00",
   "code_commit": "73b32e4db5927dab977d4f9466a9b589bd77cea7",
   "cpus": 128,
   "load_average": [
-    24.58935546875,
-    31.12646484375,
-    37.970703125
+    35.27392578125,
+    30.69921875,
+    35.615234375
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 115870.4,
+    "MemAvailable_mb": 106083.0,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.5
   },
   "filesystem_bytes": {
-    "total": 58154731438080,
-    "free": 16441691602944
+    "total": 58154731175936,
+    "free": 16422438305792
   },
   "preprocessing_batches": [
     {
@@ -149,6 +149,51 @@
         },
         {
           "subject": "sub-1248",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1249",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1251",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1253",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1255",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1276",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1282",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1286",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1294",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1300",
           "status": "verified",
           "reason": ""
         }
@@ -518,6 +563,177 @@
         {
           "subject": "sub-1248",
           "checked": "2026-11-07T17:37:11.014699+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1249",
+          "checked": "2026-11-07T17:39:34.370483+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1251",
+          "checked": "2026-11-07T17:40:17.431198+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1253",
+          "checked": "2026-11-07T17:40:31.472544+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1255",
+          "checked": "2026-11-07T17:39:35.455736+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1276",
+          "checked": "2026-11-07T17:40:40.495503+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1282",
+          "checked": "2026-11-07T17:40:34.977154+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1286",
+          "checked": "2026-11-07T17:40:33.775884+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1294",
+          "checked": "2026-11-07T17:40:10.574529+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1300",
+          "checked": "2026-11-07T17:41:48.380923+00:00",
           "visual_qc": "pending",
           "tasks": [
             {
