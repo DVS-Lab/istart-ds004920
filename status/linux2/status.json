@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-07T18:43:36.215369+00:00",
+  "collected_utc": "2026-11-07T18:48:37.638126+00:00",
   "code_commit": "73b32e4db5927dab977d4f9466a9b589bd77cea7",
   "cpus": 128,
   "load_average": [
-    45.98583984375,
-    46.0419921875,
-    44.3212890625
+    46.58984375,
+    46.14404296875,
+    44.8408203125
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 66309.4,
+    "MemAvailable_mb": 65539.4,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.5
   },
   "filesystem_bytes": {
-    "total": 58154728292352,
-    "free": 16405187919872
+    "total": 58154727768064,
+    "free": 16405033648128
   },
   "preprocessing_batches": [
     {
