@@ -7,7 +7,6 @@ Run these blocks in order from an FSL/AFNI-enabled Bash shell. Stop after any er
 After the public repository is populated:
 
 ```bash
-set -euo pipefail
 cd /ZPOOL/data/projects
 git clone https://github.com/DVS-Lab/istart-ds004920.git
 cd istart-ds004920

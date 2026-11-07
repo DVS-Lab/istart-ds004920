@@ -27,7 +27,9 @@ bash /ZPOOL/data/projects/istart-ds004920/code/continue_preprocessing.sh
 
 This checks the pilot, verifies the six seed assets, reports capacity and pushes
 an initial GitHub handoff. If the actual pilot inspection is not already recorded,
-it asks for technical findings before proceeding. It then starts detached cohort
+it asks for technical findings before proceeding. Blank input or EOF pauses
+launch cleanly without closing the terminal. No strict-shell options are enabled
+by this helper; failures are handled explicitly. It then starts detached cohort
 acquisition/preprocessing and a detached status publisher. Both survive SSH exit.
 Do not pull changes into frozen processing code while a saved batch is active.
 
@@ -41,9 +43,7 @@ linux2-status branch using an isolated bare object store under work/github-statu
 It never stages production checkout files, changes main, force-pushes, or uploads
 images, HTML reports, raw behavior, license files or environment dumps. Git
 credential prompts are disabled. If authentication is absent, it fails with an
-error rather than requesting or printing a token. The initial publication must
-succeed before the helper starts the cohort; subsequent publishing failures do
-not stop preprocessing.
+error rather than requesting or printing a token. Publication failures are reported and do not block or stop preprocessing.
 
 While the batch runs, the publisher commits and pushes every five minutes. It
 pushes the final snapshot and exits after the watched batch finishes or dies. A

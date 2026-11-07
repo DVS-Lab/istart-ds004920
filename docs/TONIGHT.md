@@ -19,7 +19,6 @@ The code is prepared locally; no Linux2 job has been launched by Codex. These co
 Paste this whole block into Bash on Linux2. The pilot remains alive if SSH closes. The block waits for its structural checks and asks for your actual HTML-report inspection before starting the detached cohort download/preprocessing. Press Ctrl-C at the prompt or wait to return to it later; that does not stop an already detached pilot. Do not answer yes without reviewing the report. All paths and participant labels below are concrete.
 
 ```bash
-set -euo pipefail
 cd /ZPOOL/data/projects
 if [[ -d istart-ds004920/.git ]]; then
   git -C istart-ds004920 pull --ff-only
