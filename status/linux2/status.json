@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-07T14:57:25.405859+00:00",
+  "collected_utc": "2026-11-07T15:02:26.965278+00:00",
   "code_commit": "73b32e4db5927dab977d4f9466a9b589bd77cea7",
   "cpus": 128,
   "load_average": [
-    27.3466796875,
-    31.27294921875,
-    37.68359375
+    37.71826171875,
+    31.90478515625,
+    35.7939453125
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 172934.7,
+    "MemAvailable_mb": 154337.5,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.5
   },
   "filesystem_bytes": {
-    "total": 58154731307008,
-    "free": 16523782782976
+    "total": 58154731044864,
+    "free": 16504344412160
   },
   "preprocessing_batches": [
     {
@@ -43,12 +43,253 @@
       "pilot_review_recorded": false,
       "subject_results": [
         {
+          "subject": "sub-1001",
+          "status": "verified",
+          "reason": ""
+        },
+        {
           "subject": "sub-1002",
           "status": "verified_existing",
           "reason": ""
+        },
+        {
+          "subject": "sub-1003",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1004",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1006",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1007",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1009",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1010",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1011",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1012",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-1013",
+          "status": "verified",
+          "reason": ""
         }
       ],
-      "structural_checks": []
+      "structural_checks": [
+        {
+          "subject": "sub-1001",
+          "checked": "2026-11-07T14:59:09.717277+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1003",
+          "checked": "2026-11-07T14:58:29.455138+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1004",
+          "checked": "2026-11-07T14:58:53.572128+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1006",
+          "checked": "2026-11-07T14:57:46.418182+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1007",
+          "checked": "2026-11-07T14:57:45.116647+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1009",
+          "checked": "2026-11-07T14:58:20.752356+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1010",
+          "checked": "2026-11-07T14:58:45.872341+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1011",
+          "checked": "2026-11-07T14:58:48.086851+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1012",
+          "checked": "2026-11-07T14:57:48.967254+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-1013",
+          "checked": "2026-11-07T14:59:02.035996+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "pilot",
