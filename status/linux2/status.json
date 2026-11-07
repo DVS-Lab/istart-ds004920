@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-07T20:14:03.846049+00:00",
+  "collected_utc": "2026-11-07T20:19:05.443219+00:00",
   "code_commit": "73b32e4db5927dab977d4f9466a9b589bd77cea7",
   "cpus": 128,
   "load_average": [
-    37.296875,
-    41.68994140625,
-    43.2578125
+    36.568359375,
+    42.4013671875,
+    43.259765625
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 150692.8,
+    "MemAvailable_mb": 129746.2,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.5
   },
   "filesystem_bytes": {
-    "total": 58154723311616,
-    "free": 16359781433344
+    "total": 58154724360192,
+    "free": 16355215147008
   },
   "preprocessing_batches": [
     {
@@ -244,6 +244,16 @@
         },
         {
           "subject": "sub-3152",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-3164",
+          "status": "verified",
+          "reason": ""
+        },
+        {
+          "subject": "sub-3166",
           "status": "verified",
           "reason": ""
         }
@@ -974,6 +984,44 @@
         {
           "subject": "sub-3152",
           "checked": "2026-11-07T19:02:42.901166+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-3164",
+          "checked": "2026-11-07T20:18:43.214565+00:00",
+          "visual_qc": "pending",
+          "tasks": [
+            {
+              "task": "doors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            },
+            {
+              "task": "socialdoors",
+              "nvol": 293,
+              "tr": 1.75,
+              "status": "structural_checks_passed"
+            }
+          ]
+        },
+        {
+          "subject": "sub-3166",
+          "checked": "2026-11-07T20:18:47.723536+00:00",
           "visual_qc": "pending",
           "tasks": [
             {
