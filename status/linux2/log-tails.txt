@@ -1,4 +1,160 @@
 
+--- logs/fmriprep/sub-3210.log ---
+261107-15:44:06,642 nipype.workflow INFO:
+	 [Node] Executing "gen_desc" <nipype.interfaces.utility.wrappers.Function>
+261107-15:44:06,643 nipype.workflow INFO:
+	 [Node] Finished "gen_desc", elapsed time 0.000223s.
+261107-15:44:06,643 nipype.workflow INFO:
+	 [Node] Executing "fmap_rpt" <sdcflows.interfaces.reportlets.FieldmapReportlet>
+261107-15:44:06,696 nipype.workflow INFO:
+	 [Node] Finished "merge_fmap", elapsed time 0.055861s.
+261107-15:44:07,460 nipype.workflow INFO:
+	 [Node] Finished "dil_brainmask", elapsed time 0.849067s.
+261107-15:44:08,611 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.anat_fit_wf.brain_extraction_wf.atropos_wf.03_pad_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/anat_fit_wf/brain_extraction_wf/atropos_wf/03_pad_mask".
+261107-15:44:08,611 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.anat_fit_wf.brain_extraction_wf.atropos_wf.get_brainmask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/anat_fit_wf/brain_extraction_wf/atropos_wf/get_brainmask".
+261107-15:44:08,613 nipype.workflow INFO:
+	 [Node] Executing "get_brainmask" <nipype.interfaces.ants.utils.ImageMath>
+261107-15:44:08,613 nipype.workflow INFO:
+	 [Node] Executing "03_pad_mask" <nipype.interfaces.ants.utils.ImageMath>
+261107-15:44:08,618 nipype.workflow INFO:
+	 [Node] Setting-up "_ds_coeff0" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/fmap_preproc_wf/fmap_derivatives_wf_auto_00000/ds_coeff/mapflow/_ds_coeff0".
+261107-15:44:08,620 nipype.workflow INFO:
+	 [Node] Executing "_ds_coeff0" <sdcflows.workflows.outputs.DerivativesDataSink>
+261107-15:44:08,635 nipype.workflow INFO:
+	 [Node] Finished "_ds_coeff0", elapsed time 0.014193s.
+261107-15:44:09,170 nipype.workflow INFO:
+	 [Node] Finished "03_pad_mask", elapsed time 0.55644s.
+261107-15:44:09,468 nipype.workflow INFO:
+	 [Node] Finished "get_brainmask", elapsed time 0.855102s.
+261107-15:44:10,606 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.fmap_preproc_wf.out_merge_fmap_coeff" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/fmap_preproc_wf/out_merge_fmap_coeff".
+261107-15:44:10,606 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.fmap_preproc_wf.fmap_derivatives_wf_auto_00000.ds_fieldmap" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/fmap_preproc_wf/fmap_derivatives_wf_auto_00000/ds_fieldmap".
+261107-15:44:10,610 nipype.workflow INFO:
+	 [Node] Executing "out_merge_fmap_coeff" <nipype.interfaces.utility.base.Merge>
+261107-15:44:10,610 nipype.workflow INFO:
+	 [Node] Executing "ds_fieldmap" <sdcflows.workflows.outputs.DerivativesDataSink>
+261107-15:44:10,610 nipype.workflow INFO:
+	 [Node] Finished "out_merge_fmap_coeff", elapsed time 0.000128s.
+261107-15:44:10,692 nipype.workflow INFO:
+	 [Node] Finished "ds_fieldmap", elapsed time 0.081203s.
+261107-15:44:12,648 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.fmap_preproc_wf.out_merge_fmap" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/fmap_preproc_wf/out_merge_fmap".
+261107-15:44:12,651 nipype.workflow INFO:
+	 [Node] Executing "out_merge_fmap" <nipype.interfaces.utility.base.Merge>
+261107-15:44:12,652 nipype.workflow INFO:
+	 [Node] Finished "out_merge_fmap", elapsed time 0.000155s.
+261107-15:44:12,807 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.anat_fit_wf.brain_extraction_wf.atropos_wf.01_atropos" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/anat_fit_wf/brain_extraction_wf/atropos_wf/01_atropos".
+261107-15:44:12,809 nipype.workflow INFO:
+	 [Node] Executing "01_atropos" <nipype.interfaces.ants.segmentation.Atropos>
+
+--- logs/fmriprep/sub-3206.log ---
+261107-15:43:48,470 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.ds_std_volumes_wf.gen_ref" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/gen_ref".
+261107-15:43:48,471 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.anat_fit_wf.fast" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/anat_fit_wf/fast".
+261107-15:43:48,471 nipype.workflow INFO:
+	 [Node] Executing "trunc_mov" <nipype.interfaces.ants.utils.ImageMath>
+261107-15:43:48,473 nipype.workflow INFO:
+	 [Node] Executing "fast" <smriprep.interfaces.fsl.FAST>
+261107-15:43:48,474 nipype.workflow INFO:
+	 [Node] Executing "gen_ref" <niworkflows.interfaces.nibabel.GenerateSamplingReference>
+261107-15:43:49,1 nipype.workflow INFO:
+	 [Node] Finished "gen_ref", elapsed time 0.526926s.
+261107-15:43:50,473 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.ds_std_volumes_wf.mask_anat" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/ds_std_volumes_wf/mask_anat".
+261107-15:43:50,475 nipype.workflow INFO:
+	 [Node] Executing "mask_anat" <niworkflows.interfaces.nibabel.ApplyMask>
+261107-15:43:50,893 nipype.workflow INFO:
+	 [Node] Finished "mask_anat", elapsed time 0.417256s.
+261107-15:43:51,57 nipype.workflow INFO:
+	 [Node] Finished "trunc_mov", elapsed time 2.75289s.
+261107-15:43:51,247 nipype.workflow INFO:
+	 [Node] Finished "trunc_mov", elapsed time 2.775784s.
+261107-15:43:52,474 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_doors_run_1_wf.bold_fit_wf.bold_reg_wf.fsl_bbr_wf.mask_t1w_brain" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_doors_run_1_wf/bold_fit_wf/bold_reg_wf/fsl_bbr_wf/mask_t1w_brain".
+261107-15:43:52,474 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.bold_reg_wf.fsl_bbr_wf.mask_t1w_brain" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/bold_reg_wf/fsl_bbr_wf/mask_t1w_brain".
+261107-15:43:52,474 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_doors_run_1_wf.bold_anat_wf.gen_ref" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_doors_run_1_wf/bold_anat_wf/gen_ref".
+261107-15:43:52,476 nipype.workflow INFO:
+	 [Node] Executing "mask_t1w_brain" <niworkflows.interfaces.nibabel.ApplyMask>
+261107-15:43:52,477 nipype.workflow INFO:
+	 [Node] Executing "gen_ref" <niworkflows.interfaces.nibabel.GenerateSamplingReference>
+261107-15:43:52,477 nipype.workflow INFO:
+	 [Node] Executing "mask_t1w_brain" <niworkflows.interfaces.nibabel.ApplyMask>
+261107-15:43:52,884 nipype.workflow INFO:
+	 [Node] Finished "mask_t1w_brain", elapsed time 0.406907s.
+261107-15:43:52,896 nipype.workflow INFO:
+	 [Node] Finished "mask_t1w_brain", elapsed time 0.417889s.
+261107-15:43:52,944 nipype.workflow INFO:
+	 [Node] Finished "gen_ref", elapsed time 0.467262s.
+261107-15:43:54,478 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_socialdoors_run_1_wf.bold_anat_wf.gen_ref" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_socialdoors_run_1_wf/bold_anat_wf/gen_ref".
+261107-15:43:54,478 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.anat_fit_wf.register_template_wf.registration" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/anat_fit_wf/register_template_wf/_template_MNI152NLin6Asym/registration".
+261107-15:43:54,481 nipype.workflow INFO:
+	 [Node] Executing "gen_ref" <niworkflows.interfaces.nibabel.GenerateSamplingReference>
+261107-15:43:54,484 nipype.workflow INFO:
+	 [Node] Executing "registration" <niworkflows.interfaces.norm.SpatialNormalization>
+261107-15:43:54,945 nipype.workflow INFO:
+	 [Node] Finished "gen_ref", elapsed time 0.463764s.
+
+--- logs/fmriprep/sub-3200.log ---
+261107-15:43:39,225 nipype.workflow INFO:
+	 [Node] Executing "trunc_mov" <nipype.interfaces.ants.utils.ImageMath>
+261107-15:43:39,378 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.ds_std_volumes_wf.gen_ref" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/gen_ref".
+261107-15:43:39,379 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.anat_fit_wf.fast" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/anat_fit_wf/fast".
+261107-15:43:39,382 nipype.workflow INFO:
+	 [Node] Executing "gen_ref" <niworkflows.interfaces.nibabel.GenerateSamplingReference>
+261107-15:43:39,382 nipype.workflow INFO:
+	 [Node] Executing "fast" <smriprep.interfaces.fsl.FAST>
+261107-15:43:39,916 nipype.workflow INFO:
+	 [Node] Finished "gen_ref", elapsed time 0.533773s.
+261107-15:43:41,394 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.ds_std_volumes_wf.mask_anat" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/ds_std_volumes_wf/mask_anat".
+261107-15:43:41,397 nipype.workflow INFO:
+	 [Node] Executing "mask_anat" <niworkflows.interfaces.nibabel.ApplyMask>
+261107-15:43:41,832 nipype.workflow INFO:
+	 [Node] Finished "mask_anat", elapsed time 0.434322s.
+261107-15:43:41,915 nipype.workflow INFO:
+	 [Node] Finished "trunc_mov", elapsed time 2.6910030000000003s.
+261107-15:43:41,945 nipype.workflow INFO:
+	 [Node] Finished "trunc_mov", elapsed time 2.719754s.
+261107-15:43:43,400 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_doors_run_1_wf.bold_fit_wf.bold_reg_wf.fsl_bbr_wf.mask_t1w_brain" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_doors_run_1_wf/bold_fit_wf/bold_reg_wf/fsl_bbr_wf/mask_t1w_brain".
+261107-15:43:43,400 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.bold_reg_wf.fsl_bbr_wf.mask_t1w_brain" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/bold_reg_wf/fsl_bbr_wf/mask_t1w_brain".
+261107-15:43:43,401 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_doors_run_1_wf.bold_anat_wf.gen_ref" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_doors_run_1_wf/bold_anat_wf/gen_ref".
+261107-15:43:43,403 nipype.workflow INFO:
+	 [Node] Executing "mask_t1w_brain" <niworkflows.interfaces.nibabel.ApplyMask>
+261107-15:43:43,404 nipype.workflow INFO:
+	 [Node] Executing "mask_t1w_brain" <niworkflows.interfaces.nibabel.ApplyMask>
+261107-15:43:43,405 nipype.workflow INFO:
+	 [Node] Executing "gen_ref" <niworkflows.interfaces.nibabel.GenerateSamplingReference>
+261107-15:43:43,827 nipype.workflow INFO:
+	 [Node] Finished "mask_t1w_brain", elapsed time 0.423586s.
+261107-15:43:43,837 nipype.workflow INFO:
+	 [Node] Finished "mask_t1w_brain", elapsed time 0.432822s.
+261107-15:43:43,867 nipype.workflow INFO:
+	 [Node] Finished "gen_ref", elapsed time 0.461763s.
+261107-15:43:45,351 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_socialdoors_run_1_wf.bold_anat_wf.gen_ref" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_socialdoors_run_1_wf/bold_anat_wf/gen_ref".
+261107-15:43:45,351 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.anat_fit_wf.register_template_wf.registration" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/anat_fit_wf/register_template_wf/_template_MNI152NLin6Asym/registration".
+261107-15:43:45,353 nipype.workflow INFO:
+	 [Node] Executing "gen_ref" <niworkflows.interfaces.nibabel.GenerateSamplingReference>
+261107-15:43:45,365 nipype.workflow INFO:
+	 [Node] Executing "registration" <niworkflows.interfaces.norm.SpatialNormalization>
+261107-15:43:45,818 nipype.workflow INFO:
+	 [Node] Finished "gen_ref", elapsed time 0.464424s.
+
 --- logs/fmriprep/sub-3223.log ---
 261107-15:29:57,71 nipype.workflow INFO:
 	 [Node] Executing "combine_masks" <nipype.interfaces.fsl.maths.BinaryMaths>
@@ -206,162 +362,6 @@
 	 [Node] Executing "dilate_target_mask" <sdcflows.interfaces.brainmask.BinaryDilation>
 261107-15:29:07,232 nipype.workflow INFO:
 	 [Node] Finished "dilate_target_mask", elapsed time 0.094489s.
-
---- logs/fmriprep/sub-3210.log ---
-261107-15:28:32,578 nipype.workflow INFO:
-	 [Node] Executing "fixhdr_skullstrip2" <niworkflows.interfaces.header.CopyXForm>
-261107-15:28:32,578 nipype.workflow INFO:
-	 [Node] Executing "skullstrip_second_pass" <nipype.interfaces.afni.preprocess.Automask>
-261107-15:28:32,590 nipype.workflow INFO:
-	 [Node] Finished "fixhdr_skullstrip2", elapsed time 0.01139s.
-261107-15:28:32,776 nipype.workflow INFO:
-	 [Node] Finished "skullstrip_second_pass", elapsed time 0.197808s.
-261107-15:28:34,573 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
-261107-15:28:34,574 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.bold_task_doors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/bold_task_doors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/combine_masks".
-261107-15:28:34,576 nipype.workflow INFO:
-	 [Node] Executing "combine_masks" <nipype.interfaces.fsl.maths.BinaryMaths>
-261107-15:28:34,576 nipype.workflow INFO:
-	 [Node] Executing "fixhdr_skullstrip2" <niworkflows.interfaces.header.CopyXForm>
-261107-15:28:34,588 nipype.workflow INFO:
-	 [Node] Finished "fixhdr_skullstrip2", elapsed time 0.011363s.
-261107-15:28:34,707 nipype.workflow INFO:
-	 [Node] Finished "combine_masks", elapsed time 0.13084s.
-261107-15:28:36,583 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/combine_masks".
-261107-15:28:36,585 nipype.workflow INFO:
-	 [Node] Executing "combine_masks" <nipype.interfaces.fsl.maths.BinaryMaths>
-261107-15:28:36,589 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.bold_task_doors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/bold_task_doors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/apply_mask".
-261107-15:28:36,591 nipype.workflow INFO:
-	 [Node] Executing "apply_mask" <niworkflows.interfaces.nibabel.ApplyMask>
-261107-15:28:36,613 nipype.workflow INFO:
-	 [Node] Finished "apply_mask", elapsed time 0.022422s.
-261107-15:28:36,736 nipype.workflow INFO:
-	 [Node] Finished "combine_masks", elapsed time 0.150375s.
-261107-15:28:38,583 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/apply_mask".
-261107-15:28:38,586 nipype.workflow INFO:
-	 [Node] Executing "apply_mask" <niworkflows.interfaces.nibabel.ApplyMask>
-261107-15:28:38,590 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.bold_task_doors_run_1_wf.bold_fit_wf.fmapreg_wf.dilate_target_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/bold_task_doors_run_1_wf/bold_fit_wf/fmapreg_wf/dilate_target_mask".
-261107-15:28:38,593 nipype.workflow INFO:
-	 [Node] Executing "dilate_target_mask" <sdcflows.interfaces.brainmask.BinaryDilation>
-261107-15:28:38,613 nipype.workflow INFO:
-	 [Node] Finished "apply_mask", elapsed time 0.02669s.
-261107-15:28:38,692 nipype.workflow INFO:
-	 [Node] Finished "dilate_target_mask", elapsed time 0.097885s.
-261107-15:28:40,583 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3210_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.fmapreg_wf.dilate_target_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3210/fmriprep_25_2_wf/sub_3210_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/fmapreg_wf/dilate_target_mask".
-261107-15:28:40,584 nipype.workflow INFO:
-	 [Node] Executing "dilate_target_mask" <sdcflows.interfaces.brainmask.BinaryDilation>
-261107-15:28:40,679 nipype.workflow INFO:
-	 [Node] Finished "dilate_target_mask", elapsed time 0.094042s.
-
---- logs/fmriprep/sub-3200.log ---
-261107-15:26:12,958 nipype.workflow INFO:
-	 [Node] Executing "skullstrip_second_pass" <nipype.interfaces.afni.preprocess.Automask>
-261107-15:26:12,958 nipype.workflow INFO:
-	 [Node] Executing "fixhdr_skullstrip2" <niworkflows.interfaces.header.CopyXForm>
-261107-15:26:12,969 nipype.workflow INFO:
-	 [Node] Finished "fixhdr_skullstrip2", elapsed time 0.011112s.
-261107-15:26:13,154 nipype.workflow INFO:
-	 [Node] Finished "skullstrip_second_pass", elapsed time 0.196451s.
-261107-15:26:14,963 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
-261107-15:26:14,963 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_doors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_doors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/combine_masks".
-261107-15:26:14,965 nipype.workflow INFO:
-	 [Node] Executing "fixhdr_skullstrip2" <niworkflows.interfaces.header.CopyXForm>
-261107-15:26:14,965 nipype.workflow INFO:
-	 [Node] Executing "combine_masks" <nipype.interfaces.fsl.maths.BinaryMaths>
-261107-15:26:14,977 nipype.workflow INFO:
-	 [Node] Finished "fixhdr_skullstrip2", elapsed time 0.011076s.
-261107-15:26:15,101 nipype.workflow INFO:
-	 [Node] Finished "combine_masks", elapsed time 0.134615s.
-261107-15:26:16,963 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/combine_masks".
-261107-15:26:16,965 nipype.workflow INFO:
-	 [Node] Executing "combine_masks" <nipype.interfaces.fsl.maths.BinaryMaths>
-261107-15:26:16,969 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_doors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_doors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/apply_mask".
-261107-15:26:16,971 nipype.workflow INFO:
-	 [Node] Executing "apply_mask" <niworkflows.interfaces.nibabel.ApplyMask>
-261107-15:26:16,995 nipype.workflow INFO:
-	 [Node] Finished "apply_mask", elapsed time 0.023912s.
-261107-15:26:17,126 nipype.workflow INFO:
-	 [Node] Finished "combine_masks", elapsed time 0.160416s.
-261107-15:26:18,936 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/apply_mask".
-261107-15:26:18,938 nipype.workflow INFO:
-	 [Node] Executing "apply_mask" <niworkflows.interfaces.nibabel.ApplyMask>
-261107-15:26:18,938 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_doors_run_1_wf.bold_fit_wf.fmapreg_wf.dilate_target_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_doors_run_1_wf/bold_fit_wf/fmapreg_wf/dilate_target_mask".
-261107-15:26:18,940 nipype.workflow INFO:
-	 [Node] Executing "dilate_target_mask" <sdcflows.interfaces.brainmask.BinaryDilation>
-261107-15:26:18,965 nipype.workflow INFO:
-	 [Node] Finished "apply_mask", elapsed time 0.026445s.
-261107-15:26:19,29 nipype.workflow INFO:
-	 [Node] Finished "dilate_target_mask", elapsed time 0.088789s.
-261107-15:26:20,946 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3200_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.fmapreg_wf.dilate_target_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3200/fmriprep_25_2_wf/sub_3200_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/fmapreg_wf/dilate_target_mask".
-261107-15:26:20,947 nipype.workflow INFO:
-	 [Node] Executing "dilate_target_mask" <sdcflows.interfaces.brainmask.BinaryDilation>
-261107-15:26:21,38 nipype.workflow INFO:
-	 [Node] Finished "dilate_target_mask", elapsed time 0.090151s.
-
---- logs/fmriprep/sub-3206.log ---
-261107-15:26:02,185 nipype.workflow INFO:
-	 [Node] Finished "skullstrip_second_pass", elapsed time 0.19519s.
-261107-15:26:04,8 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_doors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_doors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
-261107-15:26:04,9 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
-261107-15:26:04,11 nipype.workflow INFO:
-	 [Node] Executing "fixhdr_skullstrip2" <niworkflows.interfaces.header.CopyXForm>
-261107-15:26:04,11 nipype.workflow INFO:
-	 [Node] Executing "fixhdr_skullstrip2" <niworkflows.interfaces.header.CopyXForm>
-261107-15:26:04,22 nipype.workflow INFO:
-	 [Node] Finished "fixhdr_skullstrip2", elapsed time 0.011276s.
-261107-15:26:04,23 nipype.workflow INFO:
-	 [Node] Finished "fixhdr_skullstrip2", elapsed time 0.011685s.
-261107-15:26:06,6 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_doors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_doors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/combine_masks".
-261107-15:26:06,6 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/combine_masks".
-261107-15:26:06,8 nipype.workflow INFO:
-	 [Node] Executing "combine_masks" <nipype.interfaces.fsl.maths.BinaryMaths>
-261107-15:26:06,9 nipype.workflow INFO:
-	 [Node] Executing "combine_masks" <nipype.interfaces.fsl.maths.BinaryMaths>
-261107-15:26:06,137 nipype.workflow INFO:
-	 [Node] Finished "combine_masks", elapsed time 0.127402s.
-261107-15:26:06,156 nipype.workflow INFO:
-	 [Node] Finished "combine_masks", elapsed time 0.146917s.
-261107-15:26:07,988 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_doors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_doors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/apply_mask".
-261107-15:26:07,990 nipype.workflow INFO:
-	 [Node] Executing "apply_mask" <niworkflows.interfaces.nibabel.ApplyMask>
-261107-15:26:07,993 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_doors_run_1_wf.bold_fit_wf.fmapreg_wf.dilate_target_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_doors_run_1_wf/bold_fit_wf/fmapreg_wf/dilate_target_mask".
-261107-15:26:07,994 nipype.workflow INFO:
-	 [Node] Executing "dilate_target_mask" <sdcflows.interfaces.brainmask.BinaryDilation>
-261107-15:26:08,15 nipype.workflow INFO:
-	 [Node] Finished "apply_mask", elapsed time 0.024378s.
-261107-15:26:08,90 nipype.workflow INFO:
-	 [Node] Finished "dilate_target_mask", elapsed time 0.095252s.
-261107-15:26:10,20 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.fmapreg_wf.dilate_target_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/fmapreg_wf/dilate_target_mask".
-261107-15:26:10,21 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3206_wf.bold_task_socialdoors_run_1_wf.bold_fit_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3206/fmriprep_25_2_wf/sub_3206_wf/bold_task_socialdoors_run_1_wf/bold_fit_wf/enhance_and_skullstrip_bold_wf/apply_mask".
-261107-15:26:10,22 nipype.workflow INFO:
-	 [Node] Executing "dilate_target_mask" <sdcflows.interfaces.brainmask.BinaryDilation>
-261107-15:26:10,23 nipype.workflow INFO:
-	 [Node] Executing "apply_mask" <niworkflows.interfaces.nibabel.ApplyMask>
-261107-15:26:10,47 nipype.workflow INFO:
-	 [Node] Finished "apply_mask", elapsed time 0.023397s.
-261107-15:26:10,114 nipype.workflow INFO:
-	 [Node] Finished "dilate_target_mask", elapsed time 0.091319s.
 
 --- logs/preprocessing-cohort-expanded.log ---
 2026-11-07T14:57:45.123593+00:00 {"subject": "sub-1007", "status": "verified", "reason": ""}
