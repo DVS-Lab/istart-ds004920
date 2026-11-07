@@ -1,5 +1,7 @@
 # Harmonized iSTART and RF1 Doors/Social Doors L1
 
+**Continue after the successful sub-1002 pilot:** [docs/PROCESSING_HANDOFF.txt](docs/PROCESSING_HANDOFF.txt) documents the current ten-subject batch (four processes per subject, no explicit RAM budget) and automatic GitHub status/log publication. Run `bash code/continue_preprocessing.sh` after pulling, with no active preprocessing batch. It retains the existing pilot inspection requirement and skips verified completed subjects.
+
 **Start preprocessing tonight:** follow [docs/TONIGHT.md](docs/TONIGHT.md). It contains one complete Linux2 Bash block: download sub-1002, validate the pinned fMRIPrep command, launch its detached pilot, inspect/check it, then launch the remaining cohort with two subjects at a time. Preprocessing has its own minimal Python environment and does not depend on downstream L1 work.
 
 This repository implements a separate first-level activation variant for iSTART (OpenNeuro ds004920 1.1.1) and RF1. See [docs/LINUX2_COMMANDS.md](docs/LINUX2_COMMANDS.md) for the complete execution sequence. Local tests use synthetic images and simulated AFNI/FSL commands; real preprocessing, FEAT design validation, pilot inspection and cohort results must be produced on Linux2.

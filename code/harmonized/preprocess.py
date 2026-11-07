@@ -179,6 +179,10 @@ def preprocess(c, subjects, nprocs, omp, mem_mb, execute=False):
                "--notrack", "--stop-on-first-crash", "-w", work / subject]
         # 25.2.5 accepts --mem, documented CLI; do not depend on deprecated spelling.
         cmd[cmd.index("--mem-mb")] = "--mem"
+        if mem_mb == 0:
+            # Explicit user-selected policy: no per-subject memory scheduling budget.
+            pos = cmd.index("--mem")
+            del cmd[pos:pos + 2]
         subject_inputs = [root / "bids/dataset_description.json", root / "bids/participants.tsv"]
         subject_inputs += sorted(p for p in (root / "bids" / subject).rglob("*") if p.is_file())
         rec = {"subject": subject, "command": list(map(str, cmd)), "version": version,

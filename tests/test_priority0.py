@@ -59,7 +59,8 @@ def test_fetch_pilot_subset_then_extend_without_touching_pilot(tmp_path, monkeyp
     assert stamp(pilot, full=True) == saved
 
 
-def test_pinned_preprocess_dry_run_has_required_flags(tmp_path, monkeypatch):
+@pytest.mark.parametrize("memory_budget", [24000, 0])
+def test_pinned_preprocess_dry_run_has_required_flags(tmp_path, monkeypatch, memory_budget):
     container = tmp_path / "fmriprep-25.2.5.simg"
     container.write_bytes(b"fake test container")
     (tmp_path / "bids/sub-1002").mkdir(parents=True)
@@ -72,7 +73,7 @@ def test_pinned_preprocess_dry_run_has_required_flags(tmp_path, monkeypatch):
     monkeypatch.setattr(pre, "inventory", lambda c: [{"subject": "sub-1002", "status": "ready"}])
     monkeypatch.setattr(pre.shutil, "which", lambda name: "/fake/apptainer")
     monkeypatch.setattr(pre, "command", lambda *a, **k: "fMRIPrep v25.2.5")
-    pre.preprocess(c, ["1002"], 16, 2, 24000, False)
+    pre.preprocess(c, ["1002"], 16, 2, memory_budget, False)
     plans = json.loads((tmp_path / "work/preprocessing_plan_sub-1002.json").read_text())
     cmd = plans[0]["command"]
     assert "--fs-no-reconall" in cmd and "--cifti-output" not in cmd
@@ -82,7 +83,10 @@ def test_pinned_preprocess_dry_run_has_required_flags(tmp_path, monkeypatch):
     assert "--use-syn-sdc" not in cmd and "--ignore" not in cmd
     assert cmd[cmd.index("--output-spaces") + 1] == "MNI152NLin6Asym"
     assert cmd[-1].endswith("work/fmriprep/sub-1002")
-    assert cmd[cmd.index("--mem") + 1] == "24000"
+    if memory_budget:
+        assert cmd[cmd.index("--mem") + 1] == "24000"
+    else:
+        assert "--mem" not in cmd and "--mem-mb" not in cmd
     filters = json.loads((tmp_path / "work/bids-filter-doors.json").read_text())
     assert filters == {"bold": {"task": ["doors", "socialdoors"]}}
 
@@ -169,3 +173,44 @@ def test_license_restart_refuses_live_pilot(tmp_path, monkeypatch):
     with pytest.raises(RuntimeError, match="still alive"):
         restart.archive_failed_metadata(tmp_path)
     assert (batch / "state.json").exists()
+
+
+def test_larger_cohort_obeys_cpu_and_memory_limits(monkeypatch):
+    monkeypatch.setattr(p0, "resource_snapshot", lambda: {"cpus": 96, "available_memory_mb": 240000, "load_average": [4, 4, 4]})
+    assert p0.resources(6, 12, 2, 24000)["cpus"] == 96
+    with pytest.raises(ValueError, match="processes"):
+        p0.resources(9, 12, 2, 24000)
+    with pytest.raises(ValueError, match="currently available"):
+        p0.resources(8, 12, 2, 30001)
+    with pytest.raises(ValueError, match="thread"):
+        p0.resources(6, 0, 2, 24000)
+
+
+def test_capacity_reserves_cpu_and_memory_and_detects_active_batch(tmp_path, monkeypatch):
+    monkeypatch.setattr(p0, "resource_snapshot", lambda: {"cpus": 96, "available_memory_mb": 120000, "load_average": [4, 4, 4]})
+    c = {"istart_root": str(tmp_path)}
+    report = p0.capacity(c, 12, 2, 24000)
+    assert report["recommended_jobs"] == 4  # 80% of 120 GB, despite ample CPU.
+    write_json(tmp_path / "work/preprocessing-runs/old/state.json", {"pid": 12345})
+    monkeypatch.setattr(p0, "alive", lambda state: True)
+    report = p0.capacity(c, 12, 2, 24000)
+    assert report["recommended_jobs"] == 0 and report["active_batches"][0]["name"] == "old"
+
+
+def test_larger_launch_refuses_overlapping_managed_batch(tmp_path, monkeypatch):
+    c = {"istart_root": str(tmp_path)}
+    cfg = tmp_path / "config.json"
+    write_json(cfg, c)
+    write_json(tmp_path / "work/preprocessing-runs/other/state.json", {"pid": 12345})
+    monkeypatch.setattr(p0, "alive", lambda state: True)
+    with pytest.raises(ValueError, match="Another managed preprocessing batch"):
+        p0.launch(c, cfg, "pilot", ["1002"], 6, 12, 2, 24000)
+
+
+def test_ten_subject_user_policy_does_not_gate_on_ram(tmp_path, monkeypatch):
+    monkeypatch.setattr(p0, "resource_snapshot", lambda: {"cpus": 128, "available_memory_mb": 120337, "load_average": [4, 4, 4]})
+    assert p0.resources(10, 4, 2, 0)["available_memory_mb"] == 120337
+    report = p0.capacity({"istart_root": str(tmp_path)}, 4, 2, 0, max_jobs=10)
+    assert report["recommended_jobs"] == 10
+    monkeypatch.setattr(p0, "resource_snapshot", lambda: {"cpus": 128, "available_memory_mb": 100, "load_average": [4, 4, 4]})
+    assert p0.resources(10, 4, 2, 0)["available_memory_mb"] == 100

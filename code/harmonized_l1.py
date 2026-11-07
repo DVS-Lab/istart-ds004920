@@ -66,7 +66,7 @@ def main():
             elif a.action == "check-preproc":
                 return 0 if pre.check_preproc(c) else 1
             else:
-                if a.nprocs < 1 or a.omp < 1 or a.mem_mb < 1 or a.omp > a.nprocs:
+                if a.nprocs < 1 or a.omp < 1 or a.mem_mb < 0 or a.omp > a.nprocs:
                     raise ValueError("Invalid preprocessing resource limits")
                 pre.preprocess(c, a.subjects, a.nprocs, a.omp, a.mem_mb, a.execute)
         elif a.action == "prepare":

@@ -1,0 +1,112 @@
+Linux2 preprocessing and harmonized L1 handoff — 7 November 2026
+
+Observed Linux2 evidence supplied by the user
+--------------------------------------------
+sub-1002 finished fMRIPrep 25.2.5 successfully at 2026-11-07 05:31 UTC
+(00:31 Eastern). Both tasks passed the structural checks. Visual review is
+separate; no acceptance notes are invented. Linux2 reported 128 CPUs, 120337 MB
+available RAM and approximately 16 TB free on /ZPOOL.
+
+User-selected cohort budget
+---------------------------
+Ten simultaneous subjects, each --nprocs 4 --omp-nthreads 2. --mem-mb 0 on the
+launcher omits the actual fMRIPrep --mem flag and bypasses aggregate RAM checks.
+RAM remains in telemetry. CPU-affinity checks remain. This is an explicit change
+from the original conservative two-subject default; the default CLI values are
+preserved for callers that do not request the expanded budget.
+
+All other preprocessing settings are retained: fMRIPrep 25.2.5, existing RF1
+license bind, single echo, GRE fieldmaps, no recon-all, TEDANA or Warpkit. The
+new batch name is cohort-expanded. Successful sub-1002 outputs are verified and
+skipped; failures reuse their existing per-subject work cache. No RF1
+preprocessing rerun is required for the harmonized analyses.
+
+Start after pulling the updated code
+------------------------------------
+bash /ZPOOL/data/projects/istart-ds004920/code/continue_preprocessing.sh
+
+This checks the pilot, verifies the six seed assets, reports capacity and pushes
+an initial GitHub handoff. If the actual pilot inspection is not already recorded,
+it asks for technical findings before proceeding. It then starts detached cohort
+acquisition/preprocessing and a detached status publisher. Both survive SSH exit.
+Do not pull changes into frozen processing code while a saved batch is active.
+
+GitHub handoff
+--------------
+https://github.com/DVS-Lab/istart-ds004920/tree/linux2-status
+
+The publisher uses ordinary Git authentication configured for the Linux2 account.
+It commits status.json, sanitized log-tails.txt and README.txt to a separate
+linux2-status branch using an isolated bare object store under work/github-status.
+It never stages production checkout files, changes main, force-pushes, or uploads
+images, HTML reports, raw behavior, license files or environment dumps. Git
+credential prompts are disabled. If authentication is absent, it fails with an
+error rather than requesting or printing a token. The initial publication must
+succeed before the helper starts the cohort; subsequent publishing failures do
+not stop preprocessing.
+
+While the batch runs, the publisher commits and pushes every five minutes. It
+pushes the final snapshot and exits after the watched batch finishes or dies. A
+failed push is retried twice; three consecutive failures stop only the publisher.
+It can be restarted with the same start command below. Status commits and logs
+are real Linux2 evidence; no local synthetic results are published as Linux2 runs.
+
+Status and completion commands
+------------------------------
+cd /ZPOOL/data/projects/istart-ds004920
+.venv-preproc/bin/python code/preprocess_istart.py status --name cohort-expanded
+.venv-preproc/bin/python code/publish_processing_status.py status
+tail -n 50 logs/preprocessing-cohort-expanded.log
+tail -n 30 logs/github-status-publisher.log
+
+# Wait and structurally verify after preprocessing has finished:
+.venv-preproc/bin/python code/preprocess_istart.py wait --name cohort-expanded
+.venv-preproc/bin/python code/preprocess_istart.py check --name cohort-expanded
+.venv-preproc/bin/python code/publish_processing_status.py publish
+cat work/preprocessing-runs/cohort-expanded/results.tsv
+
+Resume failures with unchanged code/configuration
+------------------------------------------------
+cd /ZPOOL/data/projects/istart-ds004920
+export PATH="$PWD/.venv-preproc/bin:$PATH"
+.venv-preproc/bin/python code/preprocess_istart.py launch --name cohort-expanded --acquire --jobs 10 --nprocs 4 --omp 2 --mem-mb 0
+.venv-preproc/bin/python code/publish_processing_status.py start --batch cohort-expanded --interval 300
+
+State/PID/launch command: work/preprocessing-runs/cohort-expanded/state.json.
+Subject results: work/preprocessing-runs/cohort-expanded/results.tsv.
+Publisher state/PID: work/github-status/state.json.
+Worker log: logs/preprocessing-cohort-expanded.log.
+Subject logs: logs/fmriprep/sub-1002.log and corresponding participant filenames.
+Publisher log: logs/github-status-publisher.log.
+
+First-level analyses for both datasets
+--------------------------------------
+Activation: the existing harmonized runner covers Doors and Social Doors in RF1
+and iSTART, with the authoritative model-1 task EVs and four contrasts, common
+RF1 grid, measured 6-mm AFNI smoothing, FEAT smoothing zero and base-only confounds.
+It has synthetic validation but still requires real feat_model and FEAT pilots.
+RF1's previous TEDANA-enhanced results remain separate.
+
+Connectivity: seed PPI is also required for both datasets. The authoritative
+rf1-sra-socdoors PPI templates at b5520ee5e7d0659b80c2d4bb31334caaaa9cddbc
+have been inspected. They model win, loss, decision, optional missed decisions,
+the seed series and their FEAT interactions. Their first four contrasts are
+condition-specific PPI and Win-minus-Loss PPI; the fifth is the physiological
+main effect. These are connectivity effects, not the activation COPEs of the
+same numbered contrasts. The source uses FEAT interaction EVs, not a newly
+invented deconvolution method.
+
+The current harmonized runner is activation-only. Seed PPI adaptation and real
+design validation remain to be completed; do not run the legacy PPI command on
+harmonized images unchanged, because its historical 5-mm FEAT smoothing and RF1
+TR would violate the harmonized iSTART configuration. Use Chloe's left/right
+mPFC seeds as primary and the four other supplied seeds as exploratory; keep
+the six masks separate and record per-run coverage. Their grid-only reslicing
+and template-space uncertainty are already documented in masks/README.md.
+
+The encoding-log audit also identified empty/malformed events that will matter
+at L1, even though they do not prevent fMRIPrep: ten empty published runs with
+matching older BIDS timing; missing encoding logs for 1253 Social Doors and
+1282 Doors; and ambiguous concatenated attempts for 1282 Social Doors. These
+require explicit source/disposition handling before model fitting. Published
+BIDS events and scientific inclusion decisions have not been silently changed.

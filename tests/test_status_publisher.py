@@ -1,0 +1,57 @@
+import importlib.util
+import json
+from pathlib import Path
+import subprocess
+
+import pytest
+
+from harmonized.common import ROOT, write_json
+
+spec = importlib.util.spec_from_file_location("publisher", ROOT / "code/publish_processing_status.py")
+publisher = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(publisher)
+
+
+def test_status_allowlist_and_redaction_preserve_valid_json(tmp_path):
+    write_json(tmp_path / "config/linux2.json", {})
+    batch = tmp_path / "work/preprocessing-runs/pilot"
+    write_json(batch / "state.json", {"name": "pilot", "status": "complete", "failed": 0, "ignored_secret": "not included"})
+    write_json(batch / "spec.json", {"jobs": 1, "nprocs": 4, "mem_mb": 0, "ignored_secret": "not included"})
+    (batch / "results.tsv").write_text("subject\tstatus\treason\nsub-1002\tfailed\tAuthorization: Bearer ghp_testcredential\n")
+    logs = tmp_path / "logs/fmriprep"
+    logs.mkdir(parents=True)
+    (logs / "sub-1002.log").write_text("fMRIPrep finished successfully!\nhttps://example.org?token=private\nAuthorization: Bearer private\n/home/person/private\n")
+    (tmp_path / "license.txt").write_text("not included")
+    (tmp_path / "derivatives").mkdir()
+    (tmp_path / "derivatives/private-image.nii.gz").write_text("not included")
+    (logs / "sub-secret.log").symlink_to(tmp_path / "license.txt")
+    payload = publisher.collect(tmp_path)
+    assert set(payload) == {"README.txt", "status.json", "log-tails.txt"}
+    report = json.loads(payload["status.json"])
+    assert report["preprocessing_batches"][0]["status"] == "complete"
+    text = "\n".join(payload.values())
+    assert "not included" not in text and "testcredential" not in text and "token=private" not in text
+    assert "Bearer private" not in text and "/home/person" not in text
+    assert "fMRIPrep finished successfully!" in text
+
+
+def test_real_git_status_push_is_separate_and_fast_forward(tmp_path):
+    remote = tmp_path / "remote.git"
+    subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)
+    root = tmp_path / "production"
+    root.mkdir()
+    sentinel = root / "production-index-sentinel"
+    sentinel.write_text("unchanged")
+    payload = {"README.txt": "test status", "status.json": '{"status":"running"}', "log-tails.txt": "test log"}
+    first = publisher.publish(root, payload, remote=str(remote))
+    payload["status.json"] = '{"status":"complete"}'
+    second = publisher.publish(root, payload, remote=str(remote))
+    def git(*args):
+        return subprocess.run(["git", "--git-dir", str(remote), *args], check=True, capture_output=True, text=True).stdout.strip()
+    assert git("rev-parse", "refs/heads/linux2-status") == second
+    assert git("rev-parse", second + "^") == first
+    assert json.loads(git("show", second + ":status.json"))["status"] == "complete"
+    assert set(git("ls-tree", "--name-only", second).splitlines()) == set(payload)
+    assert sentinel.read_text() == "unchanged" and not (root / ".git").exists()
+    with pytest.raises(ValueError, match="allowlist"):
+        publisher.publish(root, {"license.txt": "never upload"}, remote=str(remote))
