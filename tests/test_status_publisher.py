@@ -93,3 +93,23 @@ def test_rolling_progress_deduplicates_pilots_and_uses_latest_resume_status(tmp_
     assert progress["by_dataset"]["istart"]["verified"] == 1
     assert progress["by_dataset"]["rf1"]["remaining_or_running"] == 1
     assert progress["issues"] == [{"unit": "c_seed-left", "dataset": "rf1", "reason": "smoothing outside band"}]
+
+
+def test_held_smoothing_reports_measurements_without_images_or_source_inputs(tmp_path):
+    folder = tmp_path / "spatial"
+    write_json(folder / "receipt.json", {"status": "outside_tolerance", "target_mm": 6,
+               "before": {"classic_fwhm_combined": 4.2}, "after": {"classic_fwhm_combined": 6.8},
+               "source_inputs": ["do not publish"]})
+    (folder / "after.tsv").write_text("classic_fwhm_combined\n6.8\n")
+    (folder / "commands.log").write_text("AFNI smoothing finished\n" * 200)
+    (folder / "bold.nii.gz").write_text("do not publish")
+    linked = tmp_path / "linked"
+    linked.symlink_to(folder, target_is_directory=True)
+    plan = {"jobs": [{"unit": "rf1_held", "spatial": str(folder)},
+                     {"unit": "rf1_seed", "spatial": str(folder), "model": "ppi"},
+                     {"unit": "linked", "spatial": str(linked)}]}
+    rows = publisher.held_spatial_details(plan)
+    assert len(rows) == 1 and rows[0]["receipt"]["after"]["classic_fwhm_combined"] == 6.8
+    assert rows[0]["command_log_tail"].count("finished") == 120
+    assert "6.8" in rows[0]["measurement_tables"]["after.tsv"]
+    assert "do not publish" not in json.dumps(rows)

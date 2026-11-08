@@ -92,6 +92,37 @@ def rolling_model_progress(root, plan):
             "source": "Latest per-model controller log status, deduplicated across pilot, cohort and resumes; final cohort check remains separate"}
 
 
+def held_spatial_details(plan):
+    """Publish existing smoothness QC and bounded command logs, never images."""
+    rows = []
+    for job in plan.get("jobs", []):
+        if job.get("model") == "ppi" or not job.get("spatial"):
+            continue
+        folder = Path(job["spatial"])
+        if folder.is_symlink():
+            continue
+        receipt = read_json(folder / "receipt.json", {})
+        review = read_json(folder / "review_required.json", {})
+        if receipt.get("status") != "outside_tolerance" and not review:
+            continue
+        row = {"unit": job["unit"], "spatial": str(folder),
+               "receipt": {k: receipt[k] for k in ("method", "status", "target_mm", "bmall", "before", "after") if k in receipt},
+               "review": review}
+        row["measurement_tables"] = {}
+        for name in ("before.tsv", "after.tsv"):
+            path = folder / name
+            if path.is_file() and not path.is_symlink():
+                row["measurement_tables"][name] = path.read_text()[:4000]
+        path = folder / "commands.log"
+        if path.is_file() and not path.is_symlink():
+            with path.open(errors="replace") as stream:
+                row["command_log_tail"] = "".join(deque(stream, maxlen=120))[-20000:]
+        rows.append(row)
+        if len(rows) >= 20:
+            break
+    return rows
+
+
 def collect(root):
     config = read_json(root / "config/linux2.json", {})
     mem = {}
@@ -144,6 +175,8 @@ def collect(root):
                    "pilot_runs": plan.get("pilot", []), "pilot_review_recorded": (planfile.parent / "pilot_review.json").is_file(), "stages": []}
             if plan.get("model") == "ppi":
                 row["rolling_progress"] = rolling_model_progress(root, plan)
+            elif plan.get("jobs"):
+                row["held_spatial_details"] = held_spatial_details(plan)
             for validation in sorted(planfile.parent.glob("*_validation.json")):
                 data = read_json(validation, {})
                 stage = {"file": validation.name, **{k: data[k] for k in ("time", "selected", "verified", "all_selected_verified", "visual_qc") if k in data}}
