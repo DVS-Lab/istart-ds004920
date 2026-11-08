@@ -57,6 +57,12 @@
 
 --- logs/harmonized-l1-pilot.log ---
 Prepared 841 technically ready runs; 685 held/missing; 4 pilot runs
+rf1_sub-10462_ses-02_task-doors_run-1 verified 
+rf1_sub-10369_ses-01_task-socialdoors_run-1 verified 
+istart_sub-1003_task-doors_run-1 verified 
+istart_sub-1001_task-socialdoors_run-1 verified 
+rf1_sub-10462_ses-02_task-doors_run-1 verified 
+rf1_sub-10369_ses-01_task-socialdoors_run-1 verified 
 
 --- logs/preprocessing-cohort-expanded.log ---
 2026-11-07T19:01:28.934804+00:00 {"subject": "sub-3101", "status": "verified", "reason": ""}
