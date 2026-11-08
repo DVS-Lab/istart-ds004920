@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-08T02:43:34.805330+00:00",
+  "collected_utc": "2026-11-08T02:48:36.725705+00:00",
   "code_commit": "82a07895d5544854bd2a73ebec6d5195c82cd9be",
   "cpus": 128,
   "load_average": [
-    12.2265625,
-    9.22705078125,
-    6.26123046875
+    8.51708984375,
+    9.39599609375,
+    7.24462890625
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 77219.3,
+    "MemAvailable_mb": 58090.3,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.6
   },
   "filesystem_bytes": {
-    "total": 58154717413376,
-    "free": 16316633710592
+    "total": 58154722394112,
+    "free": 16316067872768
   },
   "preprocessing_batches": [
     {
@@ -1453,6 +1453,1826 @@
     }
   ],
   "l1_plans": [
+    {
+      "path": "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1/plan.json",
+      "variant": "fsl-harmonized-fwhm6-baseonly-v1",
+      "jobs": 841,
+      "pilot_runs": [
+        "istart_sub-1003_task-doors_run-1",
+        "istart_sub-1001_task-socialdoors_run-1",
+        "rf1_sub-10462_ses-02_task-doors_run-1",
+        "rf1_sub-10369_ses-01_task-socialdoors_run-1"
+      ],
+      "pilot_review_recorded": false,
+      "stages": [],
+      "readiness_counts": {
+        "ready": 841,
+        "missing_or_invalid": 685
+      },
+      "unavailable_runs": [
+        {
+          "unit": "istart_sub-1240_task-doors_run-1",
+          "dataset": "istart",
+          "subject": "1240",
+          "session": "",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required base confounds: a_comp_cor_03,a_comp_cor_04,a_comp_cor_05"
+        },
+        {
+          "unit": "istart_sub-1240_task-socialdoors_run-1",
+          "dataset": "istart",
+          "subject": "1240",
+          "session": "",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "istart_sub-1253_task-socialdoors_run-1",
+          "dataset": "istart",
+          "subject": "1253",
+          "session": "",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required win/loss/decision events; no automatic model change"
+        },
+        {
+          "unit": "istart_sub-1282_task-doors_run-1",
+          "dataset": "istart",
+          "subject": "1282",
+          "session": "",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required win/loss/decision events; no automatic model change"
+        },
+        {
+          "unit": "istart_sub-1282_task-socialdoors_run-1",
+          "dataset": "istart",
+          "subject": "1282",
+          "session": "",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Malformed onset or duration"
+        },
+        {
+          "unit": "istart_sub-1300_task-socialdoors_run-1",
+          "dataset": "istart",
+          "subject": "1300",
+          "session": "",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required base confounds: a_comp_cor_05"
+        },
+        {
+          "unit": "istart_sub-3186_task-doors_run-1",
+          "dataset": "istart",
+          "subject": "3186",
+          "session": "",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "istart_sub-3186_task-socialdoors_run-1",
+          "dataset": "istart",
+          "subject": "3186",
+          "session": "",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "istart_sub-3210_task-doors_run-1",
+          "dataset": "istart",
+          "subject": "3210",
+          "session": "",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required base confounds: a_comp_cor_05"
+        },
+        {
+          "unit": "istart_sub-3218_task-socialdoors_run-1",
+          "dataset": "istart",
+          "subject": "3218",
+          "session": "",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required base confounds: a_comp_cor_05"
+        },
+        {
+          "unit": "istart_sub-3223_task-doors_run-1",
+          "dataset": "istart",
+          "subject": "3223",
+          "session": "",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required base confounds: a_comp_cor_04,a_comp_cor_05"
+        },
+        {
+          "unit": "istart_sub-3223_task-socialdoors_run-1",
+          "dataset": "istart",
+          "subject": "3223",
+          "session": "",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required base confounds: a_comp_cor_04,a_comp_cor_05"
+        },
+        {
+          "unit": "rf1_sub-10317_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10317",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10317_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10317",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10369_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10369",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10369_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10369",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10402_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10402",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10402_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10402",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10478_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10478",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10478_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10478",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10486_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10486",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10486_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10486",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10529_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10529",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10529_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10529",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10559_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10559",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10559_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10559",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10572_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10572",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10572_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10572",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10581_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10581",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10581_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10581",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10584_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10584",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10584_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10584",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10585_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10585",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10585_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10585",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10589_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10589",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10589_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10589",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10590_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10590",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Events missing: /ZPOOL/data/projects/rf1-sra-linux2/bids/sub-10590/ses-02/func/sub-10590_ses-02_task-doors_run-1_events.tsv"
+        },
+        {
+          "unit": "rf1_sub-10596_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10596",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10596_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10596",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10603_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10603",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10603_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10603",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10606_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10606",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10606_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10606",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10608_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10608",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10608_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10608",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10636_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10636",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10636_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10636",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10640_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10640",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10640_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10640",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10641_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10641",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10641_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10641",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10642_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10642",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10642_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10642",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10644_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10644",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10644_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10644",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10647_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10647",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10647_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10647",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10652_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10652",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10652_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10652",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10656_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10656",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10656_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10656",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10657_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10657",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10657_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10657",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10661_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10661",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10661_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10661",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10663_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10663",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10663_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10663",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10668_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10668",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10668_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10668",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10673_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10673",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10673_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10673",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10674_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10674",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10674_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10674",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10677_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10677",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10677_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10677",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10685_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10685",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10685_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10685",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10700_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10700",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10700_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10700",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10701_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10701",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10701_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10701",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10718_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10718",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10718_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10718",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10720_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10720",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10720_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10720",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10723_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10723",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10723_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10723",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10741_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10741",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10741_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10741",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10748_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10748",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10748_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10748",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10767_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10767",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10767_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10767",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10770_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10770",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10770_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10770",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10777_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10777",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10777_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10777",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10781_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10781",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10781_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10781",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10783_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10783",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10783_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10783",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10785_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10785",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10785_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10785",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10794_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10794",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10794_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10794",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10800_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10800",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10800_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10800",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10801_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10801",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10801_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10801",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10802_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10802",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10802_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10802",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10803_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10803",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10803_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10803",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10804_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10804",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10804_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10804",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10806_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10806",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10806_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10806",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10812_ses-01_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10812",
+          "session": "01",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10812_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10812",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10812_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10812",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10817_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10817",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10817_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10817",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10827_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10827",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10827_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10827",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10831_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10831",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10831_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10831",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10834_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10834",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10834_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10834",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10836_ses-01_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10836",
+          "session": "01",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10836_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10836",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10836_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10836",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10838_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10838",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10838_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10838",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10843_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10843",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10843_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10843",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10850_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10850",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10850_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10850",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10854_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10854",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10854_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10854",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10857_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10857",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10857_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10857",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10858_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10858",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10858_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10858",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10860_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10860",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10860_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10860",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10863_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10863",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10863_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10863",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10866_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10866",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Missing required base confounds: a_comp_cor_05"
+        },
+        {
+          "unit": "rf1_sub-10875_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10875",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10875_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10875",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10887_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10887",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10887_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10887",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10896_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10896",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10896_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10896",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10897_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10897",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10897_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10897",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10908_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10908",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10908_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10908",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10913_ses-01_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10913",
+          "session": "01",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10913_ses-01_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10913",
+          "session": "01",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10918_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10918",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10918_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10918",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10919_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10919",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10919_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10919",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10924_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10924",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10924_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10924",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10926_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10926",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10926_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10926",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10928_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10928",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10928_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10928",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10929_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10929",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10929_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10929",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10930_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10930",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10930_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10930",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10938_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10938",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10938_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10938",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10940_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10940",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10940_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10940",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10950_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10950",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10950_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10950",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10951_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10951",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10951_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10951",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10952_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10952",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10952_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10952",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10954_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10954",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10954_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10954",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10956_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10956",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10956_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10956",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10958_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10958",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10958_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10958",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10961_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10961",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10961_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10961",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10966_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10966",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10966_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10966",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10969_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10969",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10969_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10969",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10977_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10977",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10977_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10977",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10979_ses-02_task-doors_run-1",
+          "dataset": "rf1",
+          "subject": "10979",
+          "session": "02",
+          "task": "doors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        },
+        {
+          "unit": "rf1_sub-10979_ses-02_task-socialdoors_run-1",
+          "dataset": "rf1",
+          "subject": "10979",
+          "session": "02",
+          "task": "socialdoors",
+          "status": "missing_or_invalid",
+          "reason": "Expected one unsmoothed non-echo fMRIPrep MNI BOLD, found 0: []"
+        }
+      ],
+      "unavailable_runs_truncated": true
+    },
     {
       "path": "/ZPOOL/data/projects/rf1-sra-linux2/work/cohort-smoothness-v1/plan.json",
       "variant": null,
@@ -12278,7 +14098,7 @@
       "phase": "pilot",
       "status": "started",
       "launched": "2026-11-08T02:38:32.547204+00:00",
-      "operation": "prepare_activation",
+      "operation": "activation:spatial",
       "jobs": 10,
       "log": "/ZPOOL/data/projects/istart-ds004920/logs/harmonized-l1-pilot.log",
       "process_alive": true

@@ -56,6 +56,7 @@
 {"ready": 115, "missing_or_invalid": 3}
 
 --- logs/harmonized-l1-pilot.log ---
+Prepared 841 technically ready runs; 685 held/missing; 4 pilot runs
 
 --- logs/preprocessing-cohort-expanded.log ---
 2026-11-07T19:01:28.934804+00:00 {"subject": "sub-3101", "status": "verified", "reason": ""}
