@@ -56,38 +56,6 @@
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
 --- logs/harmonized-l1-cohort.log ---
-istart_sub-1009_task-doors_run-1_seed-Fusiform verified 
-istart_sub-1009_task-doors_run-1_seed-IPL verified 
-istart_sub-1004_task-socialdoors_run-1_seed-mPFC_right verified 
-istart_sub-1004_task-socialdoors_run-1_seed-IPL verified 
-istart_sub-1004_task-socialdoors_run-1_seed-mPFC_left verified 
-istart_sub-1004_task-socialdoors_run-1_seed-Fusiform verified 
-istart_sub-1007_task-socialdoors_run-1_seed-IPL verified 
-istart_sub-1007_task-socialdoors_run-1_seed-Fusiform verified 
-istart_sub-1007_task-socialdoors_run-1_seed-hippo_right verified 
-istart_sub-1007_task-socialdoors_run-1_seed-hippo_left verified 
-istart_sub-1007_task-socialdoors_run-1_seed-mPFC_right verified 
-istart_sub-1007_task-socialdoors_run-1_seed-mPFC_left verified 
-istart_sub-1007_task-doors_run-1_seed-IPL verified 
-istart_sub-1007_task-doors_run-1_seed-hippo_right verified 
-istart_sub-1007_task-doors_run-1_seed-hippo_left verified 
-istart_sub-1007_task-doors_run-1_seed-Fusiform verified 
-istart_sub-1007_task-doors_run-1_seed-mPFC_right verified 
-istart_sub-1007_task-doors_run-1_seed-mPFC_left verified 
-istart_sub-1009_task-doors_run-1_seed-mPFC_left verified 
-istart_sub-1009_task-socialdoors_run-1_seed-Fusiform verified 
-istart_sub-1009_task-socialdoors_run-1_seed-mPFC_right verified 
-istart_sub-1009_task-socialdoors_run-1_seed-hippo_right verified 
-istart_sub-1009_task-doors_run-1_seed-mPFC_right verified 
-istart_sub-1009_task-socialdoors_run-1_seed-IPL verified 
-istart_sub-1009_task-socialdoors_run-1_seed-hippo_left verified 
-istart_sub-1009_task-socialdoors_run-1_seed-mPFC_left verified 
-istart_sub-1010_task-doors_run-1_seed-hippo_right verified 
-istart_sub-1010_task-doors_run-1_seed-IPL verified 
-istart_sub-1010_task-doors_run-1_seed-Fusiform verified 
-istart_sub-1010_task-socialdoors_run-1_seed-hippo_right verified 
-istart_sub-1010_task-socialdoors_run-1_seed-hippo_left verified 
-istart_sub-1010_task-doors_run-1_seed-hippo_left verified 
 istart_sub-1010_task-doors_run-1_seed-mPFC_left verified 
 istart_sub-1010_task-doors_run-1_seed-mPFC_right verified 
 istart_sub-1010_task-socialdoors_run-1_seed-IPL verified 
@@ -106,6 +74,38 @@ istart_sub-1011_task-socialdoors_run-1_seed-IPL verified
 istart_sub-1011_task-doors_run-1_seed-Fusiform verified 
 istart_sub-1011_task-socialdoors_run-1_seed-mPFC_right verified 
 istart_sub-1011_task-socialdoors_run-1_seed-mPFC_left verified 
+istart_sub-1012_task-doors_run-1_seed-hippo_left verified 
+istart_sub-1012_task-doors_run-1_seed-hippo_right verified 
+istart_sub-1012_task-doors_run-1_seed-Fusiform verified 
+istart_sub-1012_task-doors_run-1_seed-mPFC_right verified 
+istart_sub-1012_task-doors_run-1_seed-mPFC_left verified 
+istart_sub-1012_task-socialdoors_run-1_seed-hippo_right verified 
+istart_sub-1012_task-socialdoors_run-1_seed-hippo_left verified 
+istart_sub-1012_task-socialdoors_run-1_seed-Fusiform verified 
+istart_sub-1012_task-socialdoors_run-1_seed-mPFC_left verified 
+istart_sub-1012_task-doors_run-1_seed-IPL verified 
+istart_sub-1012_task-socialdoors_run-1_seed-mPFC_right verified 
+istart_sub-1012_task-socialdoors_run-1_seed-IPL verified 
+istart_sub-1013_task-doors_run-1_seed-Fusiform verified 
+istart_sub-1013_task-doors_run-1_seed-hippo_left verified 
+istart_sub-1013_task-doors_run-1_seed-IPL verified 
+istart_sub-1013_task-doors_run-1_seed-hippo_right verified 
+istart_sub-1013_task-doors_run-1_seed-mPFC_left verified 
+istart_sub-1013_task-doors_run-1_seed-mPFC_right verified 
+istart_sub-1013_task-socialdoors_run-1_seed-hippo_left verified 
+istart_sub-1013_task-socialdoors_run-1_seed-hippo_right verified 
+istart_sub-1015_task-doors_run-1_seed-mPFC_right verified 
+istart_sub-1015_task-doors_run-1_seed-mPFC_left verified 
+istart_sub-1015_task-socialdoors_run-1_seed-hippo_right verified 
+istart_sub-1015_task-doors_run-1_seed-Fusiform verified 
+istart_sub-1015_task-doors_run-1_seed-IPL verified 
+istart_sub-1015_task-doors_run-1_seed-hippo_left verified 
+istart_sub-1015_task-doors_run-1_seed-hippo_right verified 
+istart_sub-1015_task-socialdoors_run-1_seed-hippo_left verified 
+istart_sub-1013_task-socialdoors_run-1_seed-mPFC_left verified 
+istart_sub-1013_task-socialdoors_run-1_seed-mPFC_right verified 
+istart_sub-1013_task-socialdoors_run-1_seed-IPL verified 
+istart_sub-1013_task-socialdoors_run-1_seed-Fusiform verified 
 
 --- logs/harmonized-l1-pilot.log ---
       "fslmeants": "/usr/local/fsl/bin/fslmeants"
