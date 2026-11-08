@@ -78,8 +78,56 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
 {"ready": 115, "missing_or_invalid": 3}
 
 --- logs/harmonized-l1-sub10657-review.log ---
-2026-11-08T14:34:54.038186+00:00 Published 3d7043f34498d0ed1a7c99adf070affcac397761 to main:status/linux2/
-2026-11-08T14:39:56.149492+00:00 Published 52ded026d2b047216fa4f1475d5347bb325f3652 to main:status/linux2/
+rf1_sub-10596_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10608_ses-01_task-doors_run-1 verified 
+rf1_sub-10608_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10617_ses-01_task-doors_run-1 verified 
+rf1_sub-10603_ses-01_task-doors_run-1 verified 
+rf1_sub-10590_ses-02_task-socialdoors_run-1 verified 
+rf1_sub-10617_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10585_ses-01_task-doors_run-1 verified 
+rf1_sub-10657_ses-01_task-doors_run-1 verified 
+rf1_sub-10657_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10617_ses-02_task-socialdoors_run-1 verified 
+rf1_sub-10638_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10606_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10636_ses-01_task-doors_run-1 verified 
+rf1_sub-10636_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10638_ses-02_task-socialdoors_run-1 verified 
+rf1_sub-10617_ses-02_task-doors_run-1 verified 
+rf1_sub-10638_ses-02_task-doors_run-1 verified 
+rf1_sub-10641_ses-01_task-doors_run-1 verified 
+rf1_sub-10647_ses-01_task-doors_run-1 verified 
+rf1_sub-10642_ses-01_task-doors_run-1 verified 
+rf1_sub-10640_ses-01_task-doors_run-1 verified 
+rf1_sub-10644_ses-01_task-doors_run-1 verified 
+rf1_sub-10649_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10640_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10652_ses-01_task-doors_run-1 verified 
+rf1_sub-10644_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10649_ses-01_task-doors_run-1 verified 
+rf1_sub-10661_ses-01_task-doors_run-1 verified 
+rf1_sub-10642_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10641_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10656_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10647_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10661_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10668_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10652_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10649_ses-02_task-doors_run-1 verified 
+rf1_sub-10673_ses-01_task-doors_run-1 verified 
+rf1_sub-10663_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10649_ses-02_task-socialdoors_run-1 verified 
+rf1_sub-10674_ses-01_task-doors_run-1 verified 
+rf1_sub-10656_ses-01_task-doors_run-1 verified 
+rf1_sub-10668_ses-01_task-doors_run-1 verified 
+rf1_sub-10663_ses-01_task-doors_run-1 verified 
+rf1_sub-10673_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10674_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10685_ses-01_task-doors_run-1 verified 
+rf1_sub-10677_ses-01_task-doors_run-1 verified 
+rf1_sub-10685_ses-01_task-socialdoors_run-1 verified 
+rf1_sub-10677_ses-01_task-socialdoors_run-1 verified 
 
 --- logs/harmonized-l1-cohort.log ---
       "fslmeants": "/usr/local/fsl/bin/fslmeants"
