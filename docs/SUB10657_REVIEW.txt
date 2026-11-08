@@ -1,0 +1,63 @@
+RF1 sub-10657, session 01: reviewed smoothness exceptions
+
+Measured classic combined FWHM after the unchanged AFNI 6 mm target procedure:
+Doors       5.3761 mm   10.3983% below target   0.0239 mm below the 5.4 mm QC floor
+SocialDoors 5.3654 mm   10.5767% below target   0.0346 mm below the 5.4 mm QC floor
+
+Before smoothing: 3.1374 and 3.12178 mm, respectively. The after-smoothing
+axis estimates are about 5.36-5.38 mm in all three directions. AFNI exited
+successfully, produced the output images and completed their independent
+3dFWHMx measurements. No fatal AFNI error was logged.
+
+The immediate reason for the hold was the strict +/-10% QC check. AFNI's
+3dBlurToFWHM target is approximate, and its default controller uses a subset
+of time points whereas the independent post-check measures the full series.
+The quiet command log does not establish which internal convergence or
+sampling effect accounts for these small misses. AFNI documentation:
+https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dBlurToFWHM.html
+
+The user indicated that deviations up to about 15% could be acceptable.
+The recovery accepts only the two exact reviewed values above, requires all
+three directional values to be within 5.1-6.9 mm, and retains every original
+source, method, geometry and product-hash check. Other runs retain the
+original 5.4-6.6 mm check. ACF-effective FWHM values are separate QC metrics;
+they are not substituted for the classic-FWHM target used by this workflow.
+
+finish_sub10657.py runs as a separate, detached process. It waits for any
+existing cohort process, reuses the unchanged frozen plans and existing
+images, and calls the original L1 functions for just two activation and
+twelve seed-PPI models. Its process-local validation adapter first calls
+the original verifier; it accepts only that verifier's exact tolerance
+error for the two exact reviewed outputs. No source checkout code, frozen
+plan, image, mask or original spatial receipt is changed. The explicit
+review ledger and its runner hash are added to the fourteen new fit
+receipts. Original cohort check reports are archived before full-cohort
+activation and PPI verification. Original spatial/run QC reports remain
+as historical records of the initial tolerance failures. Scientific
+inclusion and visual QC remain unassigned.
+
+Linux2 launch (safe to repeat; a live or completed recovery is not duplicated):
+
+set +e
+cd /ZPOOL/data/projects/istart-ds004920 &&
+git fetch origin main &&
+mkdir -p work/sub10657-review-code &&
+git show FETCH_HEAD:code/finish_sub10657.py > work/sub10657-review-code/finish_sub10657.py &&
+git show FETCH_HEAD:code/publish_processing_status.py > work/sub10657-review-code/publish_processing_status.py &&
+.venv/bin/python work/sub10657-review-code/finish_sub10657.py launch
+
+Status:
+/ZPOOL/data/projects/istart-ds004920/.venv/bin/python /ZPOOL/data/projects/istart-ds004920/work/sub10657-review-code/finish_sub10657.py status
+
+Controller log:
+tail -n 40 /ZPOOL/data/projects/istart-ds004920/logs/harmonized-l1-sub10657-review.log
+
+Success: work/l1-runs/sub-10657-review/state.json reports status complete and
+all_cohort_checks_passed true. The final check_cohort_validation.json files
+in work/harmonized-l1-v1 and work/harmonized-ppi-v1 report 841/841 and
+5046/5046 verified, with an explicit smoothness_qc_review ledger stamp.
+Both fits and status publishing continue after SSH disconnection.
+
+On a failed recovery, run the same launch command again; completed fits are
+verified and reused. A partial FEAT directory is preserved for diagnosis
+rather than deleted or silently replaced.

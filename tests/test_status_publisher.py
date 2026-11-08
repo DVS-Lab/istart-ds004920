@@ -93,6 +93,10 @@ def test_rolling_progress_deduplicates_pilots_and_uses_latest_resume_status(tmp_
     assert progress["by_dataset"]["istart"]["verified"] == 1
     assert progress["by_dataset"]["rf1"]["remaining_or_running"] == 1
     assert progress["issues"] == [{"unit": "c_seed-left", "dataset": "rf1", "reason": "smoothing outside band"}]
+    (logs / "harmonized-l1-sub10657-review.log").write_text("c_seed-left verified\n")
+    resumed = publisher.rolling_model_progress(tmp_path, plan)
+    assert resumed["verified"] == 3 and resumed["failed_or_held"] == 0
+    assert resumed["remaining_or_running"] == 1
 
 
 def test_held_smoothing_reports_measurements_without_images_or_source_inputs(tmp_path):

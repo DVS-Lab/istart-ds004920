@@ -69,7 +69,7 @@ def rolling_model_progress(root, plan):
     """Count unique PPI model statuses, including pilots and resumed attempts."""
     units = {job["unit"]: job.get("dataset", "unknown") for job in plan.get("jobs", []) if job.get("unit")}
     latest = {}
-    for name in ("harmonized-l1-pilot.log", "harmonized-l1-cohort.log"):
+    for name in ("harmonized-l1-pilot.log", "harmonized-l1-cohort.log", "harmonized-l1-sub10657-review.log"):
         path = root / "logs" / name
         if not path.is_file() or path.is_symlink():
             continue
@@ -144,8 +144,8 @@ def collect(root):
     report["l1_runs"] = []
     for path in sorted((root / "work/l1-runs").glob("*/state.json")):
         state = read_json(path, {})
-        record = {key: state[key] for key in ("pid", "phase", "status", "launched", "finished", "operation", "jobs", "error", "log", "operations") if key in state}
-        record["process_alive"] = alive(state, "run_harmonized_l1.py")
+        record = {key: state[key] for key in ("pid", "phase", "status", "launched", "finished", "operation", "jobs", "error", "log", "operations", "reviewed_activation", "reviewed_ppi", "all_cohort_checks_passed") if key in state}
+        record["process_alive"] = alive(state, state.get("worker_script", "run_harmonized_l1.py"))
         report["l1_runs"].append(record)
     failed_subjects = set()
     l1_failed_logs = []
@@ -179,7 +179,7 @@ def collect(root):
                 row["held_spatial_details"] = held_spatial_details(plan)
             for validation in sorted(planfile.parent.glob("*_validation.json")):
                 data = read_json(validation, {})
-                stage = {"file": validation.name, **{k: data[k] for k in ("time", "selected", "verified", "all_selected_verified", "visual_qc") if k in data}}
+                stage = {"file": validation.name, **{k: data[k] for k in ("time", "selected", "verified", "all_selected_verified", "visual_qc", "smoothness_qc_review") if k in data}}
                 result_file = validation.with_name(validation.name.removesuffix("_validation.json") + ".tsv")
                 if result_file.is_file():
                     with result_file.open() as stream:
