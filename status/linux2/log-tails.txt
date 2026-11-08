@@ -77,6 +77,10 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
 {"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
 {"ready": 115, "missing_or_invalid": 3}
 
+--- logs/harmonized-l1-sub10657-review.log ---
+2026-11-08T14:34:54.038186+00:00 Published 3d7043f34498d0ed1a7c99adf070affcac397761 to main:status/linux2/
+2026-11-08T14:39:56.149492+00:00 Published 52ded026d2b047216fa4f1475d5347bb325f3652 to main:status/linux2/
+
 --- logs/harmonized-l1-cohort.log ---
       "fslmeants": "/usr/local/fsl/bin/fslmeants"
     },
@@ -128,9 +132,6 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
   "activation_plan": "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1",
   "ppi_plan": "/ZPOOL/data/projects/istart-ds004920/work/harmonized-ppi-v1"
 }
-
---- logs/harmonized-l1-sub10657-review.log ---
-2026-11-08T14:34:54.038186+00:00 Published 3d7043f34498d0ed1a7c99adf070affcac397761 to main:status/linux2/
 
 --- logs/harmonized-l1-pilot.log ---
       "fslmeants": "/usr/local/fsl/bin/fslmeants"
