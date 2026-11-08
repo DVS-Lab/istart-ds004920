@@ -21,6 +21,10 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
  Contrasts involving these combinations will be set to zero.
 
 
+--- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
+{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+{"ready": 115, "missing_or_invalid": 3}
+
 --- logs/fmriprep/sub-1240.log ---
 261107-11:16:56,227 nipype.workflow INFO:
 	 [Node] Setting-up "fmriprep_25_2_wf.sub_1240_wf.anat_fit_wf.anat_reports_wf.norm_msk" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1240/fmriprep_25_2_wf/sub_1240_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/norm_msk".
@@ -73,9 +77,9 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
 261107-11:17:12,497 nipype.workflow IMPORTANT:
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
---- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
-{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
-{"ready": 115, "missing_or_invalid": 3}
+--- logs/chloe-handoff.log ---
+
+--- logs/istart-mriqc.log ---
 
 --- logs/harmonized-l1-sub10657-review.log ---
 rf1_sub-12049_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
@@ -755,108 +759,4 @@ rf1_sub-12057_ses-01_task-socialdoors_run-1_seed-Fusiform verified
 261107-15:22:55,119 nipype.workflow IMPORTANT:
 	 fMRIPrep finished successfully!
 261107-15:22:55,119 nipype.workflow IMPORTANT:
-	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
-
---- logs/fmriprep/sub-3176.log ---
-261107-15:22:19,182 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3176_wf.bold_task_socialdoors_run_1_wf.bold_std_wf.resample" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3176/fmriprep_25_2_wf/sub_3176_wf/bold_task_socialdoors_run_1_wf/bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/resample".
-261107-15:22:19,198 nipype.workflow INFO:
-	 [Node] Executing "resample" <fmriprep.interfaces.resampling.ResampleSeries>
-261107-15:22:21,168 nipype.workflow INFO:
-	 [Node] Finished "_anat2std_tpms0", elapsed time 7.661325s.
-261107-15:22:23,184 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3176_wf.bold_task_doors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3176/fmriprep_25_2_wf/sub_3176_wf/bold_task_doors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
-261107-15:22:23,190 nipype.workflow INFO:
-	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
-261107-15:22:23,475 nipype.workflow INFO:
-	 [Node] Finished "_anat2std_tpms1", elapsed time 8.131061s.
-261107-15:22:25,186 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3176/fmriprep_25_2_wf/sub_3176_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
-261107-15:22:25,188 nipype.workflow INFO:
-	 [Node] Executing "_anat2std_tpms2" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-261107-15:22:30,796 nipype.workflow INFO:
-	 [Node] Finished "ds_bold", elapsed time 7.605603s.
-261107-15:22:32,756 nipype.workflow INFO:
-	 [Node] Finished "_anat2std_tpms2", elapsed time 7.567512s.
-261107-15:22:33,184 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms0" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3176/fmriprep_25_2_wf/sub_3176_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms0".
-261107-15:22:33,185 nipype.workflow INFO:
-	 [Node] Cached "_anat2std_tpms0" - collecting precomputed outputs
-261107-15:22:33,185 nipype.workflow INFO:
-	 [Node] "_anat2std_tpms0" found cached.
-261107-15:22:33,186 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms1" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3176/fmriprep_25_2_wf/sub_3176_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms1".
-261107-15:22:33,186 nipype.workflow INFO:
-	 [Node] Cached "_anat2std_tpms1" - collecting precomputed outputs
-261107-15:22:33,186 nipype.workflow INFO:
-	 [Node] "_anat2std_tpms1" found cached.
-261107-15:22:33,187 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3176/fmriprep_25_2_wf/sub_3176_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
-261107-15:22:33,188 nipype.workflow INFO:
-	 [Node] Cached "_anat2std_tpms2" - collecting precomputed outputs
-261107-15:22:33,188 nipype.workflow INFO:
-	 [Node] "_anat2std_tpms2" found cached.
-261107-15:22:40,473 nipype.workflow INFO:
-	 [Node] Finished "resample", elapsed time 21.275103s.
-261107-15:22:41,592 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3176_wf.bold_task_socialdoors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3176/fmriprep_25_2_wf/sub_3176_wf/bold_task_socialdoors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
-261107-15:22:41,595 nipype.workflow INFO:
-	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
-261107-15:22:49,177 nipype.workflow INFO:
-	 [Node] Finished "ds_bold", elapsed time 7.580954s.
-261107-15:22:51,502 nipype.workflow IMPORTANT:
-	 fMRIPrep finished successfully!
-261107-15:22:51,503 nipype.workflow IMPORTANT:
-	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
-
---- logs/fmriprep/sub-3175.log ---
-261107-15:22:12,361 nipype.workflow INFO:
-	 [Node] Finished "resample", elapsed time 21.325619s.
-261107-15:22:13,76 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3175_wf.bold_task_socialdoors_run_1_wf.bold_std_wf.resample" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3175/fmriprep_25_2_wf/sub_3175_wf/bold_task_socialdoors_run_1_wf/bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/resample".
-261107-15:22:13,76 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3175_wf.bold_task_doors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3175/fmriprep_25_2_wf/sub_3175_wf/bold_task_doors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
-261107-15:22:13,80 nipype.workflow INFO:
-	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
-261107-15:22:13,127 nipype.workflow INFO:
-	 [Node] Executing "resample" <fmriprep.interfaces.resampling.ResampleSeries>
-261107-15:22:17,2 nipype.workflow INFO:
-	 [Node] Finished "_anat2std_tpms1", elapsed time 7.791094s.
-261107-15:22:19,61 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3175/fmriprep_25_2_wf/sub_3175_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
-261107-15:22:19,64 nipype.workflow INFO:
-	 [Node] Executing "_anat2std_tpms2" <niworkflows.interfaces.fixes.FixHeaderApplyTransforms>
-261107-15:22:20,732 nipype.workflow INFO:
-	 [Node] Finished "ds_bold", elapsed time 7.651351s.
-261107-15:22:26,576 nipype.workflow INFO:
-	 [Node] Finished "_anat2std_tpms2", elapsed time 7.512026s.
-261107-15:22:27,62 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms0" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3175/fmriprep_25_2_wf/sub_3175_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms0".
-261107-15:22:27,62 nipype.workflow INFO:
-	 [Node] Cached "_anat2std_tpms0" - collecting precomputed outputs
-261107-15:22:27,62 nipype.workflow INFO:
-	 [Node] "_anat2std_tpms0" found cached.
-261107-15:22:27,63 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms1" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3175/fmriprep_25_2_wf/sub_3175_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms1".
-261107-15:22:27,64 nipype.workflow INFO:
-	 [Node] Cached "_anat2std_tpms1" - collecting precomputed outputs
-261107-15:22:27,64 nipype.workflow INFO:
-	 [Node] "_anat2std_tpms1" found cached.
-261107-15:22:27,64 nipype.workflow INFO:
-	 [Node] Setting-up "_anat2std_tpms2" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3175/fmriprep_25_2_wf/sub_3175_wf/ds_std_volumes_wf/_in_tuple_MNI152NLin6Asym.resnative/anat2std_tpms/mapflow/_anat2std_tpms2".
-261107-15:22:27,65 nipype.workflow INFO:
-	 [Node] Cached "_anat2std_tpms2" - collecting precomputed outputs
-261107-15:22:27,65 nipype.workflow INFO:
-	 [Node] "_anat2std_tpms2" found cached.
-261107-15:22:33,647 nipype.workflow INFO:
-	 [Node] Finished "resample", elapsed time 20.519144s.
-261107-15:22:35,465 nipype.workflow INFO:
-	 [Node] Setting-up "fmriprep_25_2_wf.sub_3175_wf.bold_task_socialdoors_run_1_wf.ds_bold_std_wf.ds_bold" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-3175/fmriprep_25_2_wf/sub_3175_wf/bold_task_socialdoors_run_1_wf/ds_bold_std_wf/_in_tuple_MNI152NLin6Asym.resnative/ds_bold".
-261107-15:22:35,468 nipype.workflow INFO:
-	 [Node] Executing "ds_bold" <fmriprep.interfaces.DerivativesDataSink>
-261107-15:22:43,113 nipype.workflow INFO:
-	 [Node] Finished "ds_bold", elapsed time 7.643417s.
-261107-15:22:45,372 nipype.workflow IMPORTANT:
-	 fMRIPrep finished successfully!
-261107-15:22:45,373 nipype.workflow IMPORTANT:
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
