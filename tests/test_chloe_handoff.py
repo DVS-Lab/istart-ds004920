@@ -79,3 +79,43 @@ def test_rf1_mriqc_uses_existing_echo_selection_instead_of_averaging(tmp_path):
     row = handoff.mriqc_index(environment)[('rf1', '001', '01', 'doors', '1')]
     assert len(row) == 1 and row[0]['mriqc_tsnr'] == 20
     assert row[0]['mriqc_echo'] == '2'
+
+
+def test_statistic_upgrade_invalidates_cope_only_readiness_even_without_new_qc():
+    old = {'mriqc_inventory_sha256': 'same', 'cope_only': True}
+    assert not handoff.ready_current(old, 'same')
+    current = dict(old, export_profile=handoff.EXPORT_PROFILE, statistics=['cope', 'zstat'])
+    assert handoff.ready_current(current, 'same')
+    assert not handoff.ready_current(current, 'new-mriqc')
+
+
+def test_zstat_exports_match_contrasts_without_rewriting_existing_copes(tmp_path, monkeypatch):
+    import json
+    from harmonized.common import stamp
+    output = tmp_path / 'analysis.feat'
+    (output / 'stats').mkdir(parents=True)
+    products = []
+    for statistic in ('cope', 'zstat'):
+        for i in range(1, 5):
+            path = output / 'stats' / f'{statistic}{i}.nii.gz'
+            path.write_bytes(f'unchanged {statistic} contrast {i}'.encode())
+            products.append(stamp(path, full=True))
+    job = {'unit': 'istart_sub-1002_task-doors_run-1', 'dataset': 'istart', 'subject': '1002',
+           'session': '', 'stem': 'sub-1002_task-doors_run-1', 'task': 'doors', 'run': '1', 'output': str(output)}
+    (output / 'harmonized_success.json').write_text(json.dumps({'unit': job['unit'], 'plan_sha256': 'frozen',
+                                                             'provenance': [], 'products': products}))
+    dest = tmp_path / 'staged'
+    monkeypatch.setattr(handoff, 'destination', lambda: dest)
+    cope = dest / 'istart' / handoff.relative(job, 1)
+    handoff.copy_checked(output / 'stats/cope1.nii.gz', cope, products[0]['sha256'])
+    original_stamp = stamp(cope, full=True)
+    dataset, rows = handoff.copy_fit(job, 'frozen')
+    assert dataset == 'istart' and len(rows) == 8
+    assert sum(r['statistic'] == 'cope' for r in rows) == 4
+    assert sum(r['statistic'] == 'zstat' for r in rows) == 4
+    assert stamp(cope, full=True) == original_stamp
+    assert handoff.relative(job, 1) != handoff.relative(job, 1, 'zstat')
+    assert '_stat-z_statmap.nii.gz' in str(handoff.relative(job, 1, 'zstat'))
+    for row in rows:
+        assert sha(dest / 'istart' / row['file']) == row['sha256']
+    assert len(handoff.copy_fit(job, 'frozen')[1]) == 8

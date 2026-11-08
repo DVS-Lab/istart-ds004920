@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stage a minimal, checksummed, participant-organized COPE handoff on Linux2."""
+"""Stage checksummed, participant-organized COPE and ZSTAT maps on Linux2."""
 from __future__ import annotations
 
 import argparse
@@ -29,6 +29,8 @@ CONTRASTS = {1: 'win', 2: 'loss', 3: 'decision', 4: 'winMinusLoss'}
 SEEDS = {'hippo_left': 'HippoLeft', 'hippo_right': 'HippoRight', 'IPL': 'IPL',
          'Fusiform': 'Fusiform', 'mPFC_left': 'MPFCLeft', 'mPFC_right': 'MPFCRight'}
 RECIPE = 'common-grid-unsmoothed-mask-median-tsnr-ddof0-drop-nss-v1'
+STATISTICS = {'cope': 'effect', 'zstat': 'z'}
+EXPORT_PROFILE = 'cope-zstat-fourcontrasts-v2'
 
 
 def alive(state):
@@ -48,13 +50,19 @@ def destination():
     return ROOT / 'derivatives/release-candidates/chloe-harmonized-l1-v1'
 
 
-def relative(job, contrast):
+def relative(job, contrast, statistic='cope'):
     model = 'ppi' + SEEDS[job['seed']] if job.get('model') == 'ppi' else 'activation'
-    name = f"{job['stem']}_space-MNI152NLin6Asym_model-{model}_contrast-{CONTRASTS[contrast]}_stat-effect_statmap.nii.gz"
+    name = f"{job['stem']}_space-MNI152NLin6Asym_model-{model}_contrast-{CONTRASTS[contrast]}_stat-{STATISTICS[statistic]}_statmap.nii.gz"
     folder = Path('sub-' + job['subject'])
     if job['session']:
         folder /= 'ses-' + job['session']
     return folder / 'func' / name
+
+
+def ready_current(ready, environment_sha):
+    return (ready.get('mriqc_inventory_sha256') == environment_sha
+            and ready.get('export_profile') == EXPORT_PROFILE
+            and ready.get('statistics') == list(STATISTICS))
 
 
 def copy_checked(source, target, expected):
@@ -214,16 +222,18 @@ def copy_fit(job, plan_hash):
     products = {r['path']: r for r in receipt['products']}
     rows = []
     for contrast in CONTRASTS:
-        src = Path(job['output']) / 'stats' / f'cope{contrast}.nii.gz'
-        frozen = products[str(src)]
-        if any(stamp(src, full=False)[k] != frozen[k] for k in ('path', 'size', 'mtime_ns')):
-            raise ValueError(f'COPE metadata changed: {src}')
-        rel = relative(job, contrast)
-        copy_checked(src, destination() / job['dataset'] / rel, frozen['sha256'])
-        rows.append({'participant_id': 'sub-' + job['subject'], 'session': job['session'] or 'n/a',
-                     'task': job['task'], 'run': job['run'], 'model': job.get('model', 'activation'),
-                     'seed': job.get('seed', 'n/a'), 'contrast': CONTRASTS[contrast], 'file': str(rel),
-                     'sha256': frozen['sha256'], 'bytes': frozen['size'], 'plan_sha256': receipt['plan_sha256']})
+        for statistic in STATISTICS:
+            src = Path(job['output']) / 'stats' / f'{statistic}{contrast}.nii.gz'
+            frozen = products[str(src)]
+            if any(stamp(src, full=False)[k] != frozen[k] for k in ('path', 'size', 'mtime_ns')):
+                raise ValueError(f'Statistical map metadata changed: {src}')
+            rel = relative(job, contrast, statistic)
+            copy_checked(src, destination() / job['dataset'] / rel, frozen['sha256'])
+            rows.append({'participant_id': 'sub-' + job['subject'], 'session': job['session'] or 'n/a',
+                         'task': job['task'], 'run': job['run'], 'model': job.get('model', 'activation'),
+                         'seed': job.get('seed', 'n/a'), 'contrast': CONTRASTS[contrast], 'statistic': statistic,
+                         'file': str(rel), 'sha256': frozen['sha256'], 'bytes': frozen['size'],
+                         'plan_sha256': receipt['plan_sha256']})
     return job['dataset'], rows
 
 
@@ -247,7 +257,7 @@ def assemble(state, save):
     dest.mkdir(parents=True, exist_ok=True)
     environment_file = ROOT / 'work/delivery-environment.json'
     environment_sha = sha(environment_file) if environment_file.exists() else None
-    if (dest / 'READY.json').exists() and json.loads((dest / 'READY.json').read_text()).get('mriqc_inventory_sha256') == environment_sha:
+    if (dest / 'READY.json').exists() and ready_current(json.loads((dest / 'READY.json').read_text()), environment_sha):
         state.update(status='complete', operation='complete', destination=str(dest))
         return
     if (dest / 'READY.json').exists():
@@ -270,11 +280,12 @@ def assemble(state, save):
             state['qc_completed'] += 1
             if state['qc_completed'] % 10 == 0:
                 save()
-    state.update(operation='copying_cope_maps', maps_total=sum(len(p['jobs']) * 4 for p in plans), maps_completed=0)
+    state.update(operation='copying_maps', maps_total=sum(len(p['jobs']) * 4 * len(STATISTICS) for p in plans), maps_completed=0)
     save()
-    estimated = sum(Path(j['output']).joinpath('stats', f'cope{i}.nii.gz').stat().st_size for p in plans for j in p['jobs'] for i in CONTRASTS)
+    estimated = sum(Path(j['output']).joinpath('stats', f'{statistic}{i}.nii.gz').stat().st_size
+                    for p in plans for j in p['jobs'] for i in CONTRASTS for statistic in STATISTICS)
     if shutil.disk_usage(dest).free < estimated * 1.1:
-        raise ValueError('Insufficient free space for minimal COPE handoff')
+        raise ValueError('Insufficient free space for COPE/ZSTAT handoff')
     manifests = defaultdict(list)
     for path, plan in zip(paths, plans):
         plan_hash = sha(path / 'plan.json')
@@ -330,6 +341,9 @@ def assemble(state, save):
                     seed_manifest = json.loads((ROOT / 'masks/seed_manifest.json').read_text())
                     meta['SeedMaskSHA256'] = next(r['sha256'] for r in seed_manifest['seeds'] if r['seed'] == seed)
                 write_json(study / f'model-{model}_contrast-{contrast}_stat-effect_statmap.json', meta)
+                zmeta = dict(meta, StatisticType='Z', Description=meta['Description'].replace('FSL COPE', 'FSL Z statistic'),
+                             Thresholded=False)
+                write_json(study / f'model-{model}_contrast-{contrast}_stat-z_statmap.json', zmeta)
         write_json(study / 'run_quality.json', {'fd_mean': {'Description': 'Mean finite fMRIPrep framewise_displacement; missing values omitted, not zero-filled', 'Units': 'mm'},
                    'tsnr': {'Description': 'Median of temporal mean / population temporal SD in the run brain mask on unsmoothed common-grid fMRIPrep data; non-steady-state volumes omitted; no detrending or nuisance regression', 'Units': 'arbitrary'},
                    'mriqc_fd_mean': {'Description': 'Existing MRIQC fd_mean, kept separate from fMRIPrep FD', 'Units': 'mm'},
@@ -337,7 +351,7 @@ def assemble(state, save):
                    'MissingValues': 'n/a', 'ExclusionPolicy': 'No new exclusions assigned by this package'})
         (study / 'README').write_text('Minimal harmonized Doors/Social Doors handoff\n\n'
             'Participant/session/func hierarchy follows BIDS Derivatives. Statistical map entities use the statistical-model extension convention (BEP041); that extension remains in development.\n'
-            'Only unthresholded COPE effect images for Win, Loss, Decision and Win-minus-Loss are included, for activation and all six seed-PPI models. The physiological main-effect contrast and other statistic types are retained on Linux2.\n'
+            'Unthresholded COPE effect estimates (stat-effect) and matching ZSTAT images (stat-z) for Win, Loss, Decision and Win-minus-Loss are included, for activation and all six seed-PPI models. COPEs carry effect estimates for group analyses; ZSTATs support inspection of statistical evidence. Neither has been thresholded or selected by significance. VARCOPEs and the physiological main-effect PPI contrast are retained on Linux2.\n'
             'mPFC Left/Right are primary; other seeds exploratory. These are run-level maps; RF1 sessions remain separate. There is no session averaging, group model or new scientific exclusion.\n'
             'run_quality.tsv distinguishes fMRIPrep-derived FD/tSNR from available original MRIQC metrics. mriqc_metrics.tsv also covers discovered task MRIQC runs without exported maps. RF1 uses the original run_qc.tsv echo selection. See run_quality.json for recipes. run_availability.tsv records missing/held inputs.\n'
             'Sub-10657 session 01 measured classic FWHM is 5.3761 mm (Doors) and 5.3654 mm (Social Doors); these two reviewed exceptions were accepted without changing the images.\n'
@@ -346,8 +360,11 @@ def assemble(state, save):
                      for p in sorted(study.rglob('*')) if p.is_file() and p.name != 'checksums.tsv']
         table(study / 'checksums.tsv', checksums)
     counts = {dataset: {'maps': len(manifests[dataset]), 'runs': len(qc[dataset]),
+                       'cope_maps': sum(r['statistic'] == 'cope' for r in manifests[dataset]),
+                       'zstat_maps': sum(r['statistic'] == 'zstat' for r in manifests[dataset]),
                        'mriqc_available': sum(r['mriqc_status'] == 'available' for r in qc[dataset])} for dataset in ('istart', 'rf1')}
-    write_json(dest / 'READY.json', {'created': now(), 'counts': counts, 'cope_only': True,
+    write_json(dest / 'READY.json', {'created': now(), 'counts': counts, 'cope_only': False,
+               'export_profile': EXPORT_PROFILE, 'statistics': list(STATISTICS),
                'plan_sha256': [sha(p / 'plan.json') for p in paths], 'uploaded': False,
                'mriqc_inventory_sha256': environment_sha,
                'mriqc_complete_for_all_exported_runs': all(v['runs'] == v['mriqc_available'] for v in counts.values())})
@@ -407,7 +424,7 @@ def main():
         old = json.loads(statefile.read_text()) if statefile.exists() else {}
         environment_file = ROOT / 'work/delivery-environment.json'
         readyfile = destination() / 'READY.json'
-        already_current = readyfile.exists() and json.loads(readyfile.read_text()).get('mriqc_inventory_sha256') == (sha(environment_file) if environment_file.exists() else None)
+        already_current = readyfile.exists() and ready_current(json.loads(readyfile.read_text()), sha(environment_file) if environment_file.exists() else None)
         if alive(old) or (old.get('status') == 'complete' and already_current):
             print(json.dumps(old, indent=2))
             return 0

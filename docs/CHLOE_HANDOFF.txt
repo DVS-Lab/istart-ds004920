@@ -33,13 +33,14 @@ chloe-harmonized-l1-v1/
           sub-10657_ses-01_task-doors_run-1_space-MNI152NLin6Asym_model-activation_contrast-win_stat-effect_statmap.nii.gz
   READY.json
 
-Map selection is deliberately limited: COPE effect estimates for Win,
-Loss, Decision and Win-minus-Loss, for activation and each of the six
-PPI seeds. Both tasks and existing RF1 sessions remain separate. Expected
-COPE counts: iSTART 2968; RF1 20580; total 23548. One brain mask per task
+Map selection includes COPE effect estimates and matching unthresholded
+ZSTATs for Win, Loss, Decision and Win-minus-Loss, for activation and
+each of the six PPI seeds. Both tasks and existing RF1 sessions remain separate. Expected
+counts for each statistic: iSTART 2968; RF1 20580; total 23548.
+COPE plus ZSTAT: 47096 maps total (5936 iSTART; 41160 RF1). One brain mask per task
 run is included (841 total), along with small interpretive tables and
 inherited JSON metadata. The physiological main-effect PPI maps,
-VARCOPEs, ZSTATs, 4D BOLD images, raw anatomy, full FEAT directories and
+VARCOPEs, 4D BOLD images, raw anatomy, full FEAT directories and
 work files are not copied into the handoff. Candidate statistics remain
 available in the original Linux2 analysis folders.
 
@@ -133,3 +134,22 @@ Resume a failed task by repeating the launch block. A valid staged map is
 checksum-verified and reused; source files and mismatching staged files
 are preserved. No imaging derivative or subject QC table is pushed to
 GitHub; only bounded processing status and sanitized explicit logs are.
+
+COPE + ZSTAT update:
+Effect estimates retain stat-effect in their filenames. Matching Z maps
+use stat-z, with inherited JSON explicitly identifying them as unthresholded
+Z statistics. maps.tsv includes a statistic column. No maps are thresholded
+or selected by their significance. Existing COPEs are checksum-verified
+and retained; only missing ZSTATs are added from the already verified fits.
+No fMRIPrep, smoothing, L1 fitting or MRIQC restart is needed. READY.json
+records the export profile and statistic list, so a prior COPE-only marker
+cannot skip this update when the MRIQC inventory is unchanged. The existing
+MRIQC process will use the updated packager for its automatic QC refresh.
+
+Linux2 update command:
+
+set +e
+cd /ZPOOL/data/projects/istart-ds004920 &&
+git fetch origin main &&
+git show FETCH_HEAD:code/prepare_chloe_handoff.py > work/chloe-handoff-code/prepare_chloe_handoff.py &&
+.venv/bin/python work/chloe-handoff-code/prepare_chloe_handoff.py launch
