@@ -77,6 +77,10 @@ def collect(root):
               "cpus": len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else os.cpu_count(),
               "load_average": list(os.getloadavg()), "memory": mem,
               "filesystem_bytes": {"total": disk.total, "free": disk.free}, "preprocessing_batches": [], "l1_plans": []}
+    review = read_json(root / "work/postpreproc-review.json")
+    if review is not None:
+        report["preprocessing_review"] = review
+    failed_subjects = set()
     for path in sorted((root / "work/preprocessing-runs").glob("*/state.json")):
         state = read_json(path, {})
         row = {k: state[k] for k in ("name", "pid", "launched", "finished", "status", "subjects", "failed", "log", "launch_command", "resource_request") if k in state}
@@ -88,6 +92,7 @@ def collect(root):
         if (path.parent / "results.tsv").is_file():
             with (path.parent / "results.tsv").open() as stream:
                 row["subject_results"] = [{k: r.get(k) for k in ("subject", "status", "reason")} for r in csv.DictReader(stream, delimiter="\t")]
+            failed_subjects.update(r["subject"] for r in row["subject_results"] if r["status"] == "failed")
         row["structural_checks"] = []
         for check in sorted(path.parent.glob("sub-*.check.json")):
             data = read_json(check, {})
@@ -108,7 +113,9 @@ def collect(root):
     logs = set((root / "logs").glob("preprocessing-*.log"))
     logs.update((root / "logs/fmriprep").glob("sub-*.log"))
     logs.update((root / "work/preprocessing-runs").glob("*/sub-*.launcher.log"))
-    for log in sorted(logs, key=lambda p: p.stat().st_mtime, reverse=True)[:16]:
+    recent = sorted(logs, key=lambda p: p.stat().st_mtime, reverse=True)[:16]
+    failed_logs = [p for p in logs if any(p.name in (f"{subject}.log", f"{subject}.launcher.log") for subject in failed_subjects)]
+    for log in list(dict.fromkeys([*failed_logs, *recent])):
         # Do not follow links outside the explicit log locations.
         if log.is_symlink() or not log.is_file():
             continue
