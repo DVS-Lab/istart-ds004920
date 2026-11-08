@@ -1,0 +1,117 @@
+Harmonized activation and seed PPI: next Linux2 step
+
+Preprocessing review
+--------------------
+The cohort finished at 2026-11-07 21:41 UTC (16:41 Eastern). Fifty-seven
+participants passed the original both-task checks. Sub-1240 also completed Doors
+successfully; its Social Doors BOLD is absent from the source dataset. The
+original both-task-only checker marked that availability gap as a subject failure.
+The checker now distinguishes an unavailable raw task from failed preprocessing.
+Sub-3186 has both BOLD inputs but no associated GRE fieldmaps, so it was not run.
+There are 115 existing MNI BOLD outputs. No cohort-wide preprocessing rerun is
+needed to begin analysis of technically ready runs.
+
+Six runs lack the six aCompCor columns required by the agreed nuisance model:
+1240 Doors; 1300 Social Doors; 3210 Doors; 3218 Social Doors; 3223 both tasks.
+These remain visible as technically unavailable for this model; no missing
+component is fabricated and no alternative nuisance model is substituted.
+
+Twelve published events files are empty. Ten have audited, matching original
+encoding streams (1011, 1012, 1013, 1015 and 1016, both tasks). The L1 planner
+downloads only these ten small source TSVs from the pinned public istart task
+repository and verifies original Git blob IDs. It uses separate copies under
+work/behavioral-event-sources, with provenance; original BIDS events are untouched.
+1253 Social Doors and 1282 Doors remain without usable encoding events. The
+concatenated/conflicted 1282 Social Doors stream also needs source review.
+
+Start the actual Linux2 pilot
+-----------------------------
+set +e
+cd /ZPOOL/data/projects/istart-ds004920 &&
+git pull --ff-only &&
+bash code/start_l1.sh
+
+This prepares a full frozen analysis inventory for both datasets, then runs four
+activation pilots (one per dataset/task) and 24 seed-PPI pilots (the same four
+runs x six seeds). It starts detached with ten concurrent run workers and
+single-thread external tools. No review prompt or approval file is required.
+Real feat_model designs, estimability, residual degrees of freedom, output maps,
+grid geometry and smoothing are checked before success is recorded. A missing
+or invalid run is reported; it is not assigned a scientific exclusion decision.
+
+AFNI is located from existing RF1 processing-plan metadata and existing tool
+directories. FSL commands are selected from the established FSLDIR installation.
+No AFNI/FSL installation is performed. The existing .venv is reused, or created
+from the preprocessing Python if absent; missing Python packages are installed
+from requirements.txt. Preparation reads run images concurrently. Existing RF1
+preprocessing and previous FEAT/TEDANA outputs remain unchanged.
+
+The pilot starts activation spatial preparation and FEAT first. Seed extraction
+and PPI follow verified activation outputs, reusing the same spatial products.
+Condition-specific PPI, Win-minus-Loss PPI and the physiological main effect use
+the authoritative rf1-sra-socdoors template at
+b5520ee5e7d0659b80c2d4bb31334caaaa9cddbc. Double-gamma task convolution,
+FEAT interaction settings and all five contrast vectors are preserved. Adapted
+settings are dataset TR, common grid, total measured 6-mm smoothing, zero FEAT
+smoothing, base-only nuisance inputs and Chloe's six seed assets.
+
+The seed mean is extracted from UNSMOOTHED preprocessed BOLD on the common grid,
+before statistical-model smoothing, preserving the order in legacy L1stats.sh.
+Voxelwise FEAT uses the measured-6-mm image. No new physiological regression,
+deconvolution, mask erosion or brain-mask intersection is introduced. Coverage
+within each run's brain mask is recorded; partial coverage is flagged without a
+new exclusion threshold. No overlap or a constant/nonfinite series fails that
+seed model. The existing grid-only reslicing/template-space caveats remain in
+masks/README.md. Left and right mPFC are primary; the other four seeds are
+exploratory. Masks and models stay separate.
+
+Status and GitHub handoff
+-------------------------
+cd /ZPOOL/data/projects/istart-ds004920
+.venv/bin/python code/run_harmonized_l1.py status --phase pilot
+.venv-preproc/bin/python code/publish_processing_status.py status
+tail -n 50 logs/harmonized-l1-pilot.log
+
+The publisher automatically commits directly to main every five minutes while
+L1 is active and pushes a final snapshot afterward:
+https://github.com/DVS-Lab/istart-ds004920/tree/main/status/linux2
+
+State/PID/launch command: work/l1-runs/pilot/state.json.
+Worker log: logs/harmonized-l1-pilot.log.
+Activation plan: work/harmonized-l1-v1/plan.json.
+PPI plan: work/harmonized-ppi-v1/plan.json.
+Readiness and source gaps: each plan's run_review.tsv.
+Design/FWHM/COPE summaries: each plan's pilot_summary.json.
+Seed coverage: work/harmonized-ppi-v1/phys/*.json.
+Exact executable locations: work/l1-tools.json.
+GitHub includes numeric summaries and sanitized logs, never imaging derivatives.
+
+After the pilots pass
+---------------------
+Review published design, smoothness, coverage and output summaries. The following
+launch requires verified pilot outputs for both datasets and tasks, with the same
+frozen inputs; it does not ask for approval notes:
+
+cd /ZPOOL/data/projects/istart-ds004920
+.venv/bin/python code/run_harmonized_l1.py launch --phase cohort --jobs 10
+
+It performs the same operations for all technically ready activation runs, then
+all six PPI models per ready run. Already verified outputs are skipped. Individual
+spatial/model failures remain visible, and other technically valid runs can
+complete. COPE, VARCOPE and ZSTAT are retained for all four activation contrasts
+and all five PPI contrasts. The statistical-map exporter remains a local,
+dry-run-first utility; PPI filenames include seed and connectivity-contrast names.
+
+Resume with the same phase launch command and unchanged scientific code, input
+files and package/tool versions. Do not remove locks or overwrite partial FEAT
+products. Unowned or partial outputs are preserved and reported for inspection.
+Telemetry code and status commits do not change scientific-plan identity. The
+optional high-motion diagnostic remains separate and does not delay L1.
+
+Validation before Linux2 launch
+-------------------------------
+Local tests use synthetic images and simulated AFNI/FSL commands. They check
+activation/PPI contrasts, seed extraction order, all six seed identities,
+source-event hash checks, unchanged BIDS/activation products, resume behavior,
+seed-aware export naming and detached-worker orchestration. Actual AFNI/FSL
+results, achieved smoothing and pilot fit quality must come from Linux2.

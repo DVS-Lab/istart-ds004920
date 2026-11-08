@@ -61,3 +61,20 @@ def test_real_git_status_push_preserves_main_and_is_fast_forward(tmp_path):
     assert sentinel.read_text() == "unchanged" and not (root / ".git").exists()
     with pytest.raises(ValueError, match="allowlist"):
         publisher.publish(root, {"license.txt": "never upload"}, remote=str(remote))
+
+
+def test_l1_watcher_publishes_final_snapshot_and_exits(tmp_path, monkeypatch):
+    state = tmp_path / "work/l1-runs/pilot/state.json"
+    write_json(state, {"status": "complete", "worker_script": "run_harmonized_l1.py"})
+    write_json(tmp_path / "work/github-status/state.json", {"batch": "l1-pilot", "target_branch": "main"})
+    monkeypatch.setattr(publisher, "ROOT", tmp_path)
+    monkeypatch.setattr(publisher.sys, "argv", ["publisher", "watch", "--root", str(tmp_path), "--batch", "l1-pilot", "--run-state", str(state)])
+    calls = []
+    monkeypatch.setattr(publisher, "collect", lambda root: {"status.json": "{}"})
+    def publish(root, payload):
+        calls.append((root, payload))
+        return "final-status-commit"
+    monkeypatch.setattr(publisher, "publish", publish)
+    assert publisher.main() == 0 and len(calls) == 1
+    saved = json.loads((tmp_path / "work/github-status/state.json").read_text())
+    assert saved["status"] == "finished" and saved["last_commit"] == "final-status-commit"

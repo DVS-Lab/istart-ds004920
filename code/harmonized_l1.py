@@ -26,6 +26,10 @@ def main():
     pp.add_argument("--execute", action="store_true", help="Default prints commands; explicit execution opt-in")
     prep = sub.add_parser("prepare")
     prep.add_argument("--plan", type=Path, required=True)
+    ppi = sub.add_parser("prepare-ppi")
+    ppi.add_argument("--activation-plan", type=Path, required=True)
+    ppi.add_argument("--plan", type=Path, required=True)
+    ppi.add_argument("--seeds", nargs="+")
     for name in ("spatial", "render", "run", "check"):
         sp = sub.add_parser(name)
         sp.add_argument("--plan", type=Path, required=True)
@@ -72,6 +76,9 @@ def main():
         elif a.action == "prepare":
             from harmonized.inputs import prepare
             prepare(c, a.config, a.plan)
+        elif a.action == "prepare-ppi":
+            from harmonized.ppi import prepare
+            prepare(a.activation_plan, a.plan, a.seeds)
         elif a.action in ("spatial", "render", "run", "check"):
             from harmonized.workflow import batch
             if not 1 <= a.jobs <= 32:

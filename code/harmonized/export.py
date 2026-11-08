@@ -10,18 +10,20 @@ from .inputs import load_plan
 from .workflow import complete
 
 NAMES = {1: "win", 2: "loss", 3: "decision", 4: "win-minus-loss"}
+PPI_NAMES = {1: "ppi-win", 2: "ppi-loss", 3: "ppi-decision", 4: "ppi-win-minus-loss", 5: "phys"}
 
 
 def export(private, destination, contrasts, kinds, units=None, execute=False):
     private, dest = Path(private).absolute(), Path(destination).absolute()
     plan = load_plan(private)
+    names = PPI_NAMES if plan.get("model") == "ppi" else NAMES
     allowed = Path(plan["config"]["istart_root"]) / "derivatives/release-candidates"
     if allowed.resolve() not in dest.resolve().parents:
         raise ValueError(f"Release destination must be a fresh child of ignored {allowed}")
     if dest.exists():
         raise ValueError("Release destination exists; preserved unchanged")
-    if not contrasts or not set(contrasts) <= set(NAMES) or not kinds or not set(kinds) <= {"cope", "varcope", "zstat"}:
-        raise ValueError("Select contrast numbers 1–4 and cope/varcope/zstat")
+    if not contrasts or not set(contrasts) <= set(names) or not kinds or not set(kinds) <= {"cope", "varcope", "zstat"}:
+        raise ValueError("Select existing model contrasts and cope/varcope/zstat")
     jobs = plan["jobs"]
     if units:
         if not set(units) <= {j["unit"] for j in jobs}:
@@ -35,9 +37,10 @@ def export(private, destination, contrasts, kinds, units=None, execute=False):
         for contrast in sorted(set(contrasts)):
             for kind in sorted(set(kinds)):
                 src = Path(job["output"]) / "stats" / f"{kind}{contrast}.nii.gz"
-                rel = Path(job["dataset"]) / (job["stem"] + f"_contrast-{NAMES[contrast]}_stat-{kind}.nii.gz")
+                seed = "_seed-" + job["seed"] if job.get("model") == "ppi" else ""
+                rel = Path(job["dataset"]) / (job["stem"] + seed + f"_contrast-{names[contrast]}_stat-{kind}.nii.gz")
                 records.append({"unit": job["unit"], "dataset": job["dataset"], "task": job["task"],
-                                "contrast_number": contrast, "contrast": NAMES[contrast], "statistic": kind,
+                                "contrast_number": contrast, "contrast": names[contrast], "statistic": kind,
                                 "source": str(src), "file": str(rel), "sha256": sha(src), "bytes": src.stat().st_size})
     print(json.dumps({"mode": "assemble_local_candidate" if execute else "dry_run", "maps": len(records),
                       "bytes": sum(r["bytes"] for r in records), "destination": str(dest), "records": records}, indent=2))

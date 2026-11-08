@@ -1,0 +1,116 @@
+{
+  "schema": 1,
+  "policy": "Use the pinned original encoding events only for these ten empty published event tables; preserve all original BIDS files. Nonempty published events always take precedence.",
+  "sources": [
+    {
+      "subject": "1011",
+      "task": "doors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1011/sub-1011_ses-1_task-socialReward_imageA_events.tsv",
+      "git_blob_sha": "30c071ac79c2eb69494014d1c5186952a76f96b2",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1011",
+      "task": "socialdoors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1011/sub-1011_ses-1_task-socialReward_faceA_events.tsv",
+      "git_blob_sha": "f2bef1141d63ae7cb55740911f1d3ac856fb531b",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1012",
+      "task": "doors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1012/sub-1012_ses-1_task-socialReward_imageA_events.tsv",
+      "git_blob_sha": "482016a24b3ae7f2f2c50ec20a558e7525e184d8",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1012",
+      "task": "socialdoors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1012/sub-1012_ses-1_task-socialReward_faceA_events.tsv",
+      "git_blob_sha": "4a02edb6c361861746078d766f905ae7e56f4faf",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1013",
+      "task": "doors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1013/sub-1013_ses-1_task-socialReward_imageA_events.tsv",
+      "git_blob_sha": "724c10abb04f7cd08ba1f11c6e42282412db5670",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1013",
+      "task": "socialdoors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1013/sub-1013_ses-1_task-socialReward_faceA_events.tsv",
+      "git_blob_sha": "277e9a34e10fdf981786e4ed06027c1b796cb8af",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1015",
+      "task": "doors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1015/sub-1015_ses-1_task-socialReward_imageA_events.tsv",
+      "git_blob_sha": "2fa68e35837e8398acdb7864a7fd1f9982969656",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1015",
+      "task": "socialdoors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1015/sub-1015_ses-1_task-socialReward_faceA_events.tsv",
+      "git_blob_sha": "a8e7820f68dfa0545bedc2506e729dac01b20775",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1016",
+      "task": "doors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1016/sub-1016_ses-1_task-socialReward_imageA_events.tsv",
+      "git_blob_sha": "e87875fc52bf6d2ec1cd4b8eb29220e8ee533f73",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    },
+    {
+      "subject": "1016",
+      "task": "socialdoors",
+      "repository": "DVS-Lab/istart",
+      "commit": "7a6cffe9f03e36ef91699f7d2a355ea155b6527c",
+      "path": "social_reward_c/data/1016/sub-1016_ses-1_task-socialReward_faceA_events.tsv",
+      "git_blob_sha": "ec1b20adec19f391bae2a890a5453c186ba4bf8c",
+      "canonical_git_blob_sha": "6ee950a79a07ad420fdc0c355ddcb225a84ff4c5",
+      "expected_decisions": 60,
+      "evidence": "Original encoding stream matched the older istart-data BIDS events in the encoding/recall source audit."
+    }
+  ]
+}

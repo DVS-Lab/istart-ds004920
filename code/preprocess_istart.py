@@ -45,6 +45,10 @@ def check_subject(c, subject):
     products = [report, receipt_path]
     results = []
     for task in pre.TASKS:
+        raw = list((root / f"bids/{subject}/func").glob(f"{subject}_task-{task}_*bold.nii.gz"))
+        if not raw:
+            results.append({"subject": subject, "task": task, "status": "raw_task_unavailable", "reason": "No source BOLD for this task; no preprocessing output can be required"})
+            continue
         folder = root / f"derivatives/fmriprep/{subject}/func"
         bold = unique(folder.glob(f"{subject}_task-{task}_*space-MNI152NLin6Asym*_desc-preproc_bold.nii.gz"), "MNI BOLD")
         img = image_info(bold, tr=1.75)
@@ -65,6 +69,8 @@ def check_subject(c, subject):
         products += [bold, mask, confounds]
         results.append({"subject": subject, "task": task, "nvol": img.shape[3], "tr": 1.75,
                         "bold": str(bold), "mask": str(mask), "confounds": str(confounds), "status": "structural_checks_passed"})
+    if not any(row["status"] == "structural_checks_passed" for row in results):
+        raise ValueError("No available task has a verified preprocessing output")
     return {"subject": subject, "checked": now(), "checks": results,
             "products": [stamp(p) for p in products], "visual_qc": "pending"}
 
@@ -290,7 +296,7 @@ def main():
                 for subject in subjects:
                     evidence = check_subject(c, subject)
                     write_json(batch / f"{subject}.check.json", evidence)
-                print(f"STRUCTURAL CHECK PASSED: {len(subjects)} subjects, both tasks; visual QC remains separate")
+                print(f"STRUCTURAL CHECK PASSED: {len(subjects)} subjects, available task inputs; unavailable tasks reported separately; visual QC remains separate")
             else:
                 print(json.dumps(dict(state, process_alive=alive(state)), indent=2))
                 if args.action == "wait" and state.get("status") != "complete":

@@ -23,6 +23,11 @@ TASKS = ("doors", "socialdoors")
 MOTION = ["trans_x", "trans_y", "trans_z", "rot_x", "rot_y", "rot_z"]
 BASE = [f"a_comp_cor_{i:02}" for i in range(6)] + MOTION + ["framewise_displacement"]
 CONTRASTS = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [1, -1, 0, 0]])
+PPI_CONTRASTS = np.array([[0, 0, 0, 0, 0, 1, 0, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 1, 0, 0],
+                          [0, 0, 0, 0, 0, 0, 0, 1, 0],
+                          [0, 0, 0, 0, 0, 1, -1, 0, 0],
+                          [0, 0, 0, 0, 1, 0, 0, 0, 0]])
 THREADS = {k: "1" for k in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS", "AFNI_OMP_NUM_THREADS", "FSLSUB_PARALLEL")}
 
 
@@ -149,9 +154,14 @@ def tools_snapshot(names):
 
 
 def code_stamps():
-    paths = [p for folder in ("code", "vendor", "templates", "config")
+    paths = [p for folder in ("vendor", "templates", "config")
              for p in (ROOT / folder).rglob("*") if p.is_file()
              and "__pycache__" not in p.parts and p.suffix in (".py", ".sh", ".fsf", ".json")]
+    # Freeze code that determines analysis results. Telemetry and read-only review
+    # utilities can evolve without invalidating an active scientific plan.
+    paths += [ROOT / "code" / name for name in ("harmonized_l1.py", "run_harmonized_l1.py")]
+    paths += [ROOT / "code/harmonized" / name for name in
+              ("common.py", "inputs.py", "workflow.py", "ppi.py", "event_sources.py", "environment.py")]
     return [stamp(p) for p in sorted(paths)]
 
 

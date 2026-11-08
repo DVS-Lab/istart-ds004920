@@ -12,7 +12,7 @@ import shutil
 import nibabel as nib
 import numpy as np
 
-from .common import (CONTRASTS, ROOT, VARIANT, command, grid, image_info, lock, now,
+from .common import (CONTRASTS, PPI_CONTRASTS, ROOT, VARIANT, command, grid, image_info, lock, now,
                      read_table, sha, stamp, table, verify, write_json)
 from .inputs import base_confounds, load_plan
 
@@ -44,7 +44,7 @@ def verify_job(job):
 def verified_spatial(job, plan):
     d, bold, mask = spatial_paths(job)
     rec = json.loads((d / "receipt.json").read_text())
-    if rec["unit"] != job["unit"] or rec["source_inputs"] != job["inputs"] or rec["method"] != "default-blurmaster-classic6-v1":
+    if rec["unit"] != job.get("activation_unit", job["unit"]) or rec["source_inputs"] != job["inputs"] or rec["method"] != "default-blurmaster-classic6-v1":
         raise ValueError("Spatial receipt does not match this run/method")
     verify(rec["products"])
     grid(bold, plan["config"]["reference"])
@@ -57,6 +57,8 @@ def verified_spatial(job, plan):
 
 def spatial(job, plan):
     verify_job(job)
+    if job.get("model") == "ppi":
+        return verified_spatial(job, plan)
     d, bold, mask = spatial_paths(job)
     if d.exists():
         return verified_spatial(job, plan)
@@ -97,7 +99,8 @@ def spatial(job, plan):
            "method": "default-blurmaster-classic6-v1", "target_mm": 6, "bmall": False,
            "before": before, "after": after, "geometry": geometry, "tools": plan["tools"],
            "status": "within_tolerance" if 5.4 <= after["classic_fwhm_combined"] <= 6.6 else "outside_tolerance",
-           "products": [stamp(p, full=True) for p in (bold, mask, d / "before.tsv", d / "after.tsv")]}
+           "products": [stamp(p, full=True) for p in (bold, mask, d / "before.tsv", d / "after.tsv")],
+           "seed_input": stamp(source, full=job["dataset"] == "istart")}
     write_json(d / "receipt.json", rec, exclusive=True)
     return verified_spatial(job, plan)
 
@@ -114,10 +117,12 @@ def matrix(path):
 
 def validate_design(mat, con, job):
     x, c = matrix(mat), matrix(con)
-    if x.shape[0] != job["nvol"] or c.shape != (4, x.shape[1]) or x.shape[1] < 4:
+    expected = PPI_CONTRASTS if job.get("model") == "ppi" else CONTRASTS
+    width = expected.shape[1]
+    if x.shape[0] != job["nvol"] or c.shape != (len(expected), x.shape[1]) or x.shape[1] < width:
         raise ValueError("Unexpected design/contrast dimensions")
-    if not np.allclose(c[:, :4], CONTRASTS, rtol=0, atol=1e-8) or np.any(c[:, 4:] != 0):
-        raise ValueError("Contrasts are not Win, Loss, Decision, Win − Loss in that order")
+    if not np.allclose(c[:, :width], expected, rtol=0, atol=1e-8) or np.any(c[:, width:] != 0):
+        raise ValueError("Contrasts differ from the authoritative activation/PPI model and ordering")
     # Optional absent miss EV and constant confounds may be rank deficient.
     # Scientific contrasts must nevertheless be estimable with residual degrees of freedom.
     rank = np.linalg.matrix_rank(np.column_stack((np.ones(len(x)), x)))
@@ -141,20 +146,31 @@ def validate_fsf(path, job):
                  "fmri(outputdir)": job["output"]}.items():
         if fields.get(k, "").strip('"') != v:
             raise ValueError(f"Unexpected FSF linkage {k}")
+    if job.get("model") == "ppi":
+        if fields.get("fmri(custom5)", "").strip('"') != job["phys"]:
+            raise ValueError("PPI physiological EV does not match its extracted seed series")
+        if fields.get("fmri(evs_orig)") != "9" or fields.get("fmri(ncon_orig)") != "5":
+            raise ValueError("Unexpected seed PPI model dimensions")
 
 
 def render(job, plan, private):
     verify_job(job)
     verified_spatial(job, plan)
+    if job.get("model") == "ppi":
+        from .ppi import seed_series
+        seed_series(job, plan)
     d = Path(private) / "designs" / job["unit"]
     d.mkdir(parents=True, exist_ok=True)
     fsf = d / "design.fsf"
-    text = (ROOT / f"templates/L1_task-{job['task']}_model-1_type-act.fsf").read_text()
+    model = "ppi" if job.get("model") == "ppi" else "act"
+    text = (ROOT / f"templates/L1_task-{job['task']}_model-1_type-{model}.fsf").read_text()
     # Tcl quotes must not permit variable or command substitution in paths.
     replacements = {"OUTPUT": job["output"], "DATA": str(spatial_paths(job)[1]),
                     "CONFOUNDEVS": job["confounds"], "NVOLUMES": str(job["nvol"]),
                     "TR_SECONDS": str(job["tr"]), "SHAPE_MISSED_TRIAL": "3" if job["missed"] else "10",
                     "FSL_STANDARD": str(Path(os.environ["FSLDIR"]) / "data/standard/MNI152_T1_2mm_brain")}
+    if job.get("model") == "ppi":
+        replacements["PHYS"] = job["phys"]
     for value in replacements.values():
         if any(c in value for c in '\\"$[]\n\r'):
             raise ValueError("Unsafe Tcl path characters")
@@ -162,11 +178,12 @@ def render(job, plan, private):
         text = text.replace("EVDIR_" + name + ".txt", job["evs"][name])
     for name, value in replacements.items():
         text = text.replace(name, value)
-    if re.search(r"EVDIR|NVOLUMES|TR_SECONDS|CONFOUNDEVS|SHAPE_MISSED_TRIAL|FSL_STANDARD", text):
+    if re.search(r"EVDIR|NVOLUMES|TR_SECONDS|CONFOUNDEVS|SHAPE_MISSED_TRIAL|FSL_STANDARD|PHYS", text):
         raise ValueError("Unresolved template token")
     if fsf.exists() and fsf.read_text() != text:
         raise ValueError("Rendered FSF changed; preserved")
-    fsf.write_text(text)
+    if not fsf.exists():
+        fsf.write_text(text)
     validate_fsf(fsf, job)
     command(["feat_model", fsf.with_suffix(""), job["confounds"]], d / "feat_model.log")
     result = validate_design(fsf.with_suffix(".mat"), fsf.with_suffix(".con"), job)
@@ -182,7 +199,7 @@ def output_products(job, plan):
     products = [output / x for x in ("design.fsf", "design.mat", "design.con", "mask.nii.gz", "mean_func.nii.gz")]
     image_info(output / "mask.nii.gz", mask=True)
     for kind in ("cope", "varcope", "zstat"):
-        for i in range(1, 5):
+        for i in range(1, 6 if job.get("model") == "ppi" else 5):
             p = output / "stats" / f"{kind}{i}.nii.gz"
             img = nib.load(p)
             if len(img.shape) != 3:
@@ -203,6 +220,9 @@ def output_products(job, plan):
 def complete(job, plan, plan_hash):
     verify_job(job)
     verified_spatial(job, plan)
+    if job.get("model") == "ppi":
+        from .ppi import verify_series
+        verify_series(job, plan)
     rec = json.loads((Path(job["output"]) / "harmonized_success.json").read_text())
     if rec["plan_sha256"] != plan_hash or rec["unit"] != job["unit"]:
         raise ValueError("Existing FEAT output belongs to another plan")
@@ -223,6 +243,9 @@ def run_l1(job, plan, private, plan_hash):
            "products": [stamp(p, full=True) for p in products],
            "provenance": job["inputs"] + job["prepared"] + [stamp(fsf), stamp(Path(job["spatial"]) / "receipt.json")],
            "versions": plan["tools"], "visual_qc": "pending", "scientific_inclusion": "not_assigned"}
+    if job.get("model") == "ppi":
+        rec["provenance"] += [stamp(job["phys"]), stamp(Path(job["phys"]).with_suffix(".json"))]
+        rec.update(model="ppi", seed=job["seed"], seed_priority=job["seed_priority"])
     write_json(out / "harmonized_success.json", rec, exclusive=True)
     return complete(job, plan, plan_hash)
 
@@ -235,11 +258,16 @@ def selected(plan, stage):
 
 def pilot_gate(private, plan):
     path = Path(private) / "pilot_review.json"
-    review = json.loads(path.read_text())
-    if review["plan_sha256"] != sha(Path(private) / "plan.json") or not review["reviewer"] or not review["notes"]:
-        raise ValueError("Explicit completed-pilot review required before cohort execution")
+    plan_hash = sha(Path(private) / "plan.json")
+    expected = 4 * len(plan["seeds"]) if plan.get("model") == "ppi" else 4
+    if len(plan["pilot"]) != expected:
+        raise ValueError("Both datasets and both tasks require verified pilot models")
+    if path.exists():
+        review = json.loads(path.read_text())
+        if review["plan_sha256"] != plan_hash or not review["reviewer"] or not review["notes"]:
+            raise ValueError("Existing pilot-review record differs from this plan")
     for job in selected(plan, "pilot"):
-        complete(job, plan, review["plan_sha256"])
+        complete(job, plan, plan_hash)
 
 
 def batch(private, operation, stage="pilot", workers=1):
@@ -310,7 +338,8 @@ def batch(private, operation, stage="pilot", workers=1):
 def accept_pilot(private, reviewer, notes):
     plan = load_plan(private)
     plan_hash = sha(Path(private) / "plan.json")
-    if len(plan["pilot"]) != 4 or not reviewer.strip() or not notes.strip():
+    expected = 4 * len(plan["seeds"]) if plan.get("model") == "ppi" else 4
+    if len(plan["pilot"]) != expected or not reviewer.strip() or not notes.strip():
         raise ValueError("Both dataset/task combinations and explicit reviewer/notes required")
     for job in selected(plan, "pilot"):
         complete(job, plan, plan_hash)

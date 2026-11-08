@@ -9,7 +9,7 @@ import pandas as pd
 import pytest
 
 from harmonized import common, inputs, workflow
-from harmonized.common import BASE, CONTRASTS, VARIANT, read_table, stamp, write_json
+from harmonized.common import BASE, CONTRASTS, PPI_CONTRASTS, VARIANT, read_table, stamp, write_json
 from harmonized.export import export
 from test_scientific_contracts import confound_file, write_matrix
 
@@ -76,9 +76,16 @@ def simulated_commands(monkeypatch):
         elif argv[0] == "feat_model":
             root = Path(argv[1])
             nuisance = np.loadtxt(argv[2], ndmin=2)
-            x = np.column_stack((np.random.default_rng(33).normal(size=(len(nuisance), 3)), np.zeros(len(nuisance)), nuisance))
+            fields = workflow.fsf_values(root.with_suffix(".fsf").read_text())
+            ppi = fields["fmri(evs_orig)"] == "9"
+            expected = PPI_CONTRASTS if ppi else CONTRASTS
+            science = np.random.default_rng(33).normal(size=(len(nuisance), expected.shape[1]))
+            science[:, 3] = 0
+            if ppi:
+                science[:, 8] = 0
+            x = np.column_stack((science, nuisance))
             write_matrix(root.with_suffix(".mat"), x)
-            write_matrix(root.with_suffix(".con"), np.column_stack((CONTRASTS, np.zeros((4, nuisance.shape[1])))))
+            write_matrix(root.with_suffix(".con"), np.column_stack((expected, np.zeros((len(expected), nuisance.shape[1])))))
         elif argv[0] == "feat":
             fsf = Path(argv[1])
             vals = workflow.fsf_values(fsf.read_text())
@@ -91,9 +98,13 @@ def simulated_commands(monkeypatch):
                 nib.save(nib.Nifti1Image(np.ones(img.shape[:3], dtype=np.uint8), img.affine), out / name)
             (out / "stats").mkdir()
             for kind in ("cope", "varcope", "zstat"):
-                for i in range(1, 5):
+                for i in range(1, int(vals["fmri(ncon_real)"]) + 1):
                     nib.save(nib.Nifti1Image(np.ones(img.shape[:3]), img.affine), out / "stats" / f"{kind}{i}.nii.gz")
             (out / "stats/dof").write_text("60\n")
+        elif argv[0] == "fslmeants":
+            bold = nib.load(argv[argv.index("-i") + 1]).get_fdata()
+            mask = nib.load(argv[argv.index("-m") + 1]).get_fdata() > 0
+            np.savetxt(argv[argv.index("-o") + 1], bold[mask].mean(axis=0))
         else:
             raise AssertionError(argv)
     monkeypatch.setattr(workflow, "command", fake)

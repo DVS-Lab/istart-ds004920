@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import numpy as np
@@ -29,6 +30,7 @@ def events(source, duration):
         raise ValueError("Events require onset, duration, trial_type")
     result = {k: [] for k in ("win", "loss", "decision", "decision-missed")}
     ignored = set()
+    previous_decision = None
     for row in rows:
         onset, length = float(row["onset"]), float(row["duration"])
         if not np.isfinite([onset, length]).all() or length < 0:
@@ -36,6 +38,10 @@ def events(source, duration):
         if onset >= duration or onset + length > duration + 1e-3:
             raise ValueError("Event extends beyond the BOLD acquisition")
         label = row["trial_type"]
+        if label in ("decision", "decision-missed"):
+            if previous_decision is not None and onset <= previous_decision:
+                raise ValueError("Decision clock reset or duplicate onset: ambiguous encoding attempts")
+            previous_decision = onset
         if label in result:
             result[label].append([onset, length, 1.0])
         else:
@@ -114,19 +120,28 @@ def inventory(c, maps, excluded):
                             event = bids / relative / (stem + "_events.tsv")
                             if not event.is_file():
                                 raise ValueError(f"Events missing: {event}")
+                            source_metadata = {"events_source": "published_BIDS"}
+                            if dataset == "istart":
+                                from .event_sources import resolve
+                                event, source_metadata = resolve(c, sub, task, event)
                             row.update(bold=str(bold), mask=str(mask), source_confounds=str(conf), events=str(event), stem=stem,
-                                       tr=1.75 if dataset == "istart" else 1.615)
+                                       tr=1.75 if dataset == "istart" else 1.615, **source_metadata)
                         except (ValueError, OSError) as exc:
                             row.update(status="missing_or_invalid", reason=str(exc))
                     rows.append(row)
     return rows
 
 
-def prepare(c, config_path, plan_dir):
+def prepare(c, config_path, plan_dir, workers=1):
+    if not 1 <= workers <= 32:
+        raise ValueError("Use 1–32 preparation workers")
     private = Path(plan_dir).absolute()
     if private.exists():
         raise ValueError("Plan directory already exists; resume it or choose a new variant plan")
     maps, excluded, policies = policy(c)
+    event_policy = Path(c["istart_root"]) / "config/istart_event_sources.json"
+    if event_policy.is_file():
+        policies.append(stamp(event_policy))
     rows = inventory(c, maps, excluded)
     reference = Path(c["reference"])
     if not reference.is_file():
@@ -146,10 +161,9 @@ def prepare(c, config_path, plan_dir):
         raise ValueError("iSTART staged source snapshot differs")
     policies.append(stamp(stage))
     private.mkdir(parents=True, mode=0o700)
-    jobs = []
-    for row in rows:
+    def build(row):
         if row["status"] != "candidate":
-            continue
+            return None
         try:
             bold = image_info(row["bold"], tr=row["tr"])
             image_info(row["mask"], mask=True)
@@ -175,10 +189,15 @@ def prepare(c, config_path, plan_dir):
                        nvol=int(bold.shape[3]), spatial_voxels=int(np.prod(bold.shape[:3])),
                        inputs=[stamp(row[k]) for k in ("bold", "mask", "source_confounds", "events")],
                        prepared=[stamp(p) for p in [confounds, *map(Path, ev_paths.values())]])
-            jobs.append(job)
+            if row.get("published_events_stamp"):
+                job["prepared"] += [row["published_events_stamp"], row["event_source_policy_stamp"]]
             row.update(status="ready", reason="", nuisance_columns=len(columns), nvol=bold.shape[3], ignored_trial_types=",".join(ignored))
+            return job
         except (ValueError, OSError, KeyError) as exc:
             row.update(status="missing_or_invalid", reason=str(exc))
+            return None
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        jobs = [job for job in pool.map(build, rows) if job is not None]
     table(private / "run_review.tsv", rows)
     pilots = []
     for dataset in ("istart", "rf1"):

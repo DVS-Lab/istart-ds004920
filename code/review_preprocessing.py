@@ -118,6 +118,9 @@ def review(c):
               "failed_subjects": sorted({row["subject"] for row in records if any(r["status"] == "failed" for r in row["batch_results"])}),
               "environment": environment, "subjects": records, "images_modified": False, "source_events_modified": False,
               "scientific_inclusion_assigned": False, "review_scope": "header, confound and event metadata; previous structural receipts remain distinct from visual QC"}
+    report["mni_bold_files"] = sum("space-MNI152NLin6Asym" in bold["filename"] for subject in records for task in subject["tasks"] for bold in task["derivative_bold"])
+    report["ready_raw_tasks_without_mni_bold"] = [{"subject": subject["subject"], "task": task["task"]} for subject in records for task in subject["tasks"]
+        if task["raw_inventory"] and task["raw_inventory"]["status"] == "ready" and not any("space-MNI152NLin6Asym" in bold["filename"] for bold in task["derivative_bold"])]
     write_json(root / "work/postpreproc-review.json", report)
     print(json.dumps({key: value for key, value in report.items() if key != "subjects"}, indent=2))
     return report

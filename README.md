@@ -4,7 +4,9 @@
 
 **Start preprocessing tonight:** follow [docs/TONIGHT.md](docs/TONIGHT.md). It contains one complete Linux2 Bash block: download sub-1002, validate the pinned fMRIPrep command, launch its detached pilot, inspect/check it, then launch the remaining cohort with two subjects at a time. Preprocessing has its own minimal Python environment and does not depend on downstream L1 work.
 
-This repository implements a separate first-level activation variant for iSTART (OpenNeuro ds004920 1.1.1) and RF1. See [docs/LINUX2_COMMANDS.md](docs/LINUX2_COMMANDS.md) for the complete execution sequence. Local tests use synthetic images and simulated AFNI/FSL commands; real preprocessing, FEAT design validation, pilot inspection and cohort results must be produced on Linux2.
+For the current activation and seed-PPI pilot, run `bash code/start_l1.sh` after pulling; see [docs/L1_NEXT.txt](docs/L1_NEXT.txt). It locates existing AFNI/FSL installations, runs detached and publishes diagnostics directly to main.
+
+This repository implements a separate first-level activation and seed-PPI variant for iSTART (OpenNeuro ds004920 1.1.1) and RF1. See [docs/LINUX2_COMMANDS.md](docs/LINUX2_COMMANDS.md) for the complete execution sequence. Local tests use synthetic images and simulated AFNI/FSL commands; real preprocessing, FEAT design validation, pilot inspection and cohort results must be produced on Linux2.
 
 The OpenNeuro snapshot is pinned to commit `2913a29de224f5364629cc39ac26045c06817b4f`. iSTART preprocessing uses the existing `/ZPOOL/data/tools/fmriprep-25.2.5.simg`, single echo, existing GRE fieldmaps and no FreeSurfer reconstruction or CIFTI. RF1 preprocessing is reused. Original source and preprocessing images remain intact.
 
@@ -14,7 +16,7 @@ Task model 1 preserves Win, Loss, Decision and optional missed-decision EVs and 
 
 RF1 products live under `rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/`; iSTART products use the same variant directory inside this repository. Spatial products use `derivatives/harmonized-fwhm6-baseonly-v1/`. Existing TEDANA confounds and FEAT results are never rewritten. `code/install_rf1_variant.py` installs a code-only copy into a new RF1 downstream subtree; its default is a dry run.
 
-The workflow freezes input identity, policy files, scripts, templates, package versions and executable hashes. Original large BOLD inputs use path/size/mtime stamps; derived spatial products and all retained maps use full SHA256. Four pilot runs must pass structural checks and receive a recorded human technical review before cohort execution. Output presence alone never implies success. Partial, unowned or changed products fail without overwriting. A technically ready manifest is not a scientific inclusion decision. Source exclusions, task holds and explicit dispositions are preserved; QC flags are reported without becoming new automatic exclusions.
+The workflow freezes input identity, policy files, scripts, templates, package versions and executable hashes. Original large BOLD inputs use path/size/mtime stamps; derived spatial products and all retained maps use full SHA256. Four activation pilot runs and the corresponding seed-PPI models must pass design and output checks before cohort execution. Optional visual-review notes remain separate; there is no interactive approval prompt. Output presence alone never implies success. Partial, unowned or changed products fail without overwriting. A technically ready manifest is not a scientific inclusion decision. Source exclusions, task holds and explicit dispositions are preserved; QC flags are reported without becoming new automatic exclusions.
 
 COPE, VARCOPE and ZSTAT images for all four contrasts are retained. The exporter defaults to a read-only dry run and can assemble a checksummed local release candidate in an ignored derivatives directory. It never publishes imaging derivatives. L2/L3 are out of scope.
 

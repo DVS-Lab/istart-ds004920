@@ -47,6 +47,28 @@
         "TR placeholder",
         "FSL standard path placeholder"
       ]
+    },
+    {
+      "repository": "DVS-Lab/rf1-sra-socdoors",
+      "commit": "b5520ee5e7d0659b80c2d4bb31334caaaa9cddbc",
+      "path": "templates/L1_task-doors_model-1_type-ppi.fsf",
+      "blob": "2649838faff39aff69f11d674481fbf323f52917",
+      "changes": [
+        "FEAT smoothing 0",
+        "TR placeholder",
+        "FSL standard path placeholder; all task, physiological, interaction EVs and five contrasts preserved"
+      ]
+    },
+    {
+      "repository": "DVS-Lab/rf1-sra-socdoors",
+      "commit": "b5520ee5e7d0659b80c2d4bb31334caaaa9cddbc",
+      "path": "templates/L1_task-socialdoors_model-1_type-ppi.fsf",
+      "blob": "2649838faff39aff69f11d674481fbf323f52917",
+      "changes": [
+        "FEAT smoothing 0",
+        "TR placeholder",
+        "FSL standard path placeholder; all task, physiological, interaction EVs and five contrasts preserved"
+      ]
     }
   ],
   "motion_fix": {

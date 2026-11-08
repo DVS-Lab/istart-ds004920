@@ -80,7 +80,17 @@ def collect(root):
     review = read_json(root / "work/postpreproc-review.json")
     if review is not None:
         report["preprocessing_review"] = review
+    l1_tools = read_json(root / "work/l1-tools.json")
+    if l1_tools is not None:
+        report["l1_tools"] = l1_tools
+    report["l1_runs"] = []
+    for path in sorted((root / "work/l1-runs").glob("*/state.json")):
+        state = read_json(path, {})
+        record = {key: state[key] for key in ("pid", "phase", "status", "launched", "finished", "operation", "jobs", "error", "log", "operations") if key in state}
+        record["process_alive"] = alive(state, "run_harmonized_l1.py")
+        report["l1_runs"].append(record)
     failed_subjects = set()
+    l1_failed_logs = []
     for path in sorted((root / "work/preprocessing-runs").glob("*/state.json")):
         state = read_json(path, {})
         row = {k: state[k] for k in ("name", "pid", "launched", "finished", "status", "subjects", "failed", "log", "launch_command", "resource_request") if k in state}
@@ -107,15 +117,42 @@ def collect(root):
                    "pilot_runs": plan.get("pilot", []), "pilot_review_recorded": (planfile.parent / "pilot_review.json").is_file(), "stages": []}
             for validation in sorted(planfile.parent.glob("*_validation.json")):
                 data = read_json(validation, {})
-                row["stages"].append({"file": validation.name, **{k: data[k] for k in ("time", "selected", "verified", "all_selected_verified", "visual_qc") if k in data}})
+                stage = {"file": validation.name, **{k: data[k] for k in ("time", "selected", "verified", "all_selected_verified", "visual_qc") if k in data}}
+                result_file = validation.with_name(validation.name.removesuffix("_validation.json") + ".tsv")
+                if result_file.is_file():
+                    with result_file.open() as stream:
+                        issues = [dict(r) for r in csv.DictReader(stream, delimiter="\t") if r.get("status") != "verified"]
+                    stage.update(issues=issues[:100], issues_truncated=len(issues) > 100)
+                    for issue in issues[:8]:
+                        unit = issue.get("unit", "")
+                        if unit and Path(unit).name == unit:
+                            l1_failed_logs += [planfile.parent / "logs" / (unit + ".log"), planfile.parent / "designs" / unit / "feat_model.log"]
+                row["stages"].append(stage)
+            pilot = read_json(planfile.parent / "pilot_summary.json")
+            if pilot is not None:
+                row["pilot_summary"] = pilot
+            review_file = planfile.parent / "run_review.tsv"
+            if review_file.is_file():
+                with review_file.open() as stream:
+                    review_rows = list(csv.DictReader(stream, delimiter="\t"))
+                counts = {}
+                unavailable = []
+                for record in review_rows:
+                    status = record.get("status", "prepared")
+                    counts[status] = counts.get(status, 0) + 1
+                    if status not in ("ready", "candidate", "prepared"):
+                        unavailable.append({key: record.get(key) for key in ("unit", "dataset", "subject", "session", "task", "status", "reason")})
+                row.update(readiness_counts=counts, unavailable_runs=unavailable[:200], unavailable_runs_truncated=len(unavailable) > 200)
             report["l1_plans"].append(row)
     tails = []
     logs = set((root / "logs").glob("preprocessing-*.log"))
     logs.update((root / "logs/fmriprep").glob("sub-*.log"))
     logs.update((root / "work/preprocessing-runs").glob("*/sub-*.launcher.log"))
+    logs.update((root / "logs").glob("harmonized-l1-*.log"))
     recent = sorted(logs, key=lambda p: p.stat().st_mtime, reverse=True)[:16]
     failed_logs = [p for p in logs if any(p.name in (f"{subject}.log", f"{subject}.launcher.log") for subject in failed_subjects)]
-    for log in list(dict.fromkeys([*failed_logs, *recent])):
+    l1_failed_logs = [path for path in l1_failed_logs if path.is_file() and not path.is_symlink()]
+    for log in list(dict.fromkeys([*l1_failed_logs[:8], *failed_logs, *recent])):
         # Do not follow links outside the explicit log locations.
         if log.is_symlink() or not log.is_file():
             continue
@@ -191,8 +228,15 @@ def main():
     parser.add_argument("--batch", default="cohort-expanded")
     parser.add_argument("--interval", type=int, default=300)
     parser.add_argument("--root", type=Path, default=ROOT, help="Production checkout when running an isolated publisher copy")
+    parser.add_argument("--run-state", type=Path, help="L1 worker state under the production work directory")
     args = parser.parse_args()
     ROOT = args.root.resolve()
+    watched_state = args.run_state.resolve() if args.run_state else ROOT / "work/preprocessing-runs" / args.batch / "state.json"
+    if args.run_state:
+        try:
+            watched_state.relative_to(ROOT / "work")
+        except ValueError:
+            parser.error("Run state must be under the production work directory")
     if not re.fullmatch(r"[A-Za-z0-9_-]+", args.batch) or args.interval < 30:
         parser.error("Use a valid batch name and interval of at least 30 seconds")
     statefile = ROOT / "work/github-status/state.json"
@@ -215,15 +259,17 @@ def main():
                         raise ValueError("A publisher is watching a different batch; let it finish")
                     print(json.dumps(state, indent=2))
                     return 0
-                if not (ROOT / "work/preprocessing-runs" / args.batch / "state.json").is_file():
-                    raise ValueError("Launch the named preprocessing batch before starting its publisher")
+                if not watched_state.is_file():
+                    raise ValueError("Launch the named processing worker before starting its publisher")
                 log = ROOT / "logs/github-status-publisher.log"
                 log.parent.mkdir(parents=True, exist_ok=True)
                 argv = [sys.executable, str(Path(__file__).resolve()), "watch", "--batch", args.batch, "--interval", str(args.interval), "--root", str(ROOT)]
+                if args.run_state:
+                    argv += ["--run-state", str(watched_state)]
                 with log.open("a") as output, open(os.devnull) as null:
                     child = subprocess.Popen(argv, stdin=null, stdout=output, stderr=subprocess.STDOUT, start_new_session=True,
                                              env=dict(os.environ, PYTHONUNBUFFERED="1"))
-                state = {"pid": child.pid, "batch": args.batch, "status": "started", "started": now(), "log": str(log), "launch_command": argv, "target_branch": "main"}
+                state = {"pid": child.pid, "batch": args.batch, "status": "started", "started": now(), "log": str(log), "launch_command": argv, "target_branch": "main", "watched_state": str(watched_state)}
                 save_state(ROOT, state)
                 print(json.dumps(state, indent=2))
         else:
@@ -241,8 +287,9 @@ def main():
                     failures += 1
                     state.update(last_error=clean(str(exc)), consecutive_publish_failures=failures)
                     print(f"{now()} Publish failed: {clean(exc)}", flush=True)
-                batch = read_json(ROOT / "work/preprocessing-runs" / args.batch / "state.json", {})
-                finished = batch.get("status") in ("complete", "finished_with_failures") or not alive(batch, "preprocess_istart.py")
+                batch = read_json(watched_state, {})
+                worker_script = "run_harmonized_l1.py" if args.run_state else "preprocess_istart.py"
+                finished = batch.get("status") in ("complete", "finished_with_failures", "failed") or not alive(batch, worker_script)
                 state.update(status="finished" if finished and not failures else "publish_failed" if failures else "watching", checked=now())
                 save_state(ROOT, state)
                 if finished and not failures:
