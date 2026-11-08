@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-08T15:23:18.348426+00:00",
+  "collected_utc": "2026-11-08T15:28:20.062842+00:00",
   "code_commit": "82a07895d5544854bd2a73ebec6d5195c82cd9be",
   "cpus": 128,
   "load_average": [
-    12.27880859375,
-    11.02099609375,
-    14.08935546875
+    17.15380859375,
+    13.72119140625,
+    14.3193359375
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 95006.8,
+    "MemAvailable_mb": 88075.9,
     "SwapTotal_mb": 139264.0,
-    "SwapFree_mb": 135841.6
+    "SwapFree_mb": 135841.7
   },
   "filesystem_bytes": {
-    "total": 58154899734528,
-    "free": 15092378632192
+    "total": 58154899996672,
+    "free": 15092184645632
   },
   "preprocessing_batches": [
     {
@@ -17089,12 +17089,14 @@
     {
       "pid": 615546,
       "status": "started",
-      "operation": "qc",
+      "operation": "copying_cope_maps",
       "launched": "2026-11-08T15:18:17.508040+00:00",
       "log": "/ZPOOL/data/projects/istart-ds004920/logs/chloe-handoff.log",
       "destination": "/ZPOOL/data/projects/istart-ds004920/derivatives/release-candidates/chloe-harmonized-l1-v1",
+      "maps_total": 23548,
+      "maps_completed": 200,
       "qc_total": 841,
-      "qc_completed": 410,
+      "qc_completed": 841,
       "process_alive": true
     }
   ],
@@ -17102,12 +17104,12 @@
     {
       "pid": 615412,
       "status": "started",
-      "operation": "pilot:sub-1002_doors",
+      "operation": "cohort",
       "launched": "2026-11-08T15:18:17.180723+00:00",
       "log": "/ZPOOL/data/projects/istart-ds004920/logs/istart-mriqc.log",
       "subjects_parallel": 8,
       "runs_total": 117,
-      "runs_completed": 0,
+      "runs_completed": 1,
       "process_alive": true
     }
   ],

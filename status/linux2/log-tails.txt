@@ -113,12 +113,26 @@ You are using MRIQC v24.1.0.dev0+gd5b13cb5.d20240826, and a newer version is ava
 2026-11-08 10:19:14 | IMPORTANT | mriqc            | File size ('bold'): 0.14|0.14 GB [maximum|average].
 2026-11-08 10:19:26 | IMPORTANT | mriqc            | Building MRIQC's workflows...
 2026-11-08 10:19:31 | IMPORTANT | mriqc            | Workflow building finished (exit code 0).
+2026-11-08 10:26:15 | INFO     | niworkflows      | Estimating initial transform using AffineInitializer
+2026-11-08 10:26:32 | INFO     | niworkflows      | Loading settings from file /opt/conda/lib/python3.11/site-packages/niworkflows/data/boldref-mni_registration_precise_000.json.
+2026-11-08 10:26:32 | INFO     | niworkflows      | Retry #1, commandline: 
+antsRegistration --collapse-output-transforms 1 --dimensionality 3 --float 0 --initial-moving-transform [ /work/mriqc_wf/funcMRIQC/SpatialNormalization/64c8bbce87c8e9402deead989d680b211abb3e03/EPI2MNI/transform.mat, 0 ] --initialize-transforms-per-stage 0 --interpolation LanczosWindowedSinc --output [ epi_to_mni, epi_to_mni_Warped.nii.gz ] --transform Rigid[ 0.05 ] --metric Mattes[ /opt/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz, /work/mriqc_wf/funcMRIQC/SpatialNormalization/64c8bbce87c8e9402deead989d680b211abb3e03/SharpenEPI/sub-1002_task-doors_run-1_desc-realigned_bold_tstat_corrected.nii.gz, 1, 56, Regular, 0.25 ] --convergence [ 10000x1000x100, 1e-06, 20 ] --smoothing-sigmas 4.0x2.0x1.0vox --shrink-factors 4x2x1 --use-histogram-matching 1 --masks [ /opt/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz, /work/mriqc_wf/funcMRIQC/synthstrip_wf/64c8bbce87c8e9402deead989d680b211abb3e03/synthstrip/clipped_corrected_desc-brain_mask.nii.gz ] --transform Affine[ 0.08 ] --metric Mattes[ /opt/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz, /work/mriqc_wf/funcMRIQC/SpatialNormalization/64c8bbce87c8e9402deead989d680b211abb3e03/SharpenEPI/sub-1002_task-doors_run-1_desc-realigned_bold_tstat_corrected.nii.gz, 1, 56, Regular, 0.25 ] --convergence [ 500x250x100, 1e-06, 20 ] --smoothing-sigmas 4.0x2.0x1.0vox --shrink-factors 8x4x2 --use-histogram-matching 1 --masks [ /opt/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz, /work/mriqc_wf/funcMRIQC/synthstrip_wf/64c8bbce87c8e9402deead989d680b211abb3e03/synthstrip/clipped_corrected_desc-brain_mask.nii.gz ] --transform SyN[ 0.1, 3.0, 0.0 ] --metric CC[ /opt/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz, /work/mriqc_wf/funcMRIQC/SpatialNormalization/64c8bbce87c8e9402deead989d680b211abb3e03/SharpenEPI/sub-1002_task-doors_run-1_desc-realigned_bold_tstat_corrected.nii.gz, 1, 4, None, 1 ] --convergence [ 100x30x20, 1e-06, 10 ] --smoothing-sigmas 3.0x2.0x1.0vox --shrink-factors 8x4x2 --use-histogram-matching 1 --masks [ /opt/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz, /work/mriqc_wf/funcMRIQC/synthstrip_wf/64c8bbce87c8e9402deead989d680b211abb3e03/synthstrip/clipped_corrected_desc-brain_mask.nii.gz ] --winsorize-image-intensities [ 0.005, 0.995 ]  --write-composite-transform 1
+2026-11-08 10:27:01 | INFO     | niworkflows      | Successful spatial normalization (retry #1).
+2026-11-08 10:27:01 | INFO     | niworkflows      | Report - setting fixed (/opt/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz) and moving (/work/mriqc_wf/funcMRIQC/SpatialNormalization/64c8bbce87c8e9402deead989d680b211abb3e03/EPI2MNI/epi_to_mni_Warped.nii.gz) images
+2026-11-08 10:27:01 | INFO     | niworkflows      | Generating visual report
+2026-11-08 10:27:35 | IMPORTANT | mriqc            | Participant level finished successfully averaging 00h 08min 35s per subject.
+----------------------------------------------------------------
+  MRIQC completed (elapsed time 00h 08min 35s).
+----------------------------------------------------------------
+
+
+--- logs/chloe-handoff.log ---
+ERROR: [Errno 11] Resource temporarily unavailable
+2026-11-08T15:23:21.182783+00:00 Published 655417ede28eb97cdffdb17fb87d1e196b8bf7e4 to main:status/linux2/
 
 --- logs/istart-mriqc.log ---
 2026-11-08T15:18:19.504398+00:00 Published 3e14da9f6614cd4949b4f5dbc2d85ad10fef0104 to main:status/linux2/
 MRIQC version: MRIQC v24.1.0.dev0+gd5b13cb5.d20240826
-
---- logs/chloe-handoff.log ---
 ERROR: [Errno 11] Resource temporarily unavailable
 
 --- logs/harmonized-l1-sub10657-review.log ---
