@@ -21,10 +21,6 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
  Contrasts involving these combinations will be set to zero.
 
 
---- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
-{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
-{"ready": 115, "missing_or_invalid": 3}
-
 --- logs/fmriprep/sub-1240.log ---
 261107-11:16:56,227 nipype.workflow INFO:
 	 [Node] Setting-up "fmriprep_25_2_wf.sub_1240_wf.anat_fit_wf.anat_reports_wf.norm_msk" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1240/fmriprep_25_2_wf/sub_1240_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/norm_msk".
@@ -77,17 +73,22 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
 261107-11:17:12,497 nipype.workflow IMPORTANT:
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
---- logs/chloe-handoff.log ---
-ERROR: [Errno 11] Resource temporarily unavailable
-2026-11-08T15:23:21.182783+00:00 Published 655417ede28eb97cdffdb17fb87d1e196b8bf7e4 to main:status/linux2/
-ERROR: [Errno 11] Resource temporarily unavailable
-2026-11-08T15:32:19.717366+00:00 Published 42dc04944ff24647e726ffae463f7468abe9d49c to main:status/linux2/
+--- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
+{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+{"ready": 115, "missing_or_invalid": 3}
 
 --- logs/istart-mriqc.log ---
 2026-11-08T15:18:19.504398+00:00 Published 3e14da9f6614cd4949b4f5dbc2d85ad10fef0104 to main:status/linux2/
 MRIQC version: MRIQC v24.1.0.dev0+gd5b13cb5.d20240826
 ERROR: [Errno 11] Resource temporarily unavailable
 2026-11-08T15:28:22.162349+00:00 Published 1e513a5f67f475cd521a221ec0d42c1b81be49d8 to main:status/linux2/
+2026-11-08T15:33:24.620987+00:00 Published f631eb2b5046ddc6c445999d302a599d70d26b81 to main:status/linux2/
+
+--- logs/chloe-handoff.log ---
+ERROR: [Errno 11] Resource temporarily unavailable
+2026-11-08T15:23:21.182783+00:00 Published 655417ede28eb97cdffdb17fb87d1e196b8bf7e4 to main:status/linux2/
+ERROR: [Errno 11] Resource temporarily unavailable
+2026-11-08T15:32:19.717366+00:00 Published 42dc04944ff24647e726ffae463f7468abe9d49c to main:status/linux2/
 
 --- logs/mriqc/sub-1002_task-doors_run-1.log ---
 {"launched": "2026-11-08T15:18:59.064560+00:00", "argv": ["/usr/bin/singularity", "run", "--cleanenv", "--bind", "/ZPOOL/data/projects/istart-ds004920/bids:/data:ro", "--bind", "/ZPOOL/data/projects/istart-ds004920/derivatives/mriqc:/out", "--bind", "/ZPOOL/data/projects/istart-ds004920/work/mriqc/sub-1002_task-doors_run-1:/work", "--bind", "/ZPOOL/data/projects/istart-ds004920/work/templateflow:/opt/templateflow", "--env", "TEMPLATEFLOW_HOME=/opt/templateflow", "--env", "OPENBLAS_NUM_THREADS=1", "/ZPOOL/data/tools/mriqc-24.0.2.simg", "/data", "/out", "participant", "--participant-label", "1002", "--task-id", "doors", "-m", "bold", "--nprocs", "4", "--omp-nthreads", "2", "--no-sub", "--bids-database-dir", "/work/bids-db", "-w", "/work"]}
