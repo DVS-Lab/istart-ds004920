@@ -143,7 +143,19 @@ def collect(root):
         report["l1_tools"] = l1_tools
     delivery_environment = read_json(root / "work/delivery-environment.json")
     if delivery_environment is not None:
-        report["delivery_environment"] = delivery_environment
+        report["delivery_environment"] = dict(delivery_environment, mriqc={dataset: {key: value for key, value in row.items() if key != "files"} for dataset, row in delivery_environment.get("mriqc", {}).items()})
+    report["delivery_runs"] = []
+    for path in sorted((root / "work/delivery-runs").glob("*/state.json")):
+        state = read_json(path, {})
+        row = {key: state[key] for key in ("pid", "status", "operation", "launched", "finished", "log", "destination", "error", "maps_total", "maps_completed", "qc_total", "qc_completed", "counts") if key in state}
+        row["process_alive"] = alive(state, state.get("worker_script", "prepare_chloe_handoff.py"))
+        report["delivery_runs"].append(row)
+    report["mriqc_runs"] = []
+    for path in sorted((root / "work/mriqc-runs").glob("*/state.json")):
+        state = read_json(path, {})
+        row = {key: state[key] for key in ("pid", "status", "operation", "launched", "finished", "log", "error", "subjects_parallel", "runs_total", "runs_completed", "failed") if key in state}
+        row["process_alive"] = alive(state, state.get("worker_script", "run_istart_mriqc.py"))
+        report["mriqc_runs"].append(row)
     report["l1_runs"] = []
     for path in sorted((root / "work/l1-runs").glob("*/state.json")):
         state = read_json(path, {})
@@ -214,6 +226,13 @@ def collect(root):
     logs.update((root / "logs/fmriprep").glob("sub-*.log"))
     logs.update((root / "work/preprocessing-runs").glob("*/sub-*.launcher.log"))
     logs.update((root / "logs").glob("harmonized-l1-*.log"))
+    logs.update((root / "logs").glob("chloe-handoff.log"))
+    logs.update((root / "logs").glob("istart-mriqc.log"))
+    logs.update((root / "logs/mriqc").glob("sub-1002_task-doors_run-1.log"))
+    for resultfile in (root / "work/mriqc-runs").glob("*/results.json"):
+        for row in read_json(resultfile, []):
+            if row.get("status") == "failed" and re.fullmatch(r"sub-[A-Za-z0-9]+", row.get("subject", "")) and row.get("task") in ("doors", "socialdoors"):
+                logs.update((root / "logs/mriqc").glob(f"{row['subject']}_task-{row['task']}_run-1.log"))
     recent = sorted(logs, key=lambda p: p.stat().st_mtime, reverse=True)[:16]
     failed_logs = [p for p in logs if any(p.name in (f"{subject}.log", f"{subject}.launcher.log") for subject in failed_subjects)]
     l1_failed_logs = [path for path in l1_failed_logs if path.is_file() and not path.is_symlink()]

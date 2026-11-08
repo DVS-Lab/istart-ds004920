@@ -1,0 +1,135 @@
+Minimal Chloe handoff, staged on Linux2 only
+
+All 841 activation and 5046 PPI fits passed full cohort verification at
+2026-11-08 14:59 UTC, including the two reviewed RF1 sub-10657 smoothness
+exceptions. Original preprocessing, images and scientific dispositions
+are retained unchanged.
+
+Destination:
+/ZPOOL/data/projects/istart-ds004920/derivatives/release-candidates/chloe-harmonized-l1-v1
+
+Structure:
+chloe-harmonized-l1-v1/
+  istart/
+    dataset_description.json
+    participants.tsv
+    README
+    maps.tsv
+    run_quality.tsv
+    run_quality.json
+    run_availability.tsv
+    checksums.tsv
+    model-activation_contrast-win_stat-effect_statmap.json
+    sub-1002/
+      func/
+        sub-1002_task-doors_run-1_space-MNI152NLin6Asym_model-activation_contrast-win_stat-effect_statmap.nii.gz
+        sub-1002_task-doors_run-1_space-MNI152NLin6Asym_model-ppiMPFCLeft_contrast-win_stat-effect_statmap.nii.gz
+        sub-1002_task-doors_run-1_space-MNI152NLin6Asym_desc-brain_mask.nii.gz
+  rf1/
+    (the same study metadata tables)
+    sub-10657/
+      ses-01/
+        func/
+          sub-10657_ses-01_task-doors_run-1_space-MNI152NLin6Asym_model-activation_contrast-win_stat-effect_statmap.nii.gz
+  READY.json
+
+Map selection is deliberately limited: COPE effect estimates for Win,
+Loss, Decision and Win-minus-Loss, for activation and each of the six
+PPI seeds. Both tasks and existing RF1 sessions remain separate. Expected
+COPE counts: iSTART 2968; RF1 20580; total 23548. One brain mask per task
+run is included (841 total), along with small interpretive tables and
+inherited JSON metadata. The physiological main-effect PPI maps,
+VARCOPEs, ZSTATs, 4D BOLD images, raw anatomy, full FEAT directories and
+work files are not copied into the handoff. Candidate statistics remain
+available in the original Linux2 analysis folders.
+
+The directory hierarchy and source entities follow BIDS Derivatives.
+The model/contrast/stat/statmap naming convention is a statistical-model
+extension convention, not a claim that BEP041 is part of the released
+core BIDS schema. Relevant sources:
+https://bids-specification.readthedocs.io/en/stable/derivatives/common-data-types.html
+https://bids.neuroimaging.io/extensions/beps/bep_041.html
+
+QC interpretation:
+- fd_mean is the mean finite fMRIPrep framewise_displacement in mm. Missing
+  FD values (normally the first frame) are omitted rather than set to zero.
+- tsnr is the median of voxelwise temporal mean / population temporal SD
+  in each run brain mask, using unsmoothed preprocessed data on the common
+  reference grid. Non-steady-state frames are omitted. No detrending,
+  nuisance regression or extra smoothing is applied for this QC metric.
+- Original MRIQC fd_mean and tsnr are separate columns, labeled mriqc_*.
+  Missing or ambiguous MRIQC outputs are explicit; no substitute values
+  are represented as MRIQC results. Versions and source checksums are kept.
+- No new exclusions are made. Existing availability and source decisions
+  are preserved. QC covers the 841 exported task runs; missing/held runs
+  remain in run_availability.tsv.
+https://mriqc.readthedocs.io/en/latest/iqms/bold.html
+
+The packager is detached and resumable, waits for L1 workers, verifies the
+final cohort checks, copies bytes against success-receipt SHA256 hashes,
+and preserves mismatching existing files. READY.json is written only after
+copying, QC and checksums complete. MRIQC completeness is a separate flag.
+After new MRIQC results are inventoried, repeating launch refreshes the QC
+columns and checksums while reusing identical staged image files.
+
+Source images and processing outputs are never uploaded by this code.
+Only a bounded status summary is pushed to GitHub main. The user transfers
+the two study folders from Linux2 when ready.
+
+MRIQC execution:
+The inventory found no iSTART MRIQC outputs, while RF1 has existing MRIQC
+24.1.0.dev0+gd5b13cb5.d20240826 IQMs and an authoritative run_qc.tsv table
+whose mriqc_json field selects the original echo. The packager follows
+that exact RF1 selection; it does not choose or average echoes.
+
+run_istart_mriqc.py reuses the existing main Linux2 image:
+/ZPOOL/data/tools/mriqc-24.0.2.simg
+The separate hpctools copy failed its mount check and is not used. The
+main image's quick version probe timed out after 60 seconds, so the
+detached worker first allows up to 300 seconds with BLAS threads bounded,
+then validates its CLI. A failed probe stops MRIQC with a diagnostic;
+no existing container is overwritten or silently replaced.
+
+The command follows the original iSTART Singularity wrapper's raw BIDS,
+output, scratch and TemplateFlow bindings, with participant/task filters
+and functional-only MRIQC. It runs a sub-1002 Doors pilot, checks for
+finite FD and positive tSNR, then automatically processes other available
+Doors/Social Doors raw runs at eight participants in parallel, four
+processes and two OpenMP threads per participant. It uses --no-sub and
+per-task work/database folders. Existing valid IQMs are reused on resume.
+It does not require GRE fieldmaps or task events, so raw runs without
+usable L1 events or fieldmaps can still receive MRIQC. Missing raw BOLD
+runs are listed explicitly.
+
+MRIQC state: work/mriqc-runs/istart/state.json
+Controller log: logs/istart-mriqc.log
+Per-run logs: logs/mriqc/sub-1002_task-doors_run-1.log and corresponding runs.
+
+After MRIQC finishes, its worker inventories the IQMs and automatically
+relaunches the handoff builder to refresh QC tables and checksums. It
+waits for an active initial packaging job rather than starting a second
+writer. The final READY.json reports whether MRIQC covers all exported
+runs. Full MRIQC HTML, work folders and raw images are retained on Linux2,
+not copied into the minimal handoff.
+
+Launch both detached jobs on Linux2 (safe to repeat):
+
+set +e
+cd /ZPOOL/data/projects/istart-ds004920 &&
+git fetch origin main &&
+mkdir -p work/chloe-handoff-code &&
+git show FETCH_HEAD:code/inspect_delivery_environment.py > work/chloe-handoff-code/inspect_delivery_environment.py &&
+git show FETCH_HEAD:code/publish_processing_status.py > work/chloe-handoff-code/publish_processing_status.py &&
+git show FETCH_HEAD:code/prepare_chloe_handoff.py > work/chloe-handoff-code/prepare_chloe_handoff.py &&
+git show FETCH_HEAD:code/run_istart_mriqc.py > work/chloe-handoff-code/run_istart_mriqc.py &&
+.venv/bin/python work/chloe-handoff-code/run_istart_mriqc.py launch &&
+.venv/bin/python work/chloe-handoff-code/prepare_chloe_handoff.py launch
+
+Check:
+/ZPOOL/data/projects/istart-ds004920/.venv/bin/python /ZPOOL/data/projects/istart-ds004920/work/chloe-handoff-code/run_istart_mriqc.py status
+/ZPOOL/data/projects/istart-ds004920/.venv/bin/python /ZPOOL/data/projects/istart-ds004920/work/chloe-handoff-code/prepare_chloe_handoff.py status
+
+Resume a failed task by repeating the launch block. A valid staged map is
+checksum-verified and reused; source files and mismatching staged files
+are preserved. No imaging derivative or subject QC table is pushed to
+GitHub; only bounded processing status and sanitized explicit logs are.

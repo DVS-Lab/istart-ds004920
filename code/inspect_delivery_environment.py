@@ -10,10 +10,10 @@ import subprocess
 ROOT = Path('/ZPOOL/data/projects/istart-ds004920')
 
 
-def inspect():
+def inspect(probe_containers=True):
     config = json.loads((ROOT / 'config/linux2.json').read_text())
     report = {'mriqc': {}, 'containers': [], 'executables': {name: shutil.which(name) for name in ('apptainer', 'singularity', 'mriqc')},
-              'source_qc_tables': [], 'images_modified': False}
+              'source_qc_tables': [], 'script_references': [], 'images_modified': False}
     candidates = set()
     for base in (Path('/ZPOOL/data/tools'), Path('/data/tools')):
         if base.is_dir():
@@ -22,7 +22,8 @@ def inspect():
     runtime = report['executables']['apptainer'] or report['executables']['singularity']
     for path in sorted(candidates):
         row = {'path': str(path), 'bytes': path.stat().st_size}
-        if runtime:
+        row['file_type'] = subprocess.run(['file', str(path)], capture_output=True, text=True).stdout.strip()
+        if runtime and probe_containers:
             try:
                 result = subprocess.run([runtime, 'exec', '--cleanenv', str(path), 'mriqc', '--version'], capture_output=True, text=True, timeout=60)
                 row.update(version_output=(result.stdout + result.stderr)[-2000:], returncode=result.returncode)
@@ -51,7 +52,7 @@ def inspect():
                 version = str(data.get('provenance', {}).get('version', 'unknown'))
                 versions.add(version)
                 outputs.append({'file': str(path), 'version': version})
-        report['mriqc'][dataset] = {'roots': list(map(str, sorted(roots))), 'bold_iqm_files': len(outputs), 'versions': sorted(versions), 'files': outputs[:2000]}
+        report['mriqc'][dataset] = {'roots': list(map(str, sorted(roots))), 'bold_iqm_files': len(outputs), 'versions': sorted(versions), 'files': sorted(outputs, key=lambda r: r['file'])}
         path = upstream / 'qc/run_qc.tsv'
         if path.is_file():
             with path.open() as stream:
@@ -59,6 +60,18 @@ def inspect():
                 rows = list(reader)
                 report['source_qc_tables'].append({'dataset': dataset, 'path': str(path), 'fields': reader.fieldnames,
                                                   'rows': len(rows)})
+        for base in (upstream / 'code', upstream / 'config'):
+            if not base.exists():
+                continue
+            for path in sorted(base.rglob('*')):
+                if not path.is_file() or path.suffix not in ('.sh', '.py', '.json') or path.stat().st_size > 512000:
+                    continue
+                text = path.read_text(errors='replace')
+                if 'mriqc' in text.lower():
+                    lines = [line for line in text.splitlines() if any(word in line.lower() for word in ('mriqc', 'apptainer', 'singularity', 'docker', 'container', 'templateflow'))]
+                    report['script_references'].append({'path': str(path), 'lines': lines[:40]})
+                    if len(report['script_references']) >= 20:
+                        break
     return report
 
 
@@ -67,7 +80,8 @@ def main():
     target = ROOT / 'work/delivery-environment.json'
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, indent=2) + '\n')
-    print(json.dumps(report, indent=2))
+    summary = dict(report, mriqc={k: {key: value for key, value in v.items() if key != 'files'} for k, v in report['mriqc'].items()})
+    print(json.dumps(summary, indent=2))
     return 0
 
 
