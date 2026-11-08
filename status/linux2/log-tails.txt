@@ -56,38 +56,6 @@
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
 --- logs/harmonized-l1-cohort.log ---
-rf1_sub-11192_ses-01_task-doors_run-1_seed-IPL verified 
-rf1_sub-11177_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
-rf1_sub-11192_ses-01_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11192_ses-01_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11193_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
-rf1_sub-11193_ses-01_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11193_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
-rf1_sub-11193_ses-01_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11193_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
-rf1_sub-11193_ses-01_task-socialdoors_run-1_seed-IPL verified 
-rf1_sub-11193_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
-rf1_sub-11193_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
-rf1_sub-11193_ses-02_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11193_ses-02_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11193_ses-02_task-doors_run-1_seed-Fusiform verified 
-rf1_sub-11193_ses-02_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11193_ses-02_task-doors_run-1_seed-hippo_right verified 
-rf1_sub-11193_ses-02_task-doors_run-1_seed-IPL verified 
-rf1_sub-11193_ses-02_task-socialdoors_run-1_seed-hippo_left verified 
-rf1_sub-11201_ses-01_task-socialdoors_run-1_seed-IPL verified 
-rf1_sub-11201_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
-rf1_sub-11201_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
-rf1_sub-11201_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
-rf1_sub-11201_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
-rf1_sub-11201_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
-rf1_sub-11209_ses-01_task-doors_run-1_seed-hippo_right verified 
-rf1_sub-11209_ses-01_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11209_ses-01_task-doors_run-1_seed-IPL verified 
-rf1_sub-11209_ses-01_task-doors_run-1_seed-Fusiform verified 
-rf1_sub-11193_ses-02_task-socialdoors_run-1_seed-mPFC_left verified 
-rf1_sub-11193_ses-02_task-socialdoors_run-1_seed-hippo_right verified 
-rf1_sub-11193_ses-02_task-socialdoors_run-1_seed-IPL verified 
 rf1_sub-11193_ses-02_task-socialdoors_run-1_seed-Fusiform verified 
 rf1_sub-11193_ses-02_task-socialdoors_run-1_seed-mPFC_right verified 
 rf1_sub-11201_ses-01_task-doors_run-1_seed-mPFC_left verified 
@@ -106,6 +74,38 @@ rf1_sub-11209_ses-01_task-socialdoors_run-1_seed-Fusiform verified
 rf1_sub-11209_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
 rf1_sub-11209_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
 rf1_sub-11209_ses-01_task-socialdoors_run-1_seed-IPL verified 
+rf1_sub-11227_ses-01_task-doors_run-1_seed-Fusiform verified 
+rf1_sub-11227_ses-01_task-doors_run-1_seed-mPFC_left verified 
+rf1_sub-11227_ses-01_task-doors_run-1_seed-IPL verified 
+rf1_sub-11227_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
+rf1_sub-11227_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
+rf1_sub-11227_ses-01_task-socialdoors_run-1_seed-IPL verified 
+rf1_sub-11227_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
+rf1_sub-11227_ses-01_task-doors_run-1_seed-mPFC_right verified 
+rf1_sub-11227_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
+rf1_sub-11238_ses-01_task-doors_run-1_seed-hippo_right verified 
+rf1_sub-11238_ses-01_task-doors_run-1_seed-Fusiform verified 
+rf1_sub-11227_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
+rf1_sub-11238_ses-01_task-doors_run-1_seed-IPL verified 
+rf1_sub-11238_ses-01_task-doors_run-1_seed-mPFC_right verified 
+rf1_sub-11238_ses-01_task-doors_run-1_seed-mPFC_left verified 
+rf1_sub-11238_ses-01_task-doors_run-1_seed-hippo_left verified 
+rf1_sub-11238_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
+rf1_sub-11238_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
+rf1_sub-11238_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
+rf1_sub-11238_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
+rf1_sub-11238_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
+rf1_sub-11238_ses-01_task-socialdoors_run-1_seed-IPL verified 
+rf1_sub-11241_ses-01_task-doors_run-1_seed-hippo_right verified 
+rf1_sub-11241_ses-01_task-doors_run-1_seed-hippo_left verified 
+rf1_sub-11241_ses-01_task-doors_run-1_seed-IPL verified 
+rf1_sub-11241_ses-01_task-doors_run-1_seed-Fusiform verified 
+rf1_sub-11241_ses-01_task-doors_run-1_seed-mPFC_right verified 
+rf1_sub-11241_ses-01_task-doors_run-1_seed-mPFC_left verified 
+rf1_sub-11241_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
+rf1_sub-11241_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
+rf1_sub-11241_ses-01_task-socialdoors_run-1_seed-IPL verified 
+rf1_sub-11241_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
 
 --- logs/harmonized-l1-pilot.log ---
       "fslmeants": "/usr/local/fsl/bin/fslmeants"
