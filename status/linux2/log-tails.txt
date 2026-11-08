@@ -63,6 +63,23 @@ istart_sub-1003_task-doors_run-1 verified
 istart_sub-1001_task-socialdoors_run-1 verified 
 rf1_sub-10462_ses-02_task-doors_run-1 verified 
 rf1_sub-10369_ses-01_task-socialdoors_run-1 verified 
+istart_sub-1001_task-socialdoors_run-1 verified 
+istart_sub-1003_task-doors_run-1 verified 
+istart_sub-1001_task-socialdoors_run-1 verified 
+rf1_sub-10462_ses-02_task-doors_run-1 verified 
+rf1_sub-10369_ses-01_task-socialdoors_run-1 verified 
+istart_sub-1003_task-doors_run-1 verified 
+Prepared 5046 PPI models; 24 pilot models; 6 seeds
+istart_sub-1001_task-socialdoors_run-1_seed-Fusiform verified 
+istart_sub-1001_task-socialdoors_run-1_seed-IPL verified 
+istart_sub-1001_task-socialdoors_run-1_seed-hippo_right verified 
+istart_sub-1001_task-socialdoors_run-1_seed-mPFC_right verified 
+istart_sub-1001_task-socialdoors_run-1_seed-hippo_left verified 
+istart_sub-1001_task-socialdoors_run-1_seed-mPFC_left verified 
+istart_sub-1003_task-doors_run-1_seed-hippo_right verified 
+istart_sub-1003_task-doors_run-1_seed-hippo_left verified 
+istart_sub-1003_task-doors_run-1_seed-IPL verified 
+istart_sub-1003_task-doors_run-1_seed-Fusiform verified 
 
 --- logs/preprocessing-cohort-expanded.log ---
 2026-11-07T19:01:28.934804+00:00 {"subject": "sub-3101", "status": "verified", "reason": ""}
