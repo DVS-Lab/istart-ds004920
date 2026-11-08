@@ -37,3 +37,10 @@ def test_status_migration_refuses_shared_process_group(monkeypatch):
     with pytest.raises(ValueError, match="unexpected process group"):
         migration.stop_publisher({"pid": 12345})
     assert kills == []
+
+
+def test_refresh_keeps_watching_the_active_l1_cohort():
+    watched = str(migration.ROOT / "work/l1-runs/cohort/state.json")
+    argv = migration.publisher_start_args("python", "publisher.py", {"batch": "l1-cohort", "watched_state": watched})
+    assert argv[argv.index("--run-state") + 1] == watched
+    assert argv[argv.index("--batch") + 1] == "l1-cohort"

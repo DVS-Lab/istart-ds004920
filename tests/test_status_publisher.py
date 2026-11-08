@@ -78,3 +78,18 @@ def test_l1_watcher_publishes_final_snapshot_and_exits(tmp_path, monkeypatch):
     assert publisher.main() == 0 and len(calls) == 1
     saved = json.loads((tmp_path / "work/github-status/state.json").read_text())
     assert saved["status"] == "finished" and saved["last_commit"] == "final-status-commit"
+
+
+def test_rolling_progress_deduplicates_pilots_and_uses_latest_resume_status(tmp_path):
+    logs = tmp_path / "logs"
+    logs.mkdir()
+    plan = {"jobs": [{"unit": unit, "dataset": dataset} for unit, dataset in
+                    (("a_seed-left", "istart"), ("b_seed-left", "rf1"), ("c_seed-left", "rf1"), ("d_seed-left", "rf1"))]}
+    (logs / "harmonized-l1-pilot.log").write_text("a_seed-left verified\na_seed-left verified\n")
+    (logs / "harmonized-l1-cohort.log").write_text("a_seed-left verified\nb_seed-left review_or_failure old failure\nb_seed-left verified\nc_seed-left review_or_failure smoothing outside band\nunknown_seed-x verified\n")
+    progress = publisher.rolling_model_progress(tmp_path, plan)
+    assert (progress["planned"], progress["verified"], progress["failed_or_held"], progress["remaining_or_running"]) == (4, 2, 1, 1)
+    assert progress["percent_verified"] == 50
+    assert progress["by_dataset"]["istart"]["verified"] == 1
+    assert progress["by_dataset"]["rf1"]["remaining_or_running"] == 1
+    assert progress["issues"] == [{"unit": "c_seed-left", "dataset": "rf1", "reason": "smoothing outside band"}]

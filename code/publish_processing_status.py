@@ -7,7 +7,7 @@ No images, full HTML reports, licenses, environment dumps or credentials are sen
 from __future__ import annotations
 
 import argparse
-from collections import deque
+from collections import Counter, deque
 import csv
 from datetime import datetime, timezone
 import fcntl
@@ -65,6 +65,33 @@ def alive(state, script):
     return script in proc.read_bytes().decode(errors="replace") if proc.exists() else True
 
 
+def rolling_model_progress(root, plan):
+    """Count unique PPI model statuses, including pilots and resumed attempts."""
+    units = {job["unit"]: job.get("dataset", "unknown") for job in plan.get("jobs", []) if job.get("unit")}
+    latest = {}
+    for name in ("harmonized-l1-pilot.log", "harmonized-l1-cohort.log"):
+        path = root / "logs" / name
+        if not path.is_file() or path.is_symlink():
+            continue
+        with path.open(errors="replace") as stream:
+            for line in stream:
+                fields = line.strip().split(maxsplit=2)
+                if len(fields) >= 2 and fields[0] in units and fields[1] in ("verified", "review_or_failure"):
+                    latest[fields[0]] = {"status": fields[1], "reason": fields[2] if len(fields) > 2 else ""}
+    datasets = {}
+    for dataset, planned in Counter(units.values()).items():
+        verified = sum(row["status"] == "verified" for unit, row in latest.items() if units[unit] == dataset)
+        failed = sum(row["status"] == "review_or_failure" for unit, row in latest.items() if units[unit] == dataset)
+        datasets[dataset] = {"planned": planned, "verified": verified, "failed_or_held": failed,
+                             "remaining_or_running": planned - verified - failed}
+    verified = sum(row["status"] == "verified" for row in latest.values())
+    issues = [{"unit": unit, "dataset": units[unit], "reason": row["reason"]} for unit, row in latest.items() if row["status"] != "verified"]
+    return {"planned": len(units), "verified": verified, "failed_or_held": len(issues),
+            "remaining_or_running": len(units) - len(latest), "percent_verified": round(100 * verified / len(units), 2) if units else 0,
+            "by_dataset": datasets, "issues": issues[:100], "issues_truncated": len(issues) > 100,
+            "source": "Latest per-model controller log status, deduplicated across pilot, cohort and resumes; final cohort check remains separate"}
+
+
 def collect(root):
     config = read_json(root / "config/linux2.json", {})
     mem = {}
@@ -115,6 +142,8 @@ def collect(root):
             plan = read_json(planfile, {})
             row = {"path": str(planfile), "variant": plan.get("variant"), "jobs": len(plan.get("jobs", [])),
                    "pilot_runs": plan.get("pilot", []), "pilot_review_recorded": (planfile.parent / "pilot_review.json").is_file(), "stages": []}
+            if plan.get("model") == "ppi":
+                row["rolling_progress"] = rolling_model_progress(root, plan)
             for validation in sorted(planfile.parent.glob("*_validation.json")):
                 data = read_json(validation, {})
                 stage = {"file": validation.name, **{k: data[k] for k in ("time", "selected", "verified", "all_selected_verified", "visual_qc") if k in data}}

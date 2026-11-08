@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Switch only the status publisher to main, preserving active processing code."""
+"""Refresh only the main status publisher, preserving active processing code."""
 import fcntl
 import json
 import os
@@ -44,6 +44,19 @@ def stop_publisher(state):
     raise ValueError("Old status watcher did not stop; preprocessing was not touched")
 
 
+def publisher_start_args(python, publisher, state):
+    argv = [python, publisher, "start", "--batch", state.get("batch", "cohort-expanded"), "--root", ROOT]
+    watched = state.get("watched_state")
+    if watched:
+        try:
+            Path(watched).relative_to(ROOT / "work/l1-runs")
+        except ValueError:
+            pass
+        else:
+            argv += ["--run-state", watched]
+    return argv
+
+
 def main():
     folder = ROOT / "work/github-status"
     folder.mkdir(parents=True, exist_ok=True)
@@ -61,11 +74,11 @@ def main():
     publisher.write_text(content)
     python = ROOT / ".venv-preproc/bin/python"
     print(run([python, publisher, "publish", "--root", ROOT]), end="")
-    print(run([python, publisher, "start", "--batch", state.get("batch", "cohort-expanded"), "--root", ROOT]), end="")
+    print(run(publisher_start_args(python, publisher, state)), end="")
     old = run(["git", "-C", ROOT, "ls-remote", "--heads", "origin", "refs/heads/linux2-status"]).strip()
     if old:
         print(run(["git", "-C", ROOT, "push", "origin", "--delete", "linux2-status"]), end="")
-    print("Status publisher now commits directly to main; linux2-status removed. Active preprocessing and its checkout were preserved.")
+    print("Status publisher refreshed on main. Active processing and its checkout were preserved.")
     return 0
 
 
