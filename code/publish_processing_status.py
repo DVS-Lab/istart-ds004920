@@ -141,6 +141,9 @@ def collect(root):
     l1_tools = read_json(root / "work/l1-tools.json")
     if l1_tools is not None:
         report["l1_tools"] = l1_tools
+    delivery_environment = read_json(root / "work/delivery-environment.json")
+    if delivery_environment is not None:
+        report["delivery_environment"] = delivery_environment
     report["l1_runs"] = []
     for path in sorted((root / "work/l1-runs").glob("*/state.json")):
         state = read_json(path, {})
