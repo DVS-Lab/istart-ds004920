@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-08T05:50:06.361099+00:00",
+  "collected_utc": "2026-11-08T05:55:08.300955+00:00",
   "code_commit": "82a07895d5544854bd2a73ebec6d5195c82cd9be",
   "cpus": 128,
   "load_average": [
-    17.5234375,
-    30.4912109375,
-    36.333984375
+    22.845703125,
+    27.865234375,
+    33.91845703125
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 93559.8,
+    "MemAvailable_mb": 62692.2,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.7
   },
   "filesystem_bytes": {
-    "total": 58154729209856,
-    "free": 16061986373632
+    "total": 58154729340928,
+    "free": 16061970907136
   },
   "preprocessing_batches": [
     {
@@ -1466,6 +1466,31 @@
       "pilot_review_recorded": false,
       "stages": [
         {
+          "file": "check_cohort_validation.json",
+          "time": "2026-11-08T05:53:37.038368+00:00",
+          "selected": 841,
+          "verified": 839,
+          "all_selected_verified": false,
+          "visual_qc": "not_assigned",
+          "issues": [
+            {
+              "unit": "rf1_sub-10657_ses-01_task-doors_run-1",
+              "dataset": "rf1",
+              "task": "doors",
+              "status": "review_or_failure",
+              "reason": "Smoothing outside 5.4\u20136.6 mm: review required; no automatic retry"
+            },
+            {
+              "unit": "rf1_sub-10657_ses-01_task-socialdoors_run-1",
+              "dataset": "rf1",
+              "task": "socialdoors",
+              "status": "review_or_failure",
+              "reason": "Smoothing outside 5.4\u20136.6 mm: review required; no automatic retry"
+            }
+          ],
+          "issues_truncated": false
+        },
+        {
           "file": "check_pilot_validation.json",
           "time": "2026-11-08T02:54:20.449176+00:00",
           "selected": 4,
@@ -1547,7 +1572,7 @@
         }
       ],
       "pilot_summary": {
-        "created": "2026-11-08T02:54:20.518689+00:00",
+        "created": "2026-11-08T05:53:37.878971+00:00",
         "model": "activation",
         "runs": [
           {
@@ -16550,7 +16575,7 @@
       "phase": "cohort",
       "status": "started",
       "launched": "2026-11-08T03:08:47.888254+00:00",
-      "operation": "activation:check",
+      "operation": "ppi:run",
       "jobs": 32,
       "log": "/ZPOOL/data/projects/istart-ds004920/logs/harmonized-l1-cohort.log",
       "process_alive": true
