@@ -21,10 +21,6 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
  Contrasts involving these combinations will be set to zero.
 
 
---- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
-{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
-{"ready": 115, "missing_or_invalid": 3}
-
 --- logs/fmriprep/sub-1240.log ---
 261107-11:16:56,227 nipype.workflow INFO:
 	 [Node] Setting-up "fmriprep_25_2_wf.sub_1240_wf.anat_fit_wf.anat_reports_wf.norm_msk" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1240/fmriprep_25_2_wf/sub_1240_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/norm_msk".
@@ -77,6 +73,10 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
 261107-11:17:12,497 nipype.workflow IMPORTANT:
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
+--- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
+{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+{"ready": 115, "missing_or_invalid": 3}
+
 --- logs/istart-mriqc.log ---
 2026-11-08T15:18:19.504398+00:00 Published 3e14da9f6614cd4949b4f5dbc2d85ad10fef0104 to main:status/linux2/
 MRIQC version: MRIQC v24.1.0.dev0+gd5b13cb5.d20240826
@@ -95,6 +95,7 @@ ERROR: [Errno 11] Resource temporarily unavailable
 2026-11-08T16:23:48.707414+00:00 Published 30f67030e6405597267c3144ee6993fe33fa63af to main:status/linux2/
 2026-11-08T16:28:50.917829+00:00 Published cf3eca5682b732e89e2d50f5b296421e47e0155d to main:status/linux2/
 2026-11-08T16:33:53.030583+00:00 Published 223a4c00c30e42318f7ec01c2b96507e273b84c5 to main:status/linux2/
+2026-11-08T16:39:51.554498+00:00 Published 118ca24356f659bd628e305520831a344a7a3938 to main:status/linux2/
 
 --- logs/chloe-handoff.log ---
 ERROR: [Errno 11] Resource temporarily unavailable
