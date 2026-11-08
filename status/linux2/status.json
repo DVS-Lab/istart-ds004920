@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-08T14:14:39.358560+00:00",
+  "collected_utc": "2026-11-08T14:19:00.440490+00:00",
   "code_commit": "82a07895d5544854bd2a73ebec6d5195c82cd9be",
   "cpus": 128,
   "load_average": [
-    39.05078125,
-    39.947265625,
-    40.421875
+    40.705078125,
+    40.0380859375,
+    40.3193359375
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 140244.4,
+    "MemAvailable_mb": 152801.3,
     "SwapTotal_mb": 139264.0,
-    "SwapFree_mb": 135771.3
+    "SwapFree_mb": 135771.4
   },
   "filesystem_bytes": {
-    "total": 58154891476992,
-    "free": 15112667136000
+    "total": 58154893312000,
+    "free": 15102147035136
   },
   "preprocessing_batches": [
     {
@@ -1569,6 +1569,80 @@
           "visual_qc": "not_assigned",
           "issues": [],
           "issues_truncated": false
+        }
+      ],
+      "held_spatial_details": [
+        {
+          "unit": "rf1_sub-10657_ses-01_task-doors_run-1",
+          "spatial": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1",
+          "receipt": {
+            "method": "default-blurmaster-classic6-v1",
+            "status": "outside_tolerance",
+            "target_mm": 6,
+            "bmall": false,
+            "before": {
+              "acf_a": 0.968799,
+              "acf_b": 1.86712,
+              "acf_c": 15.3817,
+              "acf_effective_fwhm": 4.26577,
+              "classic_fwhm_combined": 3.1374,
+              "classic_fwhm_x": 3.08401,
+              "classic_fwhm_y": 3.35518,
+              "classic_fwhm_z": 2.98453
+            },
+            "after": {
+              "acf_a": 0.658609,
+              "acf_b": 3.25136,
+              "acf_c": 7.10857,
+              "acf_effective_fwhm": 8.04919,
+              "classic_fwhm_combined": 5.3761,
+              "classic_fwhm_x": 5.38078,
+              "classic_fwhm_y": 5.37007,
+              "classic_fwhm_z": 5.37747
+            }
+          },
+          "review": {},
+          "measurement_tables": {
+            "before.tsv": "input\tmask\tclassic_fwhm_x\tclassic_fwhm_y\tclassic_fwhm_z\tclassic_fwhm_combined\tacf_a\tacf_b\tacf_c\tacf_effective_fwhm\tafni_version\n/ZPOOL/data/projects/rf1-sra-linux2/derivatives/fmriprep/sub-10657/ses-01/func/sub-10657_ses-01_task-doors_run-1_part-mag_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz\t/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/mask.nii.gz\t3.08401\t3.35518\t2.98453\t3.1374\t0.968799\t1.86712\t15.3817\t4.26577\tPrecompiled binary linux_ubuntu_24_64: Aug  4 2026 (Version AFNI_26.2.03 'Gordian III')\n",
+            "after.tsv": "input\tmask\tclassic_fwhm_x\tclassic_fwhm_y\tclassic_fwhm_z\tclassic_fwhm_combined\tacf_a\tacf_b\tacf_c\tacf_effective_fwhm\tafni_version\n/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/sub-10657_ses-01_task-doors_run-1_desc-smoothToFWHM6_bold.nii.gz\t/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/mask.nii.gz\t5.38078\t5.37007\t5.37747\t5.3761\t0.658609\t3.25136\t7.10857\t8.04919\tPrecompiled binary linux_ubuntu_24_64: Aug  4 2026 (Version AFNI_26.2.03 'Gordian III')\n"
+          },
+          "command_log_tail": "{\"time\": \"2026-11-08T03:31:03.063882+00:00\", \"argv\": [\"bash\", \"/ZPOOL/data/projects/istart-ds004920/vendor/afni/measure_smoothness.sh\", \"--input\", \"/ZPOOL/data/projects/rf1-sra-linux2/derivatives/fmriprep/sub-10657/ses-01/func/sub-10657_ses-01_task-doors_run-1_part-mag_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz\", \"--mask\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/mask.nii.gz\", \"--output-tsv\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/before.tsv\"], \"cwd\": \"/ZPOOL/data/projects/istart-ds004920\"}\n++ 3dFWHMx: AFNI version=AFNI_26.2.03 (Aug  4 2026) [64-bit]\n++ Authored by: The Bob\n*+ WARNING: Using the 'Classic' Gaussian FWHM is not recommended :(\n +  The '-acf' method gives a FWHM estimate which is more robust;\n +  however, assuming the spatial correlation of FMRI noise has\n +  a Gaussian shape is not a good model.\n++ Number of voxels in mask = 101404\n++ detrending start: 17 baseline funcs, 218 time points\n + detrending done (0.00 CPU s thus far)\n++ start Classic FWHM calculations\n + Classic FWHM done (0.00 CPU s thus far)\n++ start ACF calculations out to radius = 11.15 mm\n + ACF done (0.00 CPU s thus far)\nSmoothness: classic combined=3.1374 mm; ACF effective=4.26577 mm\n{\"time\": \"2026-11-08T03:31:25.672095+00:00\", \"argv\": [\"bash\", \"/ZPOOL/data/projects/istart-ds004920/vendor/afni/smooth_to_target.sh\", \"--input\", \"/ZPOOL/data/projects/rf1-sra-linux2/derivatives/fmriprep/sub-10657/ses-01/func/sub-10657_ses-01_task-doors_run-1_part-mag_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz\", \"--mask\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/mask.nii.gz\", \"--output\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/sub-10657_ses-01_task-doors_run-1_desc-smoothToFWHM6_bold.nii.gz\", \"--target\", \"6\", \"--qc-tsv\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/after.tsv\"], \"cwd\": \"/ZPOOL/data/projects/istart-ds004920\"}\n++ 3dBlurToFWHM: AFNI version=AFNI_26.2.03 (Aug  4 2026) [64-bit]\n++ Max number iterations set to 143\n++ detrending blurmaster: 17 ref funcs, 218 time points\n + detrending of blurmaster complete\n++ Output dataset /tmp/sharedreward-blur.kL7oYW/smoothed.nii.gz\n++ 3dFWHMx: AFNI version=AFNI_26.2.03 (Aug  4 2026) [64-bit]\n++ Authored by: The Bob\n*+ WARNING: Using the 'Classic' Gaussian FWHM is not recommended :(\n +  The '-acf' method gives a FWHM estimate which is more robust;\n +  however, assuming the spatial correlation of FMRI noise has\n +  a Gaussian shape is not a good model.\n++ Number of voxels in mask = 101404\n++ detrending start: 17 baseline funcs, 218 time points\n + detrending done (0.00 CPU s thus far)\n++ start Classic FWHM calculations\n + Classic FWHM done (0.00 CPU s thus far)\n++ start ACF calculations out to radius = 16.12 mm\n + ACF done (0.00 CPU s thus far)\nSmoothness: classic combined=5.3761 mm; ACF effective=8.04919 mm\nRequested target: 6 mm\nAll blurmaster sub-bricks: 0\nRuntime: 145 seconds\nOutput: /ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/sub-10657_ses-01_task-doors_run-1_desc-smoothToFWHM6_bold.nii.gz\nQC: /ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1/after.tsv\n"
+        },
+        {
+          "unit": "rf1_sub-10657_ses-01_task-socialdoors_run-1",
+          "spatial": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1",
+          "receipt": {
+            "method": "default-blurmaster-classic6-v1",
+            "status": "outside_tolerance",
+            "target_mm": 6,
+            "bmall": false,
+            "before": {
+              "acf_a": 0.972866,
+              "acf_b": 1.86097,
+              "acf_c": 15.1747,
+              "acf_effective_fwhm": 4.23626,
+              "classic_fwhm_combined": 3.12178,
+              "classic_fwhm_x": 3.05222,
+              "classic_fwhm_y": 3.34854,
+              "classic_fwhm_z": 2.97671
+            },
+            "after": {
+              "acf_a": 0.66477,
+              "acf_b": 3.28103,
+              "acf_c": 6.77094,
+              "acf_effective_fwhm": 8.02563,
+              "classic_fwhm_combined": 5.3654,
+              "classic_fwhm_x": 5.35731,
+              "classic_fwhm_y": 5.35878,
+              "classic_fwhm_z": 5.38013
+            }
+          },
+          "review": {},
+          "measurement_tables": {
+            "before.tsv": "input\tmask\tclassic_fwhm_x\tclassic_fwhm_y\tclassic_fwhm_z\tclassic_fwhm_combined\tacf_a\tacf_b\tacf_c\tacf_effective_fwhm\tafni_version\n/ZPOOL/data/projects/rf1-sra-linux2/derivatives/fmriprep/sub-10657/ses-01/func/sub-10657_ses-01_task-socialdoors_run-1_part-mag_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz\t/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/mask.nii.gz\t3.05222\t3.34854\t2.97671\t3.12178\t0.972866\t1.86097\t15.1747\t4.23626\tPrecompiled binary linux_ubuntu_24_64: Aug  4 2026 (Version AFNI_26.2.03 'Gordian III')\n",
+            "after.tsv": "input\tmask\tclassic_fwhm_x\tclassic_fwhm_y\tclassic_fwhm_z\tclassic_fwhm_combined\tacf_a\tacf_b\tacf_c\tacf_effective_fwhm\tafni_version\n/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/sub-10657_ses-01_task-socialdoors_run-1_desc-smoothToFWHM6_bold.nii.gz\t/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/mask.nii.gz\t5.35731\t5.35878\t5.38013\t5.3654\t0.66477\t3.28103\t6.77094\t8.02563\tPrecompiled binary linux_ubuntu_24_64: Aug  4 2026 (Version AFNI_26.2.03 'Gordian III')\n"
+          },
+          "command_log_tail": "{\"time\": \"2026-11-08T03:31:03.275049+00:00\", \"argv\": [\"bash\", \"/ZPOOL/data/projects/istart-ds004920/vendor/afni/measure_smoothness.sh\", \"--input\", \"/ZPOOL/data/projects/rf1-sra-linux2/derivatives/fmriprep/sub-10657/ses-01/func/sub-10657_ses-01_task-socialdoors_run-1_part-mag_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz\", \"--mask\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/mask.nii.gz\", \"--output-tsv\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/before.tsv\"], \"cwd\": \"/ZPOOL/data/projects/istart-ds004920\"}\n++ 3dFWHMx: AFNI version=AFNI_26.2.03 (Aug  4 2026) [64-bit]\n++ Authored by: The Bob\n*+ WARNING: Using the 'Classic' Gaussian FWHM is not recommended :(\n +  The '-acf' method gives a FWHM estimate which is more robust;\n +  however, assuming the spatial correlation of FMRI noise has\n +  a Gaussian shape is not a good model.\n++ Number of voxels in mask = 101390\n++ detrending start: 17 baseline funcs, 218 time points\n + detrending done (0.00 CPU s thus far)\n++ start Classic FWHM calculations\n + Classic FWHM done (0.00 CPU s thus far)\n++ start ACF calculations out to radius = 11.15 mm\n + ACF done (0.00 CPU s thus far)\nSmoothness: classic combined=3.12178 mm; ACF effective=4.23626 mm\n{\"time\": \"2026-11-08T03:31:25.838393+00:00\", \"argv\": [\"bash\", \"/ZPOOL/data/projects/istart-ds004920/vendor/afni/smooth_to_target.sh\", \"--input\", \"/ZPOOL/data/projects/rf1-sra-linux2/derivatives/fmriprep/sub-10657/ses-01/func/sub-10657_ses-01_task-socialdoors_run-1_part-mag_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz\", \"--mask\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/mask.nii.gz\", \"--output\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/sub-10657_ses-01_task-socialdoors_run-1_desc-smoothToFWHM6_bold.nii.gz\", \"--target\", \"6\", \"--qc-tsv\", \"/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/after.tsv\"], \"cwd\": \"/ZPOOL/data/projects/istart-ds004920\"}\n++ 3dBlurToFWHM: AFNI version=AFNI_26.2.03 (Aug  4 2026) [64-bit]\n++ Max number iterations set to 143\n++ detrending blurmaster: 17 ref funcs, 218 time points\n + detrending of blurmaster complete\n++ Output dataset /tmp/sharedreward-blur.Jsgeom/smoothed.nii.gz\n++ 3dFWHMx: AFNI version=AFNI_26.2.03 (Aug  4 2026) [64-bit]\n++ Authored by: The Bob\n*+ WARNING: Using the 'Classic' Gaussian FWHM is not recommended :(\n +  The '-acf' method gives a FWHM estimate which is more robust;\n +  however, assuming the spatial correlation of FMRI noise has\n +  a Gaussian shape is not a good model.\n++ Number of voxels in mask = 101390\n++ detrending start: 17 baseline funcs, 218 time points\n + detrending done (0.00 CPU s thus far)\n++ start Classic FWHM calculations\n + Classic FWHM done (0.00 CPU s thus far)\n++ start ACF calculations out to radius = 16.09 mm\n + ACF done (0.00 CPU s thus far)\nSmoothness: classic combined=5.3654 mm; ACF effective=8.02563 mm\nRequested target: 6 mm\nAll blurmaster sub-bricks: 0\nRuntime: 146 seconds\nOutput: /ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/sub-10657_ses-01_task-socialdoors_run-1_desc-smoothToFWHM6_bold.nii.gz\nQC: /ZPOOL/data/projects/rf1-sra-socdoors/derivatives/harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1/after.tsv\n"
         }
       ],
       "pilot_summary": {
@@ -3722,10 +3796,10 @@
       ],
       "rolling_progress": {
         "planned": 5046,
-        "verified": 4926,
+        "verified": 4994,
         "failed_or_held": 12,
-        "remaining_or_running": 108,
-        "percent_verified": 97.62,
+        "remaining_or_running": 40,
+        "percent_verified": 98.97,
         "by_dataset": {
           "istart": {
             "planned": 636,
@@ -3735,9 +3809,9 @@
           },
           "rf1": {
             "planned": 4410,
-            "verified": 4290,
+            "verified": 4358,
             "failed_or_held": 12,
-            "remaining_or_running": 108
+            "remaining_or_running": 40
           }
         },
         "issues": [
@@ -5850,6 +5924,7 @@
       "pilot_runs": [],
       "pilot_review_recorded": false,
       "stages": [],
+      "held_spatial_details": [],
       "readiness_counts": {
         "prepared": 1056
       },
@@ -5863,6 +5938,7 @@
       "pilot_runs": [],
       "pilot_review_recorded": false,
       "stages": [],
+      "held_spatial_details": [],
       "readiness_counts": {
         "prepared": 1408
       },
