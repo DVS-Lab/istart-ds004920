@@ -91,6 +91,9 @@ def test_ppi_pipeline_preserves_activation_and_all_seed_map_names(environment, s
     export(private, destination, [1, 5], ["cope"], execute=True)
     assert len(list(destination.rglob("*.nii.gz"))) == 48
     assert all("_seed-" in path.name for path in destination.rglob("*.nii.gz"))
+    assert "Seed PPI interaction contrasts" in (destination / "README.md").read_text()
+    release = json.loads((destination / "release.json").read_text())
+    assert release["model"] == "ppi" and release["contrast_names"] == {"1": "ppi-win", "5": "phys"}
     changed = Path(plan["jobs"][0]["phys"])
     changed.write_text(changed.read_text() + "0\n")
     with pytest.raises(ValueError, match="Frozen input"):

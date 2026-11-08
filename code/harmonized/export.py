@@ -40,6 +40,7 @@ def export(private, destination, contrasts, kinds, units=None, execute=False):
                 seed = "_seed-" + job["seed"] if job.get("model") == "ppi" else ""
                 rel = Path(job["dataset"]) / (job["stem"] + seed + f"_contrast-{names[contrast]}_stat-{kind}.nii.gz")
                 records.append({"unit": job["unit"], "dataset": job["dataset"], "task": job["task"],
+                                "model": job.get("model", "activation"), "seed": job.get("seed", ""),
                                 "contrast_number": contrast, "contrast": names[contrast], "statistic": kind,
                                 "source": str(src), "file": str(rel), "sha256": sha(src), "bytes": src.stat().st_size})
     print(json.dumps({"mode": "assemble_local_candidate" if execute else "dry_run", "maps": len(records),
@@ -57,14 +58,17 @@ def export(private, destination, contrasts, kinds, units=None, execute=False):
         table(dest / "maps.tsv", records)
         write_json(dest / "release.json", {"created": now(), "plan_sha256": sha(private / "plan.json"),
                    "variant": plan["variant"], "contrasts": sorted(set(contrasts)), "statistics": sorted(set(kinds)),
+                   "model": plan.get("model", "activation"), "contrast_names": {str(k): names[k] for k in sorted(set(contrasts))},
                    "maps": len(records), "unthresholded": True, "published": False,
                    "scientific_inclusion": "not_assigned_by_utility", "plan_provenance": stamp(private / "plan.json")})
+        description = ("Seed PPI interaction contrasts: 1 Win PPI, 2 Loss PPI, 3 Decision PPI, 4 Win-minus-Loss PPI; "
+                       "contrast 5 is the physiological main effect. The seed is identified separately in every map filename and maps.tsv row. "
+                       if plan.get("model") == "ppi" else
+                       "Task EV order: Win, Loss, Decision, optional missed-decision nuisance. Contrast order: 1 Win, 2 Loss, 3 Decision, 4 Win minus Loss. ")
         (dest / "README.md").write_text("# Local unthresholded map release candidate\n\n"
             "Not published. Scientific selection, participant privacy, metadata, and sharing approval remain pending.\n\n"
             "COPE is a contrast parameter estimate; VARCOPE is its variance; ZSTAT is its unthresholded Z statistic. "
-            "Task EV order: Win, Loss, Decision, optional missed-decision nuisance. "
-            "Contrast order: 1 Win, 2 Loss, 3 Decision, 4 Win minus Loss. "
-            "All maps use the RF1 MNI152NLin6Asym reference grid, AFNI total measured 6-mm smoothing and base-only nuisance model. "
+            + description + "All maps use the RF1 MNI152NLin6Asym reference grid, AFNI total measured 6-mm smoothing and base-only nuisance model. "
             "See release.json and maps.tsv for the exact selected contrasts, statistics, checksums and input plan.\n")
 
 
