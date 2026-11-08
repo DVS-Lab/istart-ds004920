@@ -1,10 +1,18 @@
 # Harmonized iSTART and RF1 Doors/Social Doors L1
 
-**Continue after the successful sub-1002 pilot:** [docs/PROCESSING_HANDOFF.txt](docs/PROCESSING_HANDOFF.txt) documents the current ten-subject batch (four processes per subject, no explicit RAM budget) and automatic GitHub status/log publication. Run `bash code/continue_preprocessing.sh` after pulling, with no active preprocessing batch. It requires the successful pilot structural checks, skips verified completed subjects and launches without an interactive review prompt. Status and logs are committed directly to main under status/linux2/.
+**Chloe and Johanna: [start here](docs/CHLOE_JOHANNA_README.txt).** The guide explains how to copy the completed folder directly between Linux computers, verify the copy, find the maps, and read the MRIQC quality summaries.
 
-**Start preprocessing tonight:** follow [docs/TONIGHT.md](docs/TONIGHT.md). It contains one complete Linux2 Bash block: download sub-1002, validate the pinned fMRIPrep command, launch its detached pilot, inspect/check it, then launch the remaining cohort with two subjects at a time. Preprocessing has its own minimal Python environment and does not depend on downstream L1 work.
+The final package is staged on Linux2 at:
 
-For the current activation and seed-PPI pilot, run `bash code/start_l1.sh` after pulling; see [docs/L1_NEXT.txt](docs/L1_NEXT.txt). It locates existing AFNI/FSL installations, runs detached and publishes diagnostics directly to main.
+```text
+/ZPOOL/data/projects/istart-ds004920/derivatives/release-candidates/chloe-harmonized-l1-v1
+```
+
+The [completed export record](status/linux2/status.json) reports **47,096 effect and Z maps** and MRIQC summaries for **all 841 exported task runs**. The package also includes one brain mask per run. This Git repository tracks code, instructions, templates, reviewed seed/reference files, and processing status. The study images and run-level tables are in the staged Linux2 folder. The maintainer [handoff notes](docs/CHLOE_HANDOFF.txt) show how to add the recipient guide and verifier to the existing folder before copying it.
+
+## Processing and reproducibility notes
+
+The completed preprocessing and first-level workflow is documented in [PROCESSING_HANDOFF.txt](docs/PROCESSING_HANDOFF.txt), [TONIGHT.md](docs/TONIGHT.md), and [L1_NEXT.txt](docs/L1_NEXT.txt). These are processing instructions for maintainers. Recipients only need the staged package and the guide above.
 
 This repository implements a separate first-level activation and seed-PPI variant for iSTART (OpenNeuro ds004920 1.1.1) and RF1. See [docs/LINUX2_COMMANDS.md](docs/LINUX2_COMMANDS.md) for the complete execution sequence. Local tests use synthetic images and simulated AFNI/FSL commands; real preprocessing, FEAT design validation, pilot inspection and cohort results must be produced on Linux2.
 
@@ -14,7 +22,7 @@ iSTART BOLD is placed on the established RF1 MNI152NLin6Asym grid using identity
 
 Task model 1 preserves Win, Loss, Decision and optional missed-decision EVs and four contrasts in order: Win, Loss, Decision, Win minus Loss. Double-gamma convolution, filtering and prewhitening follow the source templates. FEAT smoothing is zero. RF1 uses TR 1.615 s; iSTART uses TR 1.75 s. Base nuisance matrices contain six aCompCor components, six motion parameters, FD, available cosines and non-steady-state columns in production order; missing values become zero, malformed/nonfinite values fail. CompCor and anatomical segmentation are independently estimated across datasets, and iSTART omits FreeSurfer.
 
-RF1 products live under `rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/`; iSTART products use the same variant directory inside this repository. Spatial products use `derivatives/harmonized-fwhm6-baseonly-v1/`. Existing TEDANA confounds and FEAT results are never rewritten. `code/install_rf1_variant.py` installs a code-only copy into a new RF1 downstream subtree; its default is a dry run.
+RF1 products live under `rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/`; iSTART products use the same variant directory in the Linux2 project checkout. Spatial products use `derivatives/harmonized-fwhm6-baseonly-v1/`. Existing TEDANA confounds and FEAT results are never rewritten. `code/install_rf1_variant.py` installs a code-only copy into a new RF1 downstream subtree; its default is a dry run.
 
 The workflow freezes input identity, policy files, scripts, templates, package versions and executable hashes. Original large BOLD inputs use path/size/mtime stamps; derived spatial products and all retained maps use full SHA256. Four activation pilot runs and the corresponding seed-PPI models must pass design and output checks before cohort execution. Optional visual-review notes remain separate; there is no interactive approval prompt. Output presence alone never implies success. Partial, unowned or changed products fail without overwriting. A technically ready manifest is not a scientific inclusion decision. Source exclusions, task holds and explicit dispositions are preserved; QC flags are reported without becoming new automatic exclusions.
 

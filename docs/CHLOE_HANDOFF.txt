@@ -1,4 +1,32 @@
-Minimal Chloe handoff, staged on Linux2 only
+Chloe and Johanna handoff — maintainer notes for Linux2
+
+Recipient guide: docs/CHLOE_JOHANNA_README.txt. It explains the two
+direct Linux-to-Linux copy options, the file check, and the MRIQC tables.
+The final published status reports 47,096 maps and MRIQC coverage for
+all 841 exported task runs. The release folder is ignored by Git.
+
+Add the guide and copy checker to the EXISTING completed folder before
+handing it off. Run this on Linux2. It reads two tracked files from main
+without switching the checkout, adds them at the top level, and checks
+the existing staged package. It does not rerun the analyses or change
+the study folders, their checksums, or READY.json.
+
+cd /ZPOOL/data/projects/istart-ds004920 &&
+chloe_package="$PWD/derivatives/release-candidates/chloe-harmonized-l1-v1" &&
+test -s "$chloe_package/READY.json" &&
+git fetch origin main &&
+mkdir -p work &&
+chloe_docs=$(mktemp -d "$PWD/work/chloe-docs.XXXXXX") &&
+git show FETCH_HEAD:docs/CHLOE_JOHANNA_README.txt > "$chloe_docs/README.txt" &&
+git show FETCH_HEAD:code/verify_chloe_package.py > "$chloe_docs/VERIFY_PACKAGE.py" &&
+install -m 0644 "$chloe_docs/README.txt" "$chloe_docs/VERIFY_PACKAGE.py" "$chloe_package/" &&
+python3 "$chloe_package/VERIFY_PACKAGE.py" &&
+du -sh "$chloe_package"
+
+Once the checker prints PASS, copy the entire chloe-harmonized-l1-v1
+directory over SSH using the guide. Use the copy checker again on the
+receiving Linux machine. The workflow notes below record how the staged
+outputs were built and are for maintainers.
 
 All 841 activation and 5046 PPI fits passed full cohort verification at
 2026-11-08 14:59 UTC, including the two reviewed RF1 sub-10657 smoothness
@@ -10,6 +38,8 @@ Destination:
 
 Structure:
 chloe-harmonized-l1-v1/
+  README.txt
+  VERIFY_PACKAGE.py
   istart/
     dataset_description.json
     participants.tsv
@@ -17,6 +47,7 @@ chloe-harmonized-l1-v1/
     maps.tsv
     run_quality.tsv
     run_quality.json
+    mriqc_metrics.tsv
     run_availability.tsv
     checksums.tsv
     model-activation_contrast-win_stat-effect_statmap.json
@@ -74,11 +105,12 @@ After new MRIQC results are inventoried, repeating launch refreshes the QC
 columns and checksums while reusing identical staged image files.
 
 Source images and processing outputs are never uploaded by this code.
-Only a bounded status summary is pushed to GitHub main. The user transfers
-the two study folders from Linux2 when ready.
+Only a bounded status summary is pushed to GitHub main. Transfer the
+whole release folder, including the guide, verifier and READY.json,
+directly from Linux2.
 
 MRIQC execution:
-The inventory found no iSTART MRIQC outputs, while RF1 has existing MRIQC
+The initial inventory found no iSTART MRIQC outputs, while RF1 has existing MRIQC
 24.1.0.dev0+gd5b13cb5.d20240826 IQMs and an authoritative run_qc.tsv table
 whose mriqc_json field selects the original echo. The packager follows
 that exact RF1 selection; it does not choose or average echoes.
