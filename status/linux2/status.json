@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-08T02:58:39.941276+00:00",
+  "collected_utc": "2026-11-08T03:03:41.728597+00:00",
   "code_commit": "82a07895d5544854bd2a73ebec6d5195c82cd9be",
   "cpus": 128,
   "load_average": [
-    14.25927734375,
-    11.5966796875,
-    8.96142578125
+    5.9169921875,
+    9.7890625,
+    9.09619140625
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 76306.1,
+    "MemAvailable_mb": 83613.3,
     "SwapTotal_mb": 139264.0,
     "SwapFree_mb": 137016.6
   },
   "filesystem_bytes": {
-    "total": 58154723835904,
-    "free": 16309404041216
+    "total": 58154723704832,
+    "free": 16310124150784
   },
   "preprocessing_batches": [
     {
@@ -3623,7 +3623,2052 @@
         "rf1_sub-10462_ses-02_task-doors_run-1_seed-mPFC_right"
       ],
       "pilot_review_recorded": false,
-      "stages": [],
+      "stages": [
+        {
+          "file": "check_pilot_validation.json",
+          "time": "2026-11-08T03:02:35.154806+00:00",
+          "selected": 24,
+          "verified": 24,
+          "all_selected_verified": true,
+          "visual_qc": "not_assigned",
+          "issues": [],
+          "issues_truncated": false
+        },
+        {
+          "file": "run_pilot_validation.json",
+          "time": "2026-11-08T03:02:32.350500+00:00",
+          "selected": 24,
+          "verified": 24,
+          "all_selected_verified": true,
+          "visual_qc": "not_assigned",
+          "issues": [],
+          "issues_truncated": false
+        }
+      ],
+      "pilot_summary": {
+        "created": "2026-11-08T03:02:35.669403+00:00",
+        "model": "ppi",
+        "runs": [
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1001/sub-1001_task-socialdoors_run-1_model-1_type-ppi_seed-hippo_left.feat",
+            "seed": "hippo_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 71,
+              "seed_voxels_in_brain_mask": 71,
+              "series_sd": 122.04469972173627
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.705186,
+                "acf_b": 3.20523,
+                "acf_c": 12.3224,
+                "acf_effective_fwhm": 8.53855,
+                "classic_fwhm_combined": 5.88001,
+                "classic_fwhm_x": 5.90131,
+                "classic_fwhm_y": 5.85098,
+                "classic_fwhm_z": 5.88787
+              },
+              "before": {
+                "acf_a": 0.92188,
+                "acf_b": 2.20102,
+                "acf_c": 16.167,
+                "acf_effective_fwhm": 5.40468,
+                "classic_fwhm_combined": 3.85874,
+                "classic_fwhm_x": 4.01402,
+                "classic_fwhm_y": 4.11147,
+                "classic_fwhm_z": 3.48144
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 13.17984676361084,
+                "min": -16.473194122314453,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 10.58508586883545,
+                "min": -29.832351684570312,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 7.849203586578369,
+                "min": -6.989336967468262,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 30.144756317138672,
+                "min": -14.528437614440918,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 4.5910468101501465,
+                "min": -3.6173384189605713,
+                "nonzero_voxels": 86885
+              }
+            ],
+            "subject": "1001",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "istart_sub-1001_task-socialdoors_run-1_seed-hippo_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1001/sub-1001_task-socialdoors_run-1_model-1_type-ppi_seed-hippo_right.feat",
+            "seed": "hippo_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 54,
+              "seed_voxels_in_brain_mask": 54,
+              "series_sd": 357.73966285912377
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.705186,
+                "acf_b": 3.20523,
+                "acf_c": 12.3224,
+                "acf_effective_fwhm": 8.53855,
+                "classic_fwhm_combined": 5.88001,
+                "classic_fwhm_x": 5.90131,
+                "classic_fwhm_y": 5.85098,
+                "classic_fwhm_z": 5.88787
+              },
+              "before": {
+                "acf_a": 0.92188,
+                "acf_b": 2.20102,
+                "acf_c": 16.167,
+                "acf_effective_fwhm": 5.40468,
+                "classic_fwhm_combined": 3.85874,
+                "classic_fwhm_x": 4.01402,
+                "classic_fwhm_y": 4.11147,
+                "classic_fwhm_z": 3.48144
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 7.154728889465332,
+                "min": -6.751852989196777,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 4.151029586791992,
+                "min": -8.898262977600098,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 1.7470163106918335,
+                "min": -0.9761267304420471,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 9.987360954284668,
+                "min": -6.0863800048828125,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 1.7166669368743896,
+                "min": -1.433529019355774,
+                "nonzero_voxels": 86885
+              }
+            ],
+            "subject": "1001",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "istart_sub-1001_task-socialdoors_run-1_seed-hippo_right",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1001/sub-1001_task-socialdoors_run-1_model-1_type-ppi_seed-IPL.feat",
+            "seed": "IPL",
+            "seed_series": {
+              "coverage_fraction": 0.9193548387096774,
+              "partial_coverage_flag": true,
+              "seed_voxels": 62,
+              "seed_voxels_in_brain_mask": 57,
+              "series_sd": 143.1486558504888
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.705186,
+                "acf_b": 3.20523,
+                "acf_c": 12.3224,
+                "acf_effective_fwhm": 8.53855,
+                "classic_fwhm_combined": 5.88001,
+                "classic_fwhm_x": 5.90131,
+                "classic_fwhm_y": 5.85098,
+                "classic_fwhm_z": 5.88787
+              },
+              "before": {
+                "acf_a": 0.92188,
+                "acf_b": 2.20102,
+                "acf_c": 16.167,
+                "acf_effective_fwhm": 5.40468,
+                "classic_fwhm_combined": 3.85874,
+                "classic_fwhm_x": 4.01402,
+                "classic_fwhm_y": 4.11147,
+                "classic_fwhm_z": 3.48144
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 16.17333221435547,
+                "min": -13.619379997253418,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 24.461519241333008,
+                "min": -11.2511568069458,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 2.8768367767333984,
+                "min": -5.186312675476074,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 8.523451805114746,
+                "min": -12.881172180175781,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 2.5331928730010986,
+                "min": -1.5083829164505005,
+                "nonzero_voxels": 86885
+              }
+            ],
+            "subject": "1001",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "istart_sub-1001_task-socialdoors_run-1_seed-IPL",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1001/sub-1001_task-socialdoors_run-1_model-1_type-ppi_seed-Fusiform.feat",
+            "seed": "Fusiform",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 56,
+              "seed_voxels_in_brain_mask": 56,
+              "series_sd": 138.6879478314117
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.705186,
+                "acf_b": 3.20523,
+                "acf_c": 12.3224,
+                "acf_effective_fwhm": 8.53855,
+                "classic_fwhm_combined": 5.88001,
+                "classic_fwhm_x": 5.90131,
+                "classic_fwhm_y": 5.85098,
+                "classic_fwhm_z": 5.88787
+              },
+              "before": {
+                "acf_a": 0.92188,
+                "acf_b": 2.20102,
+                "acf_c": 16.167,
+                "acf_effective_fwhm": 5.40468,
+                "classic_fwhm_combined": 3.85874,
+                "classic_fwhm_x": 4.01402,
+                "classic_fwhm_y": 4.11147,
+                "classic_fwhm_z": 3.48144
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 8.915831565856934,
+                "min": -9.965531349182129,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 13.018948554992676,
+                "min": -31.874258041381836,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 4.664787769317627,
+                "min": -5.278695583343506,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 27.103839874267578,
+                "min": -11.47037410736084,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 2.841885805130005,
+                "min": -4.898643493652344,
+                "nonzero_voxels": 86885
+              }
+            ],
+            "subject": "1001",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "istart_sub-1001_task-socialdoors_run-1_seed-Fusiform",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1001/sub-1001_task-socialdoors_run-1_model-1_type-ppi_seed-mPFC_left.feat",
+            "seed": "mPFC_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 244,
+              "seed_voxels_in_brain_mask": 244,
+              "series_sd": 115.19742374133656
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.705186,
+                "acf_b": 3.20523,
+                "acf_c": 12.3224,
+                "acf_effective_fwhm": 8.53855,
+                "classic_fwhm_combined": 5.88001,
+                "classic_fwhm_x": 5.90131,
+                "classic_fwhm_y": 5.85098,
+                "classic_fwhm_z": 5.88787
+              },
+              "before": {
+                "acf_a": 0.92188,
+                "acf_b": 2.20102,
+                "acf_c": 16.167,
+                "acf_effective_fwhm": 5.40468,
+                "classic_fwhm_combined": 3.85874,
+                "classic_fwhm_x": 4.01402,
+                "classic_fwhm_y": 4.11147,
+                "classic_fwhm_z": 3.48144
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 24.88918113708496,
+                "min": -21.59139060974121,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 22.25481414794922,
+                "min": -27.770177841186523,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 10.029998779296875,
+                "min": -4.796612739562988,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 25.02788543701172,
+                "min": -13.450311660766602,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 2.573467493057251,
+                "min": -4.142573356628418,
+                "nonzero_voxels": 86885
+              }
+            ],
+            "subject": "1001",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "istart_sub-1001_task-socialdoors_run-1_seed-mPFC_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1001/sub-1001_task-socialdoors_run-1_model-1_type-ppi_seed-mPFC_right.feat",
+            "seed": "mPFC_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 199,
+              "seed_voxels_in_brain_mask": 199,
+              "series_sd": 105.04429653886804
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.705186,
+                "acf_b": 3.20523,
+                "acf_c": 12.3224,
+                "acf_effective_fwhm": 8.53855,
+                "classic_fwhm_combined": 5.88001,
+                "classic_fwhm_x": 5.90131,
+                "classic_fwhm_y": 5.85098,
+                "classic_fwhm_z": 5.88787
+              },
+              "before": {
+                "acf_a": 0.92188,
+                "acf_b": 2.20102,
+                "acf_c": 16.167,
+                "acf_effective_fwhm": 5.40468,
+                "classic_fwhm_combined": 3.85874,
+                "classic_fwhm_x": 4.01402,
+                "classic_fwhm_y": 4.11147,
+                "classic_fwhm_z": 3.48144
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 20.333606719970703,
+                "min": -34.114437103271484,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 22.822275161743164,
+                "min": -41.01826095581055,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 8.577006340026855,
+                "min": -7.251438617706299,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 21.39641761779785,
+                "min": -15.375290870666504,
+                "nonzero_voxels": 86885
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 2.6746251583099365,
+                "min": -5.962358474731445,
+                "nonzero_voxels": 86885
+              }
+            ],
+            "subject": "1001",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "istart_sub-1001_task-socialdoors_run-1_seed-mPFC_right",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1003/sub-1003_task-doors_run-1_model-1_type-ppi_seed-hippo_left.feat",
+            "seed": "hippo_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 71,
+              "seed_voxels_in_brain_mask": 71,
+              "series_sd": 48.980726717118756
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.714972,
+                "acf_b": 3.23961,
+                "acf_c": 11.8761,
+                "acf_effective_fwhm": 8.539,
+                "classic_fwhm_combined": 5.83292,
+                "classic_fwhm_x": 5.87416,
+                "classic_fwhm_y": 5.79219,
+                "classic_fwhm_z": 5.83269
+              },
+              "before": {
+                "acf_a": 0.946998,
+                "acf_b": 2.15748,
+                "acf_c": 20.9177,
+                "acf_effective_fwhm": 5.18838,
+                "classic_fwhm_combined": 3.71771,
+                "classic_fwhm_x": 4.02248,
+                "classic_fwhm_y": 3.52438,
+                "classic_fwhm_z": 3.6245
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 56.18538284301758,
+                "min": -50.04545593261719,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 78.95674896240234,
+                "min": -55.66856002807617,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 13.273454666137695,
+                "min": -18.71701431274414,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 37.05280303955078,
+                "min": -43.33262634277344,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 8.03342056274414,
+                "min": -7.7805304527282715,
+                "nonzero_voxels": 89482
+              }
+            ],
+            "subject": "1003",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "istart_sub-1003_task-doors_run-1_seed-hippo_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1003/sub-1003_task-doors_run-1_model-1_type-ppi_seed-hippo_right.feat",
+            "seed": "hippo_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 54,
+              "seed_voxels_in_brain_mask": 54,
+              "series_sd": 53.33679381808328
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.714972,
+                "acf_b": 3.23961,
+                "acf_c": 11.8761,
+                "acf_effective_fwhm": 8.539,
+                "classic_fwhm_combined": 5.83292,
+                "classic_fwhm_x": 5.87416,
+                "classic_fwhm_y": 5.79219,
+                "classic_fwhm_z": 5.83269
+              },
+              "before": {
+                "acf_a": 0.946998,
+                "acf_b": 2.15748,
+                "acf_c": 20.9177,
+                "acf_effective_fwhm": 5.18838,
+                "classic_fwhm_combined": 3.71771,
+                "classic_fwhm_x": 4.02248,
+                "classic_fwhm_y": 3.52438,
+                "classic_fwhm_z": 3.6245
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 61.96240234375,
+                "min": -39.834991455078125,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 52.72470474243164,
+                "min": -36.13882064819336,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 15.738655090332031,
+                "min": -19.813610076904297,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 29.475488662719727,
+                "min": -32.92394256591797,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 5.102375507354736,
+                "min": -6.16412353515625,
+                "nonzero_voxels": 89482
+              }
+            ],
+            "subject": "1003",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "istart_sub-1003_task-doors_run-1_seed-hippo_right",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1003/sub-1003_task-doors_run-1_model-1_type-ppi_seed-IPL.feat",
+            "seed": "IPL",
+            "seed_series": {
+              "coverage_fraction": 0.5967741935483871,
+              "partial_coverage_flag": true,
+              "seed_voxels": 62,
+              "seed_voxels_in_brain_mask": 37,
+              "series_sd": 64.70808779803023
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.714972,
+                "acf_b": 3.23961,
+                "acf_c": 11.8761,
+                "acf_effective_fwhm": 8.539,
+                "classic_fwhm_combined": 5.83292,
+                "classic_fwhm_x": 5.87416,
+                "classic_fwhm_y": 5.79219,
+                "classic_fwhm_z": 5.83269
+              },
+              "before": {
+                "acf_a": 0.946998,
+                "acf_b": 2.15748,
+                "acf_c": 20.9177,
+                "acf_effective_fwhm": 5.18838,
+                "classic_fwhm_combined": 3.71771,
+                "classic_fwhm_x": 4.02248,
+                "classic_fwhm_y": 3.52438,
+                "classic_fwhm_z": 3.6245
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 49.823246002197266,
+                "min": -22.521390914916992,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 69.78738403320312,
+                "min": -46.17536163330078,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 19.248666763305664,
+                "min": -17.792125701904297,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 33.482906341552734,
+                "min": -48.88087463378906,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 6.691640853881836,
+                "min": -6.246764183044434,
+                "nonzero_voxels": 89482
+              }
+            ],
+            "subject": "1003",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "istart_sub-1003_task-doors_run-1_seed-IPL",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1003/sub-1003_task-doors_run-1_model-1_type-ppi_seed-Fusiform.feat",
+            "seed": "Fusiform",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 56,
+              "seed_voxels_in_brain_mask": 56,
+              "series_sd": 46.0911387307829
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.714972,
+                "acf_b": 3.23961,
+                "acf_c": 11.8761,
+                "acf_effective_fwhm": 8.539,
+                "classic_fwhm_combined": 5.83292,
+                "classic_fwhm_x": 5.87416,
+                "classic_fwhm_y": 5.79219,
+                "classic_fwhm_z": 5.83269
+              },
+              "before": {
+                "acf_a": 0.946998,
+                "acf_b": 2.15748,
+                "acf_c": 20.9177,
+                "acf_effective_fwhm": 5.18838,
+                "classic_fwhm_combined": 3.71771,
+                "classic_fwhm_x": 4.02248,
+                "classic_fwhm_y": 3.52438,
+                "classic_fwhm_z": 3.6245
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 65.55703735351562,
+                "min": -66.90005493164062,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 54.76739501953125,
+                "min": -72.33130645751953,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 17.4276065826416,
+                "min": -27.49559211730957,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 43.83391189575195,
+                "min": -39.917030334472656,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 10.791481018066406,
+                "min": -4.699153900146484,
+                "nonzero_voxels": 89482
+              }
+            ],
+            "subject": "1003",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "istart_sub-1003_task-doors_run-1_seed-Fusiform",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1003/sub-1003_task-doors_run-1_model-1_type-ppi_seed-mPFC_left.feat",
+            "seed": "mPFC_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 244,
+              "seed_voxels_in_brain_mask": 244,
+              "series_sd": 51.93515768018974
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.714972,
+                "acf_b": 3.23961,
+                "acf_c": 11.8761,
+                "acf_effective_fwhm": 8.539,
+                "classic_fwhm_combined": 5.83292,
+                "classic_fwhm_x": 5.87416,
+                "classic_fwhm_y": 5.79219,
+                "classic_fwhm_z": 5.83269
+              },
+              "before": {
+                "acf_a": 0.946998,
+                "acf_b": 2.15748,
+                "acf_c": 20.9177,
+                "acf_effective_fwhm": 5.18838,
+                "classic_fwhm_combined": 3.71771,
+                "classic_fwhm_x": 4.02248,
+                "classic_fwhm_y": 3.52438,
+                "classic_fwhm_z": 3.6245
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 104.05994415283203,
+                "min": -49.016624450683594,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 81.15614318847656,
+                "min": -44.49605178833008,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 26.10565757751465,
+                "min": -19.183279037475586,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 48.00255584716797,
+                "min": -49.434906005859375,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 7.25419282913208,
+                "min": -9.066052436828613,
+                "nonzero_voxels": 89482
+              }
+            ],
+            "subject": "1003",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "istart_sub-1003_task-doors_run-1_seed-mPFC_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "istart",
+            "design": {
+              "columns": 29,
+              "rank_with_mean": 30,
+              "residual_dof_unwhitened": 263
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/istart-ds004920/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-1003/sub-1003_task-doors_run-1_model-1_type-ppi_seed-mPFC_right.feat",
+            "seed": "mPFC_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 199,
+              "seed_voxels_in_brain_mask": 199,
+              "series_sd": 63.574524260278146
+            },
+            "session": "",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.714972,
+                "acf_b": 3.23961,
+                "acf_c": 11.8761,
+                "acf_effective_fwhm": 8.539,
+                "classic_fwhm_combined": 5.83292,
+                "classic_fwhm_x": 5.87416,
+                "classic_fwhm_y": 5.79219,
+                "classic_fwhm_z": 5.83269
+              },
+              "before": {
+                "acf_a": 0.946998,
+                "acf_b": 2.15748,
+                "acf_c": 20.9177,
+                "acf_effective_fwhm": 5.18838,
+                "classic_fwhm_combined": 3.71771,
+                "classic_fwhm_x": 4.02248,
+                "classic_fwhm_y": 3.52438,
+                "classic_fwhm_z": 3.6245
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 71.10845184326172,
+                "min": -31.758438110351562,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 56.84174346923828,
+                "min": -44.13892364501953,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 21.85409927368164,
+                "min": -19.729785919189453,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 36.80543518066406,
+                "min": -41.72138595581055,
+                "nonzero_voxels": 89482
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 6.6898579597473145,
+                "min": -6.376430988311768,
+                "nonzero_voxels": 89482
+              }
+            ],
+            "subject": "1003",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "istart_sub-1003_task-doors_run-1_seed-mPFC_right",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 27,
+              "rank_with_mean": 28,
+              "residual_dof_unwhitened": 190
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10369/ses-01/sub-10369_ses-01_task-socialdoors_run-1_model-1_type-ppi_seed-hippo_left.feat",
+            "seed": "hippo_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 71,
+              "seed_voxels_in_brain_mask": 71,
+              "series_sd": 42.08016603142048
+            },
+            "session": "01",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.753606,
+                "acf_b": 3.39368,
+                "acf_c": 9.851,
+                "acf_effective_fwhm": 8.56963,
+                "classic_fwhm_combined": 5.87868,
+                "classic_fwhm_x": 5.88212,
+                "classic_fwhm_y": 5.87594,
+                "classic_fwhm_z": 5.87798
+              },
+              "before": {
+                "acf_a": 0.983759,
+                "acf_b": 1.86541,
+                "acf_c": 13.9784,
+                "acf_effective_fwhm": 4.2113,
+                "classic_fwhm_combined": 3.12237,
+                "classic_fwhm_x": 2.96705,
+                "classic_fwhm_y": 3.18467,
+                "classic_fwhm_z": 3.22155
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 35.4981803894043,
+                "min": -37.43268585205078,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 42.86575698852539,
+                "min": -44.65768814086914,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 12.703808784484863,
+                "min": -12.03421401977539,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 40.599613189697266,
+                "min": -31.94324493408203,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 4.984889984130859,
+                "min": -6.979672431945801,
+                "nonzero_voxels": 96231
+              }
+            ],
+            "subject": "10369",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "rf1_sub-10369_ses-01_task-socialdoors_run-1_seed-hippo_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 27,
+              "rank_with_mean": 28,
+              "residual_dof_unwhitened": 190
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10369/ses-01/sub-10369_ses-01_task-socialdoors_run-1_model-1_type-ppi_seed-hippo_right.feat",
+            "seed": "hippo_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 54,
+              "seed_voxels_in_brain_mask": 54,
+              "series_sd": 57.95669808512627
+            },
+            "session": "01",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.753606,
+                "acf_b": 3.39368,
+                "acf_c": 9.851,
+                "acf_effective_fwhm": 8.56963,
+                "classic_fwhm_combined": 5.87868,
+                "classic_fwhm_x": 5.88212,
+                "classic_fwhm_y": 5.87594,
+                "classic_fwhm_z": 5.87798
+              },
+              "before": {
+                "acf_a": 0.983759,
+                "acf_b": 1.86541,
+                "acf_c": 13.9784,
+                "acf_effective_fwhm": 4.2113,
+                "classic_fwhm_combined": 3.12237,
+                "classic_fwhm_x": 2.96705,
+                "classic_fwhm_y": 3.18467,
+                "classic_fwhm_z": 3.22155
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 39.15210723876953,
+                "min": -34.06808090209961,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 33.375179290771484,
+                "min": -37.24930953979492,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 8.054810523986816,
+                "min": -8.488434791564941,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 24.17474365234375,
+                "min": -35.0307502746582,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 4.81182336807251,
+                "min": -6.205092906951904,
+                "nonzero_voxels": 96231
+              }
+            ],
+            "subject": "10369",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "rf1_sub-10369_ses-01_task-socialdoors_run-1_seed-hippo_right",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 27,
+              "rank_with_mean": 28,
+              "residual_dof_unwhitened": 190
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10369/ses-01/sub-10369_ses-01_task-socialdoors_run-1_model-1_type-ppi_seed-IPL.feat",
+            "seed": "IPL",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 62,
+              "seed_voxels_in_brain_mask": 62,
+              "series_sd": 52.74354608633971
+            },
+            "session": "01",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.753606,
+                "acf_b": 3.39368,
+                "acf_c": 9.851,
+                "acf_effective_fwhm": 8.56963,
+                "classic_fwhm_combined": 5.87868,
+                "classic_fwhm_x": 5.88212,
+                "classic_fwhm_y": 5.87594,
+                "classic_fwhm_z": 5.87798
+              },
+              "before": {
+                "acf_a": 0.983759,
+                "acf_b": 1.86541,
+                "acf_c": 13.9784,
+                "acf_effective_fwhm": 4.2113,
+                "classic_fwhm_combined": 3.12237,
+                "classic_fwhm_x": 2.96705,
+                "classic_fwhm_y": 3.18467,
+                "classic_fwhm_z": 3.22155
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 27.5859317779541,
+                "min": -47.39970779418945,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 28.69178009033203,
+                "min": -34.44810104370117,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 7.774083137512207,
+                "min": -11.840022087097168,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 21.155750274658203,
+                "min": -38.37074279785156,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 9.640215873718262,
+                "min": -6.683145999908447,
+                "nonzero_voxels": 96231
+              }
+            ],
+            "subject": "10369",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "rf1_sub-10369_ses-01_task-socialdoors_run-1_seed-IPL",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 27,
+              "rank_with_mean": 28,
+              "residual_dof_unwhitened": 190
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10369/ses-01/sub-10369_ses-01_task-socialdoors_run-1_model-1_type-ppi_seed-Fusiform.feat",
+            "seed": "Fusiform",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 56,
+              "seed_voxels_in_brain_mask": 56,
+              "series_sd": 30.082541570872202
+            },
+            "session": "01",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.753606,
+                "acf_b": 3.39368,
+                "acf_c": 9.851,
+                "acf_effective_fwhm": 8.56963,
+                "classic_fwhm_combined": 5.87868,
+                "classic_fwhm_x": 5.88212,
+                "classic_fwhm_y": 5.87594,
+                "classic_fwhm_z": 5.87798
+              },
+              "before": {
+                "acf_a": 0.983759,
+                "acf_b": 1.86541,
+                "acf_c": 13.9784,
+                "acf_effective_fwhm": 4.2113,
+                "classic_fwhm_combined": 3.12237,
+                "classic_fwhm_x": 2.96705,
+                "classic_fwhm_y": 3.18467,
+                "classic_fwhm_z": 3.22155
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 58.68870162963867,
+                "min": -89.30778503417969,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 57.689056396484375,
+                "min": -72.24297332763672,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 22.53891372680664,
+                "min": -19.33722496032715,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 35.17102813720703,
+                "min": -40.529296875,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 13.405521392822266,
+                "min": -11.55142593383789,
+                "nonzero_voxels": 96231
+              }
+            ],
+            "subject": "10369",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "rf1_sub-10369_ses-01_task-socialdoors_run-1_seed-Fusiform",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 27,
+              "rank_with_mean": 28,
+              "residual_dof_unwhitened": 190
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10369/ses-01/sub-10369_ses-01_task-socialdoors_run-1_model-1_type-ppi_seed-mPFC_left.feat",
+            "seed": "mPFC_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 244,
+              "seed_voxels_in_brain_mask": 244,
+              "series_sd": 21.02273904208752
+            },
+            "session": "01",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.753606,
+                "acf_b": 3.39368,
+                "acf_c": 9.851,
+                "acf_effective_fwhm": 8.56963,
+                "classic_fwhm_combined": 5.87868,
+                "classic_fwhm_x": 5.88212,
+                "classic_fwhm_y": 5.87594,
+                "classic_fwhm_z": 5.87798
+              },
+              "before": {
+                "acf_a": 0.983759,
+                "acf_b": 1.86541,
+                "acf_c": 13.9784,
+                "acf_effective_fwhm": 4.2113,
+                "classic_fwhm_combined": 3.12237,
+                "classic_fwhm_x": 2.96705,
+                "classic_fwhm_y": 3.18467,
+                "classic_fwhm_z": 3.22155
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 119.26644134521484,
+                "min": -147.31329345703125,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 105.70560455322266,
+                "min": -115.56179809570312,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 25.575462341308594,
+                "min": -27.625762939453125,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 54.441707611083984,
+                "min": -109.06224060058594,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 13.024284362792969,
+                "min": -12.914929389953613,
+                "nonzero_voxels": 96231
+              }
+            ],
+            "subject": "10369",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "rf1_sub-10369_ses-01_task-socialdoors_run-1_seed-mPFC_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 27,
+              "rank_with_mean": 28,
+              "residual_dof_unwhitened": 190
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10369/ses-01/sub-10369_ses-01_task-socialdoors_run-1_model-1_type-ppi_seed-mPFC_right.feat",
+            "seed": "mPFC_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 199,
+              "seed_voxels_in_brain_mask": 199,
+              "series_sd": 23.854750197887057
+            },
+            "session": "01",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.753606,
+                "acf_b": 3.39368,
+                "acf_c": 9.851,
+                "acf_effective_fwhm": 8.56963,
+                "classic_fwhm_combined": 5.87868,
+                "classic_fwhm_x": 5.88212,
+                "classic_fwhm_y": 5.87594,
+                "classic_fwhm_z": 5.87798
+              },
+              "before": {
+                "acf_a": 0.983759,
+                "acf_b": 1.86541,
+                "acf_c": 13.9784,
+                "acf_effective_fwhm": 4.2113,
+                "classic_fwhm_combined": 3.12237,
+                "classic_fwhm_x": 2.96705,
+                "classic_fwhm_y": 3.18467,
+                "classic_fwhm_z": 3.22155
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 151.28863525390625,
+                "min": -107.15988159179688,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 113.75950622558594,
+                "min": -105.08860778808594,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 25.284290313720703,
+                "min": -30.55123519897461,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 59.8489990234375,
+                "min": -93.09468841552734,
+                "nonzero_voxels": 96231
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 19.811513900756836,
+                "min": -20.68387222290039,
+                "nonzero_voxels": 96231
+              }
+            ],
+            "subject": "10369",
+            "success_receipt_present": true,
+            "task": "socialdoors",
+            "unit": "rf1_sub-10369_ses-01_task-socialdoors_run-1_seed-mPFC_right",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 26,
+              "rank_with_mean": 27,
+              "residual_dof_unwhitened": 191
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10462/ses-02/sub-10462_ses-02_task-doors_run-1_model-1_type-ppi_seed-hippo_left.feat",
+            "seed": "hippo_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 71,
+              "seed_voxels_in_brain_mask": 71,
+              "series_sd": 117.37451931197558
+            },
+            "session": "02",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.448642,
+                "acf_b": 3.05317,
+                "acf_c": 11.3259,
+                "acf_effective_fwhm": 9.43614,
+                "classic_fwhm_combined": 6.00302,
+                "classic_fwhm_x": 6.06225,
+                "classic_fwhm_y": 6.01014,
+                "classic_fwhm_z": 5.93732
+              },
+              "before": {
+                "acf_a": 0.756196,
+                "acf_b": 2.01697,
+                "acf_c": 11.9607,
+                "acf_effective_fwhm": 5.43438,
+                "classic_fwhm_combined": 3.81176,
+                "classic_fwhm_x": 3.61826,
+                "classic_fwhm_y": 3.787,
+                "classic_fwhm_z": 4.04187
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 43.531036376953125,
+                "min": -43.64362716674805,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 26.25831413269043,
+                "min": -47.405643463134766,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 20.665014266967773,
+                "min": -12.54183292388916,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 50.86494445800781,
+                "min": -24.8083438873291,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 17.302444458007812,
+                "min": -3.144336462020874,
+                "nonzero_voxels": 97705
+              }
+            ],
+            "subject": "10462",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "rf1_sub-10462_ses-02_task-doors_run-1_seed-hippo_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 26,
+              "rank_with_mean": 27,
+              "residual_dof_unwhitened": 191
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10462/ses-02/sub-10462_ses-02_task-doors_run-1_model-1_type-ppi_seed-hippo_right.feat",
+            "seed": "hippo_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 54,
+              "seed_voxels_in_brain_mask": 54,
+              "series_sd": 163.88370330869756
+            },
+            "session": "02",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.448642,
+                "acf_b": 3.05317,
+                "acf_c": 11.3259,
+                "acf_effective_fwhm": 9.43614,
+                "classic_fwhm_combined": 6.00302,
+                "classic_fwhm_x": 6.06225,
+                "classic_fwhm_y": 6.01014,
+                "classic_fwhm_z": 5.93732
+              },
+              "before": {
+                "acf_a": 0.756196,
+                "acf_b": 2.01697,
+                "acf_c": 11.9607,
+                "acf_effective_fwhm": 5.43438,
+                "classic_fwhm_combined": 3.81176,
+                "classic_fwhm_x": 3.61826,
+                "classic_fwhm_y": 3.787,
+                "classic_fwhm_z": 4.04187
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 23.57625389099121,
+                "min": -40.93687438964844,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 12.7374267578125,
+                "min": -50.715179443359375,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 21.941835403442383,
+                "min": -7.29740571975708,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 27.605010986328125,
+                "min": -15.013287544250488,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 17.406597137451172,
+                "min": -5.083835601806641,
+                "nonzero_voxels": 97705
+              }
+            ],
+            "subject": "10462",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "rf1_sub-10462_ses-02_task-doors_run-1_seed-hippo_right",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 26,
+              "rank_with_mean": 27,
+              "residual_dof_unwhitened": 191
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10462/ses-02/sub-10462_ses-02_task-doors_run-1_model-1_type-ppi_seed-IPL.feat",
+            "seed": "IPL",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 62,
+              "seed_voxels_in_brain_mask": 62,
+              "series_sd": 153.15244801452747
+            },
+            "session": "02",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.448642,
+                "acf_b": 3.05317,
+                "acf_c": 11.3259,
+                "acf_effective_fwhm": 9.43614,
+                "classic_fwhm_combined": 6.00302,
+                "classic_fwhm_x": 6.06225,
+                "classic_fwhm_y": 6.01014,
+                "classic_fwhm_z": 5.93732
+              },
+              "before": {
+                "acf_a": 0.756196,
+                "acf_b": 2.01697,
+                "acf_c": 11.9607,
+                "acf_effective_fwhm": 5.43438,
+                "classic_fwhm_combined": 3.81176,
+                "classic_fwhm_x": 3.61826,
+                "classic_fwhm_y": 3.787,
+                "classic_fwhm_z": 4.04187
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 20.722488403320312,
+                "min": -14.650212287902832,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 28.32693862915039,
+                "min": -12.92796802520752,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 16.208282470703125,
+                "min": -6.198873519897461,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 12.393786430358887,
+                "min": -14.275945663452148,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 4.8778557777404785,
+                "min": -16.46660041809082,
+                "nonzero_voxels": 97705
+              }
+            ],
+            "subject": "10462",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "rf1_sub-10462_ses-02_task-doors_run-1_seed-IPL",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 26,
+              "rank_with_mean": 27,
+              "residual_dof_unwhitened": 191
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10462/ses-02/sub-10462_ses-02_task-doors_run-1_model-1_type-ppi_seed-Fusiform.feat",
+            "seed": "Fusiform",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 56,
+              "seed_voxels_in_brain_mask": 56,
+              "series_sd": 94.9181150982496
+            },
+            "session": "02",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.448642,
+                "acf_b": 3.05317,
+                "acf_c": 11.3259,
+                "acf_effective_fwhm": 9.43614,
+                "classic_fwhm_combined": 6.00302,
+                "classic_fwhm_x": 6.06225,
+                "classic_fwhm_y": 6.01014,
+                "classic_fwhm_z": 5.93732
+              },
+              "before": {
+                "acf_a": 0.756196,
+                "acf_b": 2.01697,
+                "acf_c": 11.9607,
+                "acf_effective_fwhm": 5.43438,
+                "classic_fwhm_combined": 3.81176,
+                "classic_fwhm_x": 3.61826,
+                "classic_fwhm_y": 3.787,
+                "classic_fwhm_z": 4.04187
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 69.0964126586914,
+                "min": -91.47886657714844,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 23.657535552978516,
+                "min": -83.12691497802734,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 44.601810455322266,
+                "min": -8.581318855285645,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 84.42908477783203,
+                "min": -49.33686065673828,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 8.610873222351074,
+                "min": -24.61810874938965,
+                "nonzero_voxels": 97705
+              }
+            ],
+            "subject": "10462",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "rf1_sub-10462_ses-02_task-doors_run-1_seed-Fusiform",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 26,
+              "rank_with_mean": 27,
+              "residual_dof_unwhitened": 191
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10462/ses-02/sub-10462_ses-02_task-doors_run-1_model-1_type-ppi_seed-mPFC_left.feat",
+            "seed": "mPFC_left",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 244,
+              "seed_voxels_in_brain_mask": 244,
+              "series_sd": 165.84805518196873
+            },
+            "session": "02",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.448642,
+                "acf_b": 3.05317,
+                "acf_c": 11.3259,
+                "acf_effective_fwhm": 9.43614,
+                "classic_fwhm_combined": 6.00302,
+                "classic_fwhm_x": 6.06225,
+                "classic_fwhm_y": 6.01014,
+                "classic_fwhm_z": 5.93732
+              },
+              "before": {
+                "acf_a": 0.756196,
+                "acf_b": 2.01697,
+                "acf_c": 11.9607,
+                "acf_effective_fwhm": 5.43438,
+                "classic_fwhm_combined": 3.81176,
+                "classic_fwhm_x": 3.61826,
+                "classic_fwhm_y": 3.787,
+                "classic_fwhm_z": 4.04187
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 24.3177433013916,
+                "min": -32.267826080322266,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 13.420961380004883,
+                "min": -25.213407516479492,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 15.66387939453125,
+                "min": -7.925144195556641,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 15.84698486328125,
+                "min": -19.981998443603516,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 4.172195911407471,
+                "min": -11.05573558807373,
+                "nonzero_voxels": 97705
+              }
+            ],
+            "subject": "10462",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "rf1_sub-10462_ses-02_task-doors_run-1_seed-mPFC_left",
+            "visual_qc": "pending"
+          },
+          {
+            "dataset": "rf1",
+            "design": {
+              "columns": 26,
+              "rank_with_mean": 27,
+              "residual_dof_unwhitened": 191
+            },
+            "model": "ppi",
+            "output": "/ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10462/ses-02/sub-10462_ses-02_task-doors_run-1_model-1_type-ppi_seed-mPFC_right.feat",
+            "seed": "mPFC_right",
+            "seed_series": {
+              "coverage_fraction": 1.0,
+              "partial_coverage_flag": false,
+              "seed_voxels": 199,
+              "seed_voxels_in_brain_mask": 199,
+              "series_sd": 130.06466434072843
+            },
+            "session": "02",
+            "smoothness": {
+              "after": {
+                "acf_a": 0.448642,
+                "acf_b": 3.05317,
+                "acf_c": 11.3259,
+                "acf_effective_fwhm": 9.43614,
+                "classic_fwhm_combined": 6.00302,
+                "classic_fwhm_x": 6.06225,
+                "classic_fwhm_y": 6.01014,
+                "classic_fwhm_z": 5.93732
+              },
+              "before": {
+                "acf_a": 0.756196,
+                "acf_b": 2.01697,
+                "acf_c": 11.9607,
+                "acf_effective_fwhm": 5.43438,
+                "classic_fwhm_combined": 3.81176,
+                "classic_fwhm_x": 3.61826,
+                "classic_fwhm_y": 3.787,
+                "classic_fwhm_z": 4.04187
+              },
+              "status": "within_tolerance"
+            },
+            "statistics": [
+              {
+                "file": "cope1.nii.gz",
+                "finite": true,
+                "max": 41.49831008911133,
+                "min": -27.274866104125977,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope2.nii.gz",
+                "finite": true,
+                "max": 19.626676559448242,
+                "min": -21.26576805114746,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope3.nii.gz",
+                "finite": true,
+                "max": 24.58621597290039,
+                "min": -11.529903411865234,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope4.nii.gz",
+                "finite": true,
+                "max": 24.431615829467773,
+                "min": -21.71771812438965,
+                "nonzero_voxels": 97705
+              },
+              {
+                "file": "cope5.nii.gz",
+                "finite": true,
+                "max": 5.47655725479126,
+                "min": -14.35047721862793,
+                "nonzero_voxels": 97705
+              }
+            ],
+            "subject": "10462",
+            "success_receipt_present": true,
+            "task": "doors",
+            "unit": "rf1_sub-10462_ses-02_task-doors_run-1_seed-mPFC_right",
+            "visual_qc": "pending"
+          }
+        ],
+        "scientific_inclusion_assigned": false,
+        "visual_qc": "pending"
+      },
       "readiness_counts": {
         "prepared": 5046
       },
@@ -14453,12 +16498,40 @@
     {
       "pid": 2440323,
       "phase": "pilot",
-      "status": "started",
+      "status": "complete",
       "launched": "2026-11-08T02:38:32.547204+00:00",
-      "operation": "ppi:run",
+      "finished": "2026-11-08T03:02:35.690944+00:00",
+      "operation": "ppi:check",
       "jobs": 10,
       "log": "/ZPOOL/data/projects/istart-ds004920/logs/harmonized-l1-pilot.log",
-      "process_alive": true
+      "operations": [
+        {
+          "all_selected_verified": true,
+          "model": "activation",
+          "operation": "spatial"
+        },
+        {
+          "all_selected_verified": true,
+          "model": "activation",
+          "operation": "run"
+        },
+        {
+          "all_selected_verified": true,
+          "model": "activation",
+          "operation": "check"
+        },
+        {
+          "all_selected_verified": true,
+          "model": "ppi",
+          "operation": "run"
+        },
+        {
+          "all_selected_verified": true,
+          "model": "ppi",
+          "operation": "check"
+        }
+      ],
+      "process_alive": false
     }
   ]
 }
