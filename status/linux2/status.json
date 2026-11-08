@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-08T15:38:24.674638+00:00",
+  "collected_utc": "2026-11-08T15:43:28.451877+00:00",
   "code_commit": "82a07895d5544854bd2a73ebec6d5195c82cd9be",
   "cpus": 128,
   "load_average": [
-    15.51513671875,
-    17.62451171875,
-    16.76416015625
+    17.48046875,
+    18.09814453125,
+    17.2099609375
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 132972.8,
+    "MemAvailable_mb": 163660.0,
     "SwapTotal_mb": 139264.0,
-    "SwapFree_mb": 135832.1
+    "SwapFree_mb": 135824.6
   },
   "filesystem_bytes": {
-    "total": 58154901962752,
-    "free": 15080659222528
+    "total": 58154904453120,
+    "free": 15078641500160
   },
   "preprocessing_batches": [
     {
@@ -17122,7 +17122,7 @@
       "log": "/ZPOOL/data/projects/istart-ds004920/logs/istart-mriqc.log",
       "subjects_parallel": 8,
       "runs_total": 117,
-      "runs_completed": 2,
+      "runs_completed": 16,
       "failed": 0,
       "process_alive": true
     }
