@@ -77,13 +77,6 @@ Warning: at least one EV is (close to) a linear combination of the others. You p
 261107-11:17:12,497 nipype.workflow IMPORTANT:
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
---- logs/chloe-handoff.log ---
-ERROR: [Errno 11] Resource temporarily unavailable
-2026-11-08T15:23:21.182783+00:00 Published 655417ede28eb97cdffdb17fb87d1e196b8bf7e4 to main:status/linux2/
-ERROR: [Errno 11] Resource temporarily unavailable
-2026-11-08T15:32:19.717366+00:00 Published 42dc04944ff24647e726ffae463f7468abe9d49c to main:status/linux2/
-2026-11-08T16:42:58.369137+00:00 Published 924fd9473ea399d1a5454707ca322d87648bdf7f to main:status/linux2/
-
 --- logs/istart-mriqc.log ---
 2026-11-08T15:18:19.504398+00:00 Published 3e14da9f6614cd4949b4f5dbc2d85ad10fef0104 to main:status/linux2/
 MRIQC version: MRIQC v24.1.0.dev0+gd5b13cb5.d20240826
@@ -103,6 +96,14 @@ ERROR: [Errno 11] Resource temporarily unavailable
 2026-11-08T16:28:50.917829+00:00 Published cf3eca5682b732e89e2d50f5b296421e47e0155d to main:status/linux2/
 2026-11-08T16:33:53.030583+00:00 Published 223a4c00c30e42318f7ec01c2b96507e273b84c5 to main:status/linux2/
 2026-11-08T16:39:51.554498+00:00 Published 118ca24356f659bd628e305520831a344a7a3938 to main:status/linux2/
+2026-11-08T16:44:54.497291+00:00 Published 2790fe44df89df5d15c943f0904cfa3e8dd77d48 to main:status/linux2/
+
+--- logs/chloe-handoff.log ---
+ERROR: [Errno 11] Resource temporarily unavailable
+2026-11-08T15:23:21.182783+00:00 Published 655417ede28eb97cdffdb17fb87d1e196b8bf7e4 to main:status/linux2/
+ERROR: [Errno 11] Resource temporarily unavailable
+2026-11-08T15:32:19.717366+00:00 Published 42dc04944ff24647e726ffae463f7468abe9d49c to main:status/linux2/
+2026-11-08T16:42:58.369137+00:00 Published 924fd9473ea399d1a5454707ca322d87648bdf7f to main:status/linux2/
 
 --- logs/mriqc/sub-1002_task-doors_run-1.log ---
 {"launched": "2026-11-08T15:18:59.064560+00:00", "argv": ["/usr/bin/singularity", "run", "--cleanenv", "--bind", "/ZPOOL/data/projects/istart-ds004920/bids:/data:ro", "--bind", "/ZPOOL/data/projects/istart-ds004920/derivatives/mriqc:/out", "--bind", "/ZPOOL/data/projects/istart-ds004920/work/mriqc/sub-1002_task-doors_run-1:/work", "--bind", "/ZPOOL/data/projects/istart-ds004920/work/templateflow:/opt/templateflow", "--env", "TEMPLATEFLOW_HOME=/opt/templateflow", "--env", "OPENBLAS_NUM_THREADS=1", "/ZPOOL/data/tools/mriqc-24.0.2.simg", "/data", "/out", "participant", "--participant-label", "1002", "--task-id", "doors", "-m", "bold", "--nprocs", "4", "--omp-nthreads", "2", "--no-sub", "--bids-database-dir", "/work/bids-db", "-w", "/work"]}
