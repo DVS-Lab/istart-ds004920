@@ -1,4 +1,26 @@
 
+--- work/harmonized-l1-v1/logs/rf1_sub-10657_ses-01_task-doors_run-1.log ---
+{"time": "2026-11-08T14:38:44.582517+00:00", "argv": ["feat", "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1/designs/rf1_sub-10657_ses-01_task-doors_run-1/design.fsf"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+To view the FEAT progress and final report, point your web browser at /ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-doors_run-1_model-1_type-act.feat/report_log.html
+
+--- work/harmonized-l1-v1/designs/rf1_sub-10657_ses-01_task-doors_run-1/feat_model.log ---
+{"time": "2026-11-08T14:38:44.328014+00:00", "argv": ["feat_model", "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1/designs/rf1_sub-10657_ses-01_task-doors_run-1/design", "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1/inputs/rf1_sub-10657_ses-01_task-doors_run-1/baseonly.tsv"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+Warning: at least one EV is (close to) a linear combination of the others. You probably need to alter your design.
+(Design matrix is rank deficient - ratio of min:max eigenvalues in SVD of matrix is 4.22991e-18)
+ Contrasts involving these combinations will be set to zero.
+
+
+--- work/harmonized-l1-v1/logs/rf1_sub-10657_ses-01_task-socialdoors_run-1.log ---
+{"time": "2026-11-08T14:38:44.532570+00:00", "argv": ["feat", "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1/designs/rf1_sub-10657_ses-01_task-socialdoors_run-1/design.fsf"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+To view the FEAT progress and final report, point your web browser at /ZPOOL/data/projects/rf1-sra-socdoors/derivatives/fsl-harmonized-fwhm6-baseonly-v1/sub-10657/ses-01/sub-10657_ses-01_task-socialdoors_run-1_model-1_type-act.feat/report_log.html
+
+--- work/harmonized-l1-v1/designs/rf1_sub-10657_ses-01_task-socialdoors_run-1/feat_model.log ---
+{"time": "2026-11-08T14:38:44.260117+00:00", "argv": ["feat_model", "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1/designs/rf1_sub-10657_ses-01_task-socialdoors_run-1/design", "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1/inputs/rf1_sub-10657_ses-01_task-socialdoors_run-1/baseonly.tsv"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+Warning: at least one EV is (close to) a linear combination of the others. You probably need to alter your design.
+(Design matrix is rank deficient - ratio of min:max eigenvalues in SVD of matrix is 1.2165e-18)
+ Contrasts involving these combinations will be set to zero.
+
+
 --- logs/fmriprep/sub-1240.log ---
 261107-11:16:56,227 nipype.workflow INFO:
 	 [Node] Setting-up "fmriprep_25_2_wf.sub_1240_wf.anat_fit_wf.anat_reports_wf.norm_msk" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1240/fmriprep_25_2_wf/sub_1240_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/norm_msk".
@@ -56,56 +78,56 @@
 {"ready": 115, "missing_or_invalid": 3}
 
 --- logs/harmonized-l1-cohort.log ---
-rf1_sub-11588_ses-01_task-doors_run-1_seed-hippo_right verified 
-rf1_sub-11588_ses-01_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11588_ses-01_task-doors_run-1_seed-Fusiform verified 
-rf1_sub-11588_ses-01_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11588_ses-01_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11591_ses-01_task-doors_run-1_seed-Fusiform verified 
-rf1_sub-11588_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
-rf1_sub-11591_ses-01_task-doors_run-1_seed-IPL verified 
-rf1_sub-11591_ses-01_task-doors_run-1_seed-hippo_right verified 
-rf1_sub-11591_ses-01_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11588_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
-rf1_sub-11588_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
-rf1_sub-11591_ses-01_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11591_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
-rf1_sub-11588_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
-rf1_sub-11591_ses-01_task-socialdoors_run-1_seed-IPL verified 
-rf1_sub-11588_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
-rf1_sub-11591_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
-rf1_sub-11588_ses-01_task-socialdoors_run-1_seed-IPL verified 
-rf1_sub-11597_ses-01_task-doors_run-1_seed-IPL verified 
-rf1_sub-11591_ses-01_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11591_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
-rf1_sub-11591_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
-rf1_sub-11597_ses-01_task-doors_run-1_seed-Fusiform verified 
-rf1_sub-11597_ses-01_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11591_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
-rf1_sub-11597_ses-01_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11597_ses-01_task-doors_run-1_seed-hippo_right verified 
-rf1_sub-11597_ses-01_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11597_ses-01_task-socialdoors_run-1_seed-mPFC_right verified 
-rf1_sub-11597_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
-rf1_sub-11597_ses-01_task-socialdoors_run-1_seed-hippo_right verified 
-rf1_sub-11597_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
-rf1_sub-11597_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
-rf1_sub-11597_ses-01_task-socialdoors_run-1_seed-IPL verified 
-rf1_sub-11598_ses-01_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11598_ses-01_task-doors_run-1_seed-IPL verified 
-rf1_sub-11598_ses-01_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11598_ses-01_task-doors_run-1_seed-Fusiform verified 
-rf1_sub-11598_ses-01_task-doors_run-1_seed-hippo_right verified 
-rf1_sub-11598_ses-01_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11599_ses-01_task-doors_run-1_seed-hippo_right verified 
-rf1_sub-11599_ses-01_task-doors_run-1_seed-Fusiform verified 
-rf1_sub-11600_ses-01_task-doors_run-1_seed-mPFC_right verified 
-rf1_sub-11599_ses-01_task-doors_run-1_seed-mPFC_left verified 
-rf1_sub-11600_ses-01_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11599_ses-01_task-socialdoors_run-1_seed-mPFC_left verified 
-rf1_sub-11599_ses-01_task-socialdoors_run-1_seed-hippo_left verified 
-rf1_sub-11599_ses-01_task-doors_run-1_seed-hippo_left verified 
-rf1_sub-11599_ses-01_task-socialdoors_run-1_seed-Fusiform verified 
+      "fslmeants": "/usr/local/fsl/bin/fslmeants"
+    },
+    "metadata_sources": [
+      "/ZPOOL/data/projects/rf1-sra-linux2/work/cohort-smoothness-v1/plan.json",
+      "/ZPOOL/data/projects/rf1-sra-linux2/derivatives/smoothness-evaluation-6mm-v1/plan.json"
+    ],
+    "searched_AFNI_directories": [
+      "/ZPOOL/data/tools/anaconda/tug87422/envs/sharedreward-phase0/afni-bin",
+      "/home/<user>/abin",
+      "/usr/local/afni/bin",
+      "/usr/local/afni",
+      "/opt/afni",
+      "/ZPOOL/data/tools/abin",
+      "/ZPOOL/data/tools/afni"
+    ]
+  },
+  "worker_script": "run_harmonized_l1.py",
+  "operation": "ppi:check",
+  "updated": "2026-11-08T14:23:17.540243+00:00",
+  "finished": "2026-11-08T14:38:39.132636+00:00",
+  "operations": [
+    {
+      "model": "activation",
+      "operation": "spatial",
+      "all_selected_verified": false
+    },
+    {
+      "model": "activation",
+      "operation": "run",
+      "all_selected_verified": false
+    },
+    {
+      "model": "activation",
+      "operation": "check",
+      "all_selected_verified": false
+    },
+    {
+      "model": "ppi",
+      "operation": "run",
+      "all_selected_verified": false
+    },
+    {
+      "model": "ppi",
+      "operation": "check",
+      "all_selected_verified": false
+    }
+  ],
+  "activation_plan": "/ZPOOL/data/projects/istart-ds004920/work/harmonized-l1-v1",
+  "ppi_plan": "/ZPOOL/data/projects/istart-ds004920/work/harmonized-ppi-v1"
+}
 
 --- logs/harmonized-l1-sub10657-review.log ---
 2026-11-08T14:34:54.038186+00:00 Published 3d7043f34498d0ed1a7c99adf070affcac397761 to main:status/linux2/
