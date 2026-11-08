@@ -56,6 +56,19 @@
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
 --- logs/harmonized-l1-cohort.log ---
+istart_sub-1001_task-socialdoors_run-1 verified 
+istart_sub-1003_task-doors_run-1 verified 
+istart_sub-1243_task-socialdoors_run-1 verified 
+istart_sub-1011_task-socialdoors_run-1 verified 
+istart_sub-1011_task-doors_run-1 verified 
+istart_sub-1009_task-socialdoors_run-1 verified 
+istart_sub-1001_task-doors_run-1 verified 
+istart_sub-1012_task-doors_run-1 verified 
+istart_sub-1010_task-doors_run-1 verified 
+istart_sub-1006_task-doors_run-1 verified 
+istart_sub-1015_task-doors_run-1 verified 
+istart_sub-1013_task-doors_run-1 verified 
+istart_sub-1009_task-doors_run-1 verified 
 
 --- logs/harmonized-l1-pilot.log ---
       "fslmeants": "/usr/local/fsl/bin/fslmeants"
