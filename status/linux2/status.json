@@ -1,22 +1,22 @@
 {
   "schema": 1,
-  "collected_utc": "2026-11-08T14:04:35.358710+00:00",
+  "collected_utc": "2026-11-08T14:09:37.289857+00:00",
   "code_commit": "82a07895d5544854bd2a73ebec6d5195c82cd9be",
   "cpus": 128,
   "load_average": [
-    40.384765625,
-    40.86865234375,
-    40.80517578125
+    39.4375,
+    40.2451171875,
+    40.59765625
   ],
   "memory": {
     "MemTotal_mb": 257528.6,
-    "MemAvailable_mb": 151254.0,
+    "MemAvailable_mb": 150294.2,
     "SwapTotal_mb": 139264.0,
-    "SwapFree_mb": 135733.6
+    "SwapFree_mb": 135738.3
   },
   "filesystem_bytes": {
-    "total": 58154886889472,
-    "free": 15134073421824
+    "total": 58154889117696,
+    "free": 15123464323072
   },
   "preprocessing_batches": [
     {
@@ -3722,10 +3722,10 @@
       ],
       "rolling_progress": {
         "planned": 5046,
-        "verified": 4812,
+        "verified": 4866,
         "failed_or_held": 12,
-        "remaining_or_running": 222,
-        "percent_verified": 95.36,
+        "remaining_or_running": 168,
+        "percent_verified": 96.43,
         "by_dataset": {
           "istart": {
             "planned": 636,
@@ -3735,9 +3735,9 @@
           },
           "rf1": {
             "planned": 4410,
-            "verified": 4176,
+            "verified": 4230,
             "failed_or_held": 12,
-            "remaining_or_running": 222
+            "remaining_or_running": 168
           }
         },
         "issues": [
