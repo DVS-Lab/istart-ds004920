@@ -1,4 +1,8 @@
 
+--- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
+{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
+{"ready": 115, "missing_or_invalid": 3}
+
 --- logs/fmriprep/sub-1240.log ---
 261107-11:16:56,227 nipype.workflow INFO:
 	 [Node] Setting-up "fmriprep_25_2_wf.sub_1240_wf.anat_fit_wf.anat_reports_wf.norm_msk" in "/ZPOOL/data/projects/istart-ds004920/work/fmriprep/sub-1240/fmriprep_25_2_wf/sub_1240_wf/anat_fit_wf/anat_reports_wf/_in_tuple_MNI152NLin6Asym.resnative/norm_msk".
@@ -50,10 +54,6 @@
 	 fMRIPrep finished successfully!
 261107-11:17:12,497 nipype.workflow IMPORTANT:
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
-
---- work/preprocessing-runs/cohort-expanded/sub-1240.launcher.log ---
-{"time": "2026-11-07T14:58:29.459135+00:00", "argv": ["/ZPOOL/data/projects/istart-ds004920/.venv-preproc/bin/python", "/ZPOOL/data/projects/istart-ds004920/code/harmonized_l1.py", "--config", "/ZPOOL/data/projects/istart-ds004920/config/linux2.json", "preprocess", "--subjects", "sub-1240", "--nprocs", "4", "--omp", "2", "--mem-mb", "0", "--execute"], "cwd": "/ZPOOL/data/projects/istart-ds004920"}
-{"ready": 115, "missing_or_invalid": 3}
 
 --- logs/harmonized-l1-cohort.log ---
 rf1_sub-11976_ses-01_task-doors_run-1_seed-mPFC_right verified 
