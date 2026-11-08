@@ -56,9 +56,6 @@
 	 Works derived from this fMRIPrep execution should include the boilerplate text found in <OUTPUT_PATH>/logs/CITATION.md.
 
 --- logs/harmonized-l1-cohort.log ---
-istart_sub-1001_task-socialdoors_run-1 verified 
-istart_sub-1003_task-doors_run-1 verified 
-istart_sub-1243_task-socialdoors_run-1 verified 
 istart_sub-1011_task-socialdoors_run-1 verified 
 istart_sub-1011_task-doors_run-1 verified 
 istart_sub-1009_task-socialdoors_run-1 verified 
@@ -69,6 +66,46 @@ istart_sub-1006_task-doors_run-1 verified
 istart_sub-1015_task-doors_run-1 verified 
 istart_sub-1013_task-doors_run-1 verified 
 istart_sub-1009_task-doors_run-1 verified 
+istart_sub-1013_task-socialdoors_run-1 verified 
+istart_sub-1004_task-doors_run-1 verified 
+istart_sub-1004_task-socialdoors_run-1 verified 
+istart_sub-1010_task-socialdoors_run-1 verified 
+istart_sub-1002_task-socialdoors_run-1 verified 
+istart_sub-1019_task-doors_run-1 verified 
+istart_sub-1002_task-doors_run-1 verified 
+istart_sub-1243_task-doors_run-1 verified 
+istart_sub-1021_task-socialdoors_run-1 verified 
+istart_sub-1016_task-doors_run-1 verified 
+istart_sub-1015_task-socialdoors_run-1 verified 
+istart_sub-1019_task-socialdoors_run-1 verified 
+istart_sub-1003_task-socialdoors_run-1 verified 
+istart_sub-1007_task-socialdoors_run-1 verified 
+istart_sub-1016_task-socialdoors_run-1 verified 
+istart_sub-1242_task-doors_run-1 verified 
+istart_sub-1012_task-socialdoors_run-1 verified 
+istart_sub-1242_task-socialdoors_run-1 verified 
+istart_sub-1006_task-socialdoors_run-1 verified 
+istart_sub-1007_task-doors_run-1 verified 
+istart_sub-1021_task-doors_run-1 verified 
+istart_sub-1244_task-doors_run-1 verified 
+istart_sub-1251_task-socialdoors_run-1 verified 
+istart_sub-1251_task-doors_run-1 verified 
+istart_sub-1255_task-socialdoors_run-1 verified 
+istart_sub-1253_task-doors_run-1 verified 
+istart_sub-1244_task-socialdoors_run-1 verified 
+istart_sub-1276_task-doors_run-1 verified 
+istart_sub-1248_task-doors_run-1 verified 
+istart_sub-1276_task-socialdoors_run-1 verified 
+istart_sub-1248_task-socialdoors_run-1 verified 
+istart_sub-1255_task-doors_run-1 verified 
+istart_sub-1245_task-doors_run-1 verified 
+istart_sub-1249_task-socialdoors_run-1 verified 
+istart_sub-1300_task-doors_run-1 verified 
+istart_sub-1301_task-doors_run-1 verified 
+istart_sub-1301_task-socialdoors_run-1 verified 
+istart_sub-1249_task-doors_run-1 verified 
+istart_sub-1302_task-socialdoors_run-1 verified 
+istart_sub-1245_task-socialdoors_run-1 verified 
 
 --- logs/harmonized-l1-pilot.log ---
       "fslmeants": "/usr/local/fsl/bin/fslmeants"
